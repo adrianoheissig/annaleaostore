@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{18486EA0-B076-4CAA-8F73-71761E9C959B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "View", "View", "{9B38FA7F-A65C-4B9B-AB08-4D661B6A58FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{D1882452-2D76-42FB-A0B7-36B3D126D160}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnaLeaoStore.DataAccess", "AnnaLeaoStore.DataAccess\AnnaLeaoStore.DataAccess.csproj", "{34995F70-EAB9-4460-BCDE-63313F440792}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnaLeaoStore.Business", "AnnaLeaoStore.Business\AnnaLeaoStore.Business.csproj", "{FC880D52-E1EA-45B3-ACC8-ED302B081A4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnaLeaoStore.Model", "AnnaLeaoStore.Model\AnnaLeaoStore.Model.csproj", "{E18468FC-DC10-4A78-8148-E074F5B36D78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnaLeaoStore.Repository", "AnnaLeaoStore.Repository\AnnaLeaoStore.Repository.csproj", "{143DECD3-1A73-41CD-8386-BE7592B5A915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnaLeaoStore.UI", "AnnaLeaoStore.UI\AnnaLeaoStore.UI.csproj", "{A3BD7A20-3C2F-4028-8EA1-CDCDC2892B93}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34995F70-EAB9-4460-BCDE-63313F440792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34995F70-EAB9-4460-BCDE-63313F440792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34995F70-EAB9-4460-BCDE-63313F440792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34995F70-EAB9-4460-BCDE-63313F440792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC880D52-E1EA-45B3-ACC8-ED302B081A4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC880D52-E1EA-45B3-ACC8-ED302B081A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC880D52-E1EA-45B3-ACC8-ED302B081A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC880D52-E1EA-45B3-ACC8-ED302B081A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E18468FC-DC10-4A78-8148-E074F5B36D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E18468FC-DC10-4A78-8148-E074F5B36D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E18468FC-DC10-4A78-8148-E074F5B36D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E18468FC-DC10-4A78-8148-E074F5B36D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{143DECD3-1A73-41CD-8386-BE7592B5A915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{143DECD3-1A73-41CD-8386-BE7592B5A915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{143DECD3-1A73-41CD-8386-BE7592B5A915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{143DECD3-1A73-41CD-8386-BE7592B5A915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3BD7A20-3C2F-4028-8EA1-CDCDC2892B93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3BD7A20-3C2F-4028-8EA1-CDCDC2892B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3BD7A20-3C2F-4028-8EA1-CDCDC2892B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3BD7A20-3C2F-4028-8EA1-CDCDC2892B93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{34995F70-EAB9-4460-BCDE-63313F440792} = {18486EA0-B076-4CAA-8F73-71761E9C959B}
+		{FC880D52-E1EA-45B3-ACC8-ED302B081A4A} = {D1882452-2D76-42FB-A0B7-36B3D126D160}
+		{E18468FC-DC10-4A78-8148-E074F5B36D78} = {D1882452-2D76-42FB-A0B7-36B3D126D160}
+		{143DECD3-1A73-41CD-8386-BE7592B5A915} = {D1882452-2D76-42FB-A0B7-36B3D126D160}
+		{A3BD7A20-3C2F-4028-8EA1-CDCDC2892B93} = {9B38FA7F-A65C-4B9B-AB08-4D661B6A58FC}
+	EndGlobalSection
+EndGlobal
