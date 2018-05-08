@@ -1,0 +1,7 @@
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Debug\netstandard1.4\AnnaLeaoStore.DataAccess.deps.json
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Debug\netstandard1.4\AnnaLeaoStore.DataAccess.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Debug\netstandard1.4\AnnaLeaoStore.DataAccess.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\obj\Debug\netstandard1.4\AnnaLeaoStore.DataAccess.csprojResolveAssemblyReference.cache
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\obj\Debug\netstandard1.4\AnnaLeaoStore.DataAccess.AssemblyInfo.cs
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\obj\Debug\netstandard1.4\AnnaLeaoStore.DataAccess.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\obj\Debug\netstandard1.4\AnnaLeaoStore.DataAccess.pdb

@@ -1,0 +1,7 @@
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Model\bin\Debug\netstandard1.4\AnnaLeaoStore.Model.deps.json
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Model\bin\Debug\netstandard1.4\AnnaLeaoStore.Model.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Model\bin\Debug\netstandard1.4\AnnaLeaoStore.Model.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Model\obj\Debug\netstandard1.4\AnnaLeaoStore.Model.csprojResolveAssemblyReference.cache
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Model\obj\Debug\netstandard1.4\AnnaLeaoStore.Model.AssemblyInfo.cs
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Model\obj\Debug\netstandard1.4\AnnaLeaoStore.Model.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Model\obj\Debug\netstandard1.4\AnnaLeaoStore.Model.pdb
