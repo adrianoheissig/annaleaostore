@@ -94,3 +94,12 @@ c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\Microsoft.AI.Web.xml
 c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\obj\Debug\AnnaLeaoStore.UI.csprojResolveAssemblyReference.cache
 c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\obj\Debug\AnnaLeaoStore.UI.dll
 c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\obj\Debug\AnnaLeaoStore.UI.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\AnnaLeaoStore.Business.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\AnnaLeaoStore.Model.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\AnnaLeaoStore.Business.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\AnnaLeaoStore.Model.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\AnnaLeaoStore.Repository.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\AnnaLeaoStore.DataAccess.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\AnnaLeaoStore.Repository.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\AnnaLeaoStore.DataAccess.pdb
+C:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.UI\bin\AnnaLeaoStore.DataAccess.dll.config

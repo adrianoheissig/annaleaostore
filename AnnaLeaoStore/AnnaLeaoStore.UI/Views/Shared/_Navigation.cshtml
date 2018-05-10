@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNet.Identity
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+
+                <div class="profile-element">
+                    <span>
+                        <a class="navbar-minimalize" href="#">
+                            <i class="fa fa-picture-o"></i>
+                        </a>
+                    </span>
+                    <form method="post" id="logoutForm" action="/Login/LogOff">
+                        @Html.AntiForgeryToken()
+                    </form>
+                    <span class="clear">
+                        <span class="block m-t-xs">
+                            <strong class="font-bold">
+                            </strong>
+                        </span>
+                        <span class="text-muted text-xs block"></span>
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            <span class="font-bold pull-left">
+                                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i> &nbsp; Sair </a>
+                            </span>
+                        }
+                    </span>
+                </div>
+                <div class="logo-element">
+                    <a class="navbar-minimalize" href="#">
+                        SIRS
+                    </a>
+                </div>
+            </li>
+                       <li class="">
+                <a href="/Home/Index" title="Home"><i class="fa fa-home"></i><span class="nav-label">Home</span></a>
+            </li>
+               
+
+            <li>
+                <a href="#" title="Atividade"><i class="fa fa-laptop"></i> <span class="nav-label" data-i18n="nav.menulevels">Atividade</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class=""><a href="#">Atividade</a></li>
+                    <li class=""><a href="#">Fluxo</a></li>
+                    <li class=""><a href="#">Check-List</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" title="Atendimento"><i class="fa fa-telegram"></i> <span class="nav-label" data-i18n="nav.menulevels">Atendimento</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class=""><a href="#">Tipo</a></li>
+                    <li class=""><a href="#">Subtipo</a></li>
+                    <li class=""><a href="#">Tecnologia</a></li>
+                    <li class=""><a href="#">Fluxo</a></li>
+                    <li class=""><a href="#">Solicitante</a></li>
+                    <li class=""><a href="#">Atendente</a></li>
+                    <li class=""><a href="#">Barrado</a></li>
+                </ul>
+            </li>
+
+            <li><a href="/SIRS/Studio/Index" title="Studio"><i class="fa fa-tachometer"></i> <span class="nav-label" data-i18n="nav.menulevels">Studio</span></a></li>
+
+            <li>
+                <a href="#" title="Desenho"><i class="fa fa-picture-o"></i> <span class="nav-label" data-i18n="nav.menulevels">Desenho</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class="">
+                        <a href="#">Origem<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li class=""><a href="#">Tipo</a>
+                        </ul>
+                    </li>
+                    <li class=""><a href="#">Studio</a></li>
+                    <li class=""><a href="#">Venda</a></li>
+                    <li class=""><a href="#">Tipo de Situação</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" title="Desenhista"><i class="fa fa-paint-brush"></i> <span class="nav-label" data-i18n="nav.menulevels">Desenhista</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class=""><a href="#">Desenhista</a></li>
+                    <li class=""><a href="#">Tipo</a></li>
+                    <li class=""><a href="#">Valor</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#" title="Transação"><i class="fa fa-puzzle-piece"></i> <span class="nav-label" data-i18n="nav.menulevels">Transação</span></a></li>
+            <li><a href="#" title="Trabalho"><i class="fa fa-suitcase"></i> <span class="nav-label" data-i18n="nav.menulevels">Trabalho</span></a></li>
+            <li><a href="#" title="Forma de Pagamento"><i class="fa fa-money"></i> <span class="nav-label" data-i18n="nav.menulevels">Forma de Pagamento</span></a></li>
+            <li><a href="#" title="Pessoas"><i class="fa fa-male"></i> <span class="nav-label" data-i18n="nav.menulevels">Pessoas</span></a></li>
+            <li><a href="#" title="Comunicação"><i class="fa fa-comments-o"></i> <span class="nav-label" data-i18n="nav.menulevels">Comunicação</span></a></li>
+            <li><a href="#" title="Acervo Variante"><i class="fa fa-folder"></i> <span class="nav-label" data-i18n="nav.menulevels">Acervo Variante</span></a></li>
+            <li><a href="#" title="Geração Reduzido"><i class="fa fa-cogs"></i> <span class="nav-label" data-i18n="nav.menulevels">Geração Reduzido</span></a></li>
+            <li><a href="#" title="Geração Reduzido NF"><i class="fa fa-code-fork"></i> <span class="nav-label" data-i18n="nav.menulevels">Geração Reduzido NF</span></a></li>
+
+        </ul>
+    </div>
+</nav>

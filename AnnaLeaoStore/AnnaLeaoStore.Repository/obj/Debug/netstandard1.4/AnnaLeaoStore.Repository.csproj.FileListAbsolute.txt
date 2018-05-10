@@ -1,7 +1,0 @@
-c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\netstandard1.4\AnnaLeaoStore.Repository.deps.json
-c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\netstandard1.4\AnnaLeaoStore.Repository.dll
-c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\netstandard1.4\AnnaLeaoStore.Repository.pdb
-c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\netstandard1.4\AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
-c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\netstandard1.4\AnnaLeaoStore.Repository.AssemblyInfo.cs
-c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\netstandard1.4\AnnaLeaoStore.Repository.dll
-c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\netstandard1.4\AnnaLeaoStore.Repository.pdb

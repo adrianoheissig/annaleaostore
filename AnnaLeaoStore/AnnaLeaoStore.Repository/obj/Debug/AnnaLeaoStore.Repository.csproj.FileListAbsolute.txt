@@ -1,0 +1,10 @@
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.Repository.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.Repository.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\AnnaLeaoStore.Repository.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\AnnaLeaoStore.Repository.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.DataAccess.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.Model.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.DataAccess.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.Model.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
+C:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.DataAccess.dll.config
