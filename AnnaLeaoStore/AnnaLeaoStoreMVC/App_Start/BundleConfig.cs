@@ -64,7 +64,7 @@ namespace AnnaLeaoStoreMVC
             // Lightbox gallery
             bundles.Add(new ScriptBundle("~/plugins/lightboxGallery").Include(
                       "~/Scripts/plugins/blueimp/jquery.blueimp-gallery.min.js"));
-            
+
             // Sparkline
             bundles.Add(new ScriptBundle("~/plugins/sparkline").Include(
                       "~/Scripts/plugins/sparkline/jquery.sparkline.min.js"));
@@ -77,6 +77,14 @@ namespace AnnaLeaoStoreMVC
             bundles.Add(new ScriptBundle("~/plugins/morris").Include(
                       "~/Scripts/plugins/morris/raphael-2.1.0.min.js",
                       "~/Scripts/plugins/morris/morris.js"));
+
+            // Login css styles
+            bundles.Add(new StyleBundle("~/plugins/loginStyles").Include(
+                      "~/Content/plugins/login/login.css"));
+
+            // Login
+            bundles.Add(new ScriptBundle("~/plugins/login").Include(
+                      "~/Scripts/plugins/login/login.js"));
 
             // Flot chart
             bundles.Add(new ScriptBundle("~/plugins/flot").Include(
@@ -259,7 +267,7 @@ namespace AnnaLeaoStoreMVC
             // image cropper styles
             bundles.Add(new StyleBundle("~/plugins/imagecropperStyles").Include(
                       "~/Content/plugins/cropper/cropper.min.css"));
-            
+
             // jsTree
             bundles.Add(new ScriptBundle("~/plugins/jsTree").Include(
                       "~/Scripts/plugins/jsTree/jstree.min.js"));

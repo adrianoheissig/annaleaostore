@@ -35,6 +35,7 @@ namespace AnnaLeaoStoreMVC.Controllers
                 }
             }
 
+            ModelState.AddModelError("", "Usuário/Senha Inválidos");
             return View(login);
         }
 

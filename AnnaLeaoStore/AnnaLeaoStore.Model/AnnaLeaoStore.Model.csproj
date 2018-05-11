@@ -41,6 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TipoVendaMOD.cs" />
+    <Compile Include="TipoPagamentoMOD.cs" />
+    <Compile Include="TipoContatoMOD.cs" />
+    <Compile Include="PedidoVendaItemMOD.cs" />
+    <Compile Include="PedidoCompraItemMOD.cs" />
+    <Compile Include="GradeProdutosMOD.cs" />
+    <Compile Include="PedidoVendaMOD.cs" />
+    <Compile Include="PedidoCompraMOD.cs" />
+    <Compile Include="MovimentoMOD.cs" />
+    <Compile Include="ListaPrecosItemMOD.cs" />
+    <Compile Include="ListaPrecosMOD.cs" />
+    <Compile Include="EstoqueMOD.cs" />
+    <Compile Include="DevolucaoVendaMOD.cs" />
+    <Compile Include="DevolucaoCompraMOD.cs" />
+    <Compile Include="ContatosMOD.cs" />
+    <Compile Include="ProdutosMOD.cs" />
+    <Compile Include="PessoasMOD.cs" />
     <Compile Include="CadUsuMOD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
