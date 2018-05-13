@@ -1,0 +1,9 @@
+
+*.cache
+*.cache
+AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
+AnnaLeaoStore/AnnaLeaoStoreMVC/obj/Debug/AnnaLeaoStoreMVC.csprojResolveAssemblyReference.cache
+AnnaLeaoStore/.vs/AnnaLeaoStore/xs/UserPrefs.xml
+AnnaLeaoStore/.vs/AnnaLeaoStore/xs/sqlite3/db.lock
+*.cache
+AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
