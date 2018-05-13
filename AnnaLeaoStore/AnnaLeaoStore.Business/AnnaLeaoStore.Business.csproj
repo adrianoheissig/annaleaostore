@@ -56,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CadUsuBUS.cs" />
+    <Compile Include="Interfaces\IServiceBase.cs" />
+    <Compile Include="PessoasBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

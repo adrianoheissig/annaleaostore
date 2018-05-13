@@ -19,7 +19,7 @@ namespace AnnaLeaoStore.Business
                 CadUsuMOD usuario = _cadUsuRep.Acesso(dados);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

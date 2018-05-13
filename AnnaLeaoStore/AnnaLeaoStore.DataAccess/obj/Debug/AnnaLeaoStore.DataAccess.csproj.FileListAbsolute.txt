@@ -7,4 +7,3 @@ C:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Debug\EntityFramewor
 C:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
 C:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Debug\EntityFramework.xml
 C:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
-C:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\obj\Debug\AnnaLeaoStore.DataAccess.csprojResolveAssemblyReference.cache

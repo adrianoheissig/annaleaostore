@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 using System.Configuration;
+using System.Data.Common;
 
 namespace AnnaLeaoStore.DataAccess
 {
@@ -74,6 +75,112 @@ namespace AnnaLeaoStore.DataAccess
 
             return tabela;
         }
+
+
+
+
+        #region DataBase-Helper
+
+        public DbCommand ObterCommand(string sql, params object[] parametros)
+        {
+            var cn = new SqlConnection(_strConn);
+            var cmd = new SqlCommand();
+
+            cmd.CommandText = sql;
+            cmd.Connection = cn;
+
+            if (parametros.Length > 0)
+            {
+                for (int i = 0; i < parametros.Length; i += 2)
+                {
+                    cmd.Parameters.AddWithValue(parametros[i].ToString(), parametros[i + 1]);
+                }
+            }
+
+            return cmd;
+
+        }
+
+        public DbCommand ObterCommand(SqlCommand cmd)
+        {
+            var cn = new SqlConnection(_strConn);
+            cmd.Connection = cn;
+            return cmd;
+        }
+
+
+        public DbDataReader ObterDataReader(DbCommand cmd)
+        {
+
+            try
+            {
+                cmd.Connection.Open();
+
+                var reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                return reader;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+            }
+
+        }
+
+        public bool VerificaExiste(DbCommand cmd)
+        {
+            try
+            {
+                cmd.Connection.Open();
+
+                Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+
+        public void ExecutarSql(DbCommand cmd)
+        {
+            try
+            {
+                cmd.Connection.Open();
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+
+        }
+
+        #endregion
 
     }
 }

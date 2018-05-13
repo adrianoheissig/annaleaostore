@@ -1,0 +1,194 @@
+﻿@model AnnaLeaoStore.Model.PessoasMOD
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Clientes</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/Home/Index">Home</a>
+            </li>
+            <li>
+                <a>Cadastros</a>
+            </li>
+            <li class="active">
+                <strong>Clientes</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+
+<form id="frmCadastrarCliente" method="post" novalidate="novalidate">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="alert-success"><label>Cadastro de Cliente</label></div>
+                        <br class="b-r-lg" />
+                        <hr />
+
+                        @if (Model != null && Model.ID > 0)
+                        {
+                        @Html.HiddenFor(a => a.ID)
+                        }
+                        <div class="file-name">
+                            <label>Nome:</label>
+                            @Html.TextBoxFor(a => a.Nome, new { @class = "form-control" })
+                        </div>
+
+                        <div class="file-name">
+                            <label>Endereço:</label>
+                            @Html.TextBoxFor(a => a.Endereco, new { @class = "form-control" })
+                        </div>
+
+                        <div class="file-name">
+                            <label>Bairro:</label>
+                            @Html.TextBoxFor(a => a.Bairro, new { @class = "form-control" })
+                        </div>
+
+                        <div class="file-name">
+                            <label>Cidade:</label>
+                            @Html.TextBoxFor(a => a.Cidade, new { @class = "form-control" })
+                        </div>
+
+                        <div class="file-name">
+                            <label>Estado:</label>
+                            @Html.TextBoxFor(a => a.Estado, new { @class = "form-control" })
+                        </div>
+
+                        <div class="file-name">
+                            <label>CEP:</label>
+                            @Html.TextBoxFor(a => a.Cep, new { @class = "form-control" })
+                        </div>
+
+                        <div class="file-name">
+                            <label>País:</label>
+                            @Html.TextBoxFor(a => a.Pais, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ativo?</label>
+                            @Html.CheckBoxFor(a => a.Ativo)
+                            &nbsp; &nbsp;
+                        </div>
+
+                        <div class="form-group" id="data_1">
+                            <label class="file-name">Data Nascimento:</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="file-name">
+                            <label>Observação:</label>
+                            @Html.TextBoxFor(a => a.Observacao, new { @class = "form-control" })
+                        </div>
+
+                        <br />
+
+                        <div class="alert-success">
+                            <label>Detalhes da Entrega</label>
+                        </div>
+                        <br class="b-r-lg" />
+
+                        <div class="form-group" id="data_1">
+                            <label class="file-name">Endereço de Entrega Igual Principal:</label>
+                            <div class="input-group date">
+                                <span class="input-group-addon"><i class="fa fa-map-pin"></i></span>
+                                <input type="radio" class="form-control copiaEndereco" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="file-name">Endereco Entrega:</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(a => a.EnderecoEntrega, new { @class = "form-control" })
+                            </div>
+
+                            <label class="file-name">Bairro Entrega:</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(a => a.BairroEntrega, new { @class = "form-control" })
+                            </div>
+
+                            <label class="file-name">Cidade Entrega:</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(a => a.CidadeEntrega, new { @class = "form-control" })
+                            </div>
+
+                            <label class="file-name">Estado Entrega:</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(a => a.EstadoEntrega, new { @class = "form-control" })
+                            </div>
+
+                            <label class="file-name">Cep Entrega:</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(a => a.CepEntrega, new { @class = "form-control" })
+                            </div>
+
+                            <label class="file-name">País Entrega:</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(a => a.PaisEntrega, new { @class = "form-control" })
+                            </div>
+
+                            <label class="file-name">Destinatário:</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(a => a.NomeDestinatario, new { @class = "form-control" })
+                            </div>
+
+                            <div class="submit">
+                                <input type="submit" name="Gravar" class="btn btn-primary" />
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+    @Styles.Render("~/Scripts/plugins/jquery-ui/jqueryuiStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+
+    <script>
+        $(document).ready(function () {
+            $("#frmCadastrarCliente").submit(function (e) {
+
+                var url = "/Pessoas/Atualizar/"; 
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: $("#frmCadastrarCliente").serialize(), // serializes the form's elements.
+                    success: function (response) {
+                        if (response.status) {
+                            swal("Sucesso!", response.responseText, "success");
+                        } else {
+                            swal("Falhou!", response.responseText, "error");
+                        }
+                    }
+
+                });
+
+                e.preventDefault(); 
+            });
+        });
+
+    </script>
+}

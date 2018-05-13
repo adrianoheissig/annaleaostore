@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AnnaLeaoStore.Model.PessoasMOD>
+
+@{
+    ViewBag.Title = "Fornecedores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Fornecedores</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/Home/Index">Home</a>
+            </li>
+            <li>
+                <a>Cadastros</a>
+            </li>
+            <li class="active">
+                <strong>Fornecedores</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<!--Tabela de Fornecedores-->
+<div class="tablecontainer container-fluid">
+    <a class="popup btn btn-primary" href="/Pessoas/Save/0" style="margin-bottom:20px; margin-top:20px;">Novo</a>
+    <table class="table table-striped dt-responsive nowrap" data-page-size="15" id="p">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Bairro</th>
+                <th>Cidade</th>
+                <th>UF</th>
+                <th>Última Compra</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>

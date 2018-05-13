@@ -18,10 +18,12 @@ namespace AnnaLeaoStore.Model
         public string Cep { get; set; }
         public string Pais{ get; set; }
         public Int32 Situacao { get; set; }
+        public bool Ativo { get; set; }
+        public string DescricaoSituacao { get; set; }
         public string Observacao { get; set; }
         public Int32 TipoPessoa { get; set; }
-        public DateTime DataCadastro { get; set; }
-        public DateTime DataNascimento { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataNascimento { get; set; }
         public string EnderecoEntrega { get; set; }
         public string BairroEntrega { get; set; }
         public string CidadeEntrega { get; set; }
