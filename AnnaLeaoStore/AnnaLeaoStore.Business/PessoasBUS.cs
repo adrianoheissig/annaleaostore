@@ -13,6 +13,8 @@ namespace AnnaLeaoStore.Business
     {
         private PessoasREP _pessoasRep = new PessoasREP();
 
+        private PessoasMOD _pessoaMOD = new PessoasMOD();
+
         public void Delete(PessoasMOD pessoa)
         {
             try
@@ -42,13 +44,13 @@ namespace AnnaLeaoStore.Business
             return _pessoasRep.GetByID(id);
         }
 
-        public void Insert(PessoasMOD pessoa)
+        public PessoasMOD Insert(PessoasMOD pessoa)
         {
             try
             {
-                ValidaPessoa(pessoa);
+                _pessoaMOD = ValidaPessoa(pessoa);
 
-                _pessoasRep.Insert(pessoa);
+                return _pessoasRep.Insert(_pessoaMOD);
 
             }
             catch (Exception e)
@@ -62,9 +64,9 @@ namespace AnnaLeaoStore.Business
         {
             try
             {
-                ValidaPessoa(pessoa);
+                _pessoaMOD = ValidaPessoa(pessoa);
 
-                _pessoasRep.Update(pessoa);
+                _pessoasRep.Update(_pessoaMOD);
             }
             catch (Exception e)
             {
@@ -73,7 +75,7 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-        public void ValidaPessoa(PessoasMOD pessoa)
+        public PessoasMOD ValidaPessoa(PessoasMOD pessoa)
         {
             try
             {
@@ -81,6 +83,12 @@ namespace AnnaLeaoStore.Business
                 {
                     throw new Exception("Nome não pode ser Em Branco!");
                 }
+
+                pessoa.Situacao = pessoa.Ativo ? 1 : 0;
+
+                return pessoa;
+
+
             }
             catch (Exception e)
             {
@@ -89,5 +97,9 @@ namespace AnnaLeaoStore.Business
             }
         }
 
+        void IServiceBase<PessoasMOD>.Insert(PessoasMOD entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -625,6 +625,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ContatosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
@@ -672,6 +673,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Contatos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AnnaLeaoStore.Business\AnnaLeaoStore.Business.csproj">

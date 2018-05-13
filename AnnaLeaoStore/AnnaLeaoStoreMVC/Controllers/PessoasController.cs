@@ -64,19 +64,22 @@ namespace AnnaLeaoStoreMVC.Controllers
         {
             try
             {
+                PessoasMOD newPessoa = new PessoasMOD();
 
                 if (pessoa.ID > 0)
                 {
                     //Atualizar
                     _pessoasBUS.Update(pessoa);
+                    newPessoa.ID = pessoa.ID;
                 }
                 else
                 {
                     //Novo
-                    _pessoasBUS.Insert(pessoa);
+                    newPessoa = _pessoasBUS.Insert(pessoa);
+
                 }
 
-                return new JsonResult { Data = new { status = true } };
+                return new JsonResult { Data = new { status = true, ID = newPessoa.ID } };
             }
             catch (Exception e)
             {

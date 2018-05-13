@@ -45,10 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CadUsuREP.cs" />
+    <Compile Include="Extensions\GetDataExtension.cs" />
     <Compile Include="Extensions\SqlParameterCollectionExtensions.cs" />
     <Compile Include="Interfaces\IRepositoryBase.cs" />
     <Compile Include="PessoasREP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoContatoREP.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AnnaLeaoStore.DataAccess\AnnaLeaoStore.DataAccess.csproj">

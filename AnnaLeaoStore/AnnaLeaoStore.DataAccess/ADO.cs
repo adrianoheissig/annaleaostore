@@ -76,9 +76,6 @@ namespace AnnaLeaoStore.DataAccess
             return tabela;
         }
 
-
-
-
         #region DataBase-Helper
 
         public DbCommand ObterCommand(string sql, params object[] parametros)

@@ -22,9 +22,14 @@ namespace AnnaLeaoStore.Repository
         {
             try
             {
-                _strSql = $@"DELETE FROM PESSOAS WHERE ID = {pessoa.ID}";
 
-                _ado.ExecutarComando(_strSql);
+                string storedProcedure = "DELETAR_PESSOA";
+                var cmd = new SqlCommand(storedProcedure);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", pessoa.ID);
+
+                _ado.ExecutarSql(_ado.ObterCommand(cmd));
+
 
             }
             catch (Exception e)
@@ -40,17 +45,11 @@ namespace AnnaLeaoStore.Repository
         }
         public List<PessoasMOD> GetAll(int tipo)
         {
-            List<PessoasMOD> pessoas = new List<PessoasMOD>();
-
-            _strSql = $@"SELECT ID
-                              ,NOME
-                              ,ENDERECO
-                              ,BAIRRO
-                              ,CIDADE
-                              ,ESTADO
-                              ,CEP
-                              ,PAIS
+            _strSql = $@"SELECT ID,NOME,ENDERECO,BAIRRO
+                              ,CIDADE,ESTADO,CEP,PAIS
                               ,SITUACAO
+							  ,CASE WHEN SITUACAO = 0 THEN 'INATIVO' ELSE 'ATIVO' END AS DESC_SITUACAO
+							  ,CASE WHEN SITUACAO = 0 THEN 'False' ELSE 'True' END AS ATIVO
                               ,OBSERVACAO
                               ,TIPOPESSOA
                               ,DATACADASTRO
@@ -63,52 +62,18 @@ namespace AnnaLeaoStore.Repository
                               ,PAISENTREGA
                               ,NOMEDESTINATARIO FROM PESSOAS WHERE TIPOPESSOA = {tipo}";
 
-            DataTable registros = _ado.RetornarTabela(_strSql);
-
-            foreach (DataRow item in registros.Rows)
-            {
-                pessoas.Add(new PessoasMOD
-                {
-                    ID = Convert.ToInt32(item["ID"]),
-                    Nome = item["NOME"] == DBNull.Value ? String.Empty : item["NOME"].ToString(),
-                    Endereco = item["ENDERECO"] == DBNull.Value ? String.Empty : item["ENDERECO"].ToString(),
-                    Bairro = item["BAIRRO"] == DBNull.Value ? String.Empty : item["BAIRRO"].ToString(),
-                    Cidade = item["CIDADE"] == DBNull.Value ? String.Empty : item["CIDADE"].ToString(),
-                    Estado = item["ESTADO"] == DBNull.Value ? String.Empty : item["ESTADO"].ToString(),
-                    Cep = item["CEP"] == DBNull.Value ? String.Empty : item["CEP"].ToString(),
-                    Pais = item["PAIS"] == DBNull.Value ? String.Empty : item["PAIS"].ToString(),
-                    Situacao = item["SITUACAO"] == DBNull.Value ? 0 : Convert.ToInt32(item["SITUACAO"]),
-                    DescricaoSituacao = item["SITUACAO"] == DBNull.Value ? "Inativo" : (Convert.ToInt32(item["SITUACAO"]) == 0 ? "Inativo" : "Ativo"),
-                    Ativo = item["SITUACAO"] == DBNull.Value ? false : (Convert.ToInt32(item["SITUACAO"]) == 0 ? false : true),
-                    Observacao = item["OBSERVACAO"] == DBNull.Value ? String.Empty : item["OBSERVACAO"].ToString(),
-                    /* DataCadastro =  Convert.ToDateTime(item["DATACADASTRO"]),
-                     DataNascimento = Convert.ToDateTime(item["DATANASCIMENTO"]),
-                     EnderecoEntrega = item["ENDERECOENTREGA"].ToString(),
-                     BairroEntrega = item["BAIRROENTREGA"].ToString(),
-                     CidadeEntrega = item["CIDADEENTREGA"].ToString(),
-                     EstadoEntrega = item["ESTADOENTREGA"].ToString(),
-                     CepEntrega = item["CEPENTREGA"].ToString(),
-                     PaisEntrega = item["PAISENTREGA"].ToString(),
-                     NomeDestinatario = item["NOMEDESTINATARIO"].ToString() */
-                });
-            }
-
-            return pessoas;
+            return RetornLista(_strSql);
         }
 
         public PessoasMOD GetByID(int id)
         {
             PessoasMOD pessoa = new PessoasMOD();
 
-            _strSql = $@"SELECT ID
-                              ,NOME
-                              ,ENDERECO
-                              ,BAIRRO
-                              ,CIDADE
-                              ,ESTADO
-                              ,CEP
-                              ,PAIS
+            _strSql = _strSql = $@"SELECT ID,NOME,ENDERECO,BAIRRO
+                              ,CIDADE,ESTADO,CEP,PAIS
                               ,SITUACAO
+							  ,CASE WHEN SITUACAO = 0 THEN 'INATIVO' ELSE 'ATIVO' END AS DESC_SITUACAO
+							  ,CASE WHEN SITUACAO = 0 THEN 'False' ELSE 'True' END AS ATIVO
                               ,OBSERVACAO
                               ,TIPOPESSOA
                               ,DATACADASTRO
@@ -120,44 +85,33 @@ namespace AnnaLeaoStore.Repository
                               ,CEPENTREGA
                               ,PAISENTREGA
                               ,NOMEDESTINATARIO FROM PESSOAS WHERE ID = {id}";
-            DataTable registro = _ado.RetornarTabela(_strSql);
 
-            pessoa.ID = Convert.ToInt32(registro.Rows[0]["ID"]);
-            pessoa.Nome = registro.Rows[0]["NOME"] == DBNull.Value ? String.Empty : registro.Rows[0]["NOME"].ToString();
-            pessoa.Endereco = registro.Rows[0]["ENDERECO"] == DBNull.Value ? String.Empty : registro.Rows[0]["ENDERECO"].ToString();
-            pessoa.Bairro = registro.Rows[0]["BAIRRO"] == DBNull.Value ? String.Empty : registro.Rows[0]["BAIRRO"].ToString();
-            pessoa.Cidade = registro.Rows[0]["CIDADE"] == DBNull.Value ? String.Empty : registro.Rows[0]["CIDADE"].ToString();
-            pessoa.Estado = registro.Rows[0]["ESTADO"] == DBNull.Value ? String.Empty : registro.Rows[0]["ESTADO"].ToString();
-            pessoa.Cep = registro.Rows[0]["CEP"] == DBNull.Value ? String.Empty : registro.Rows[0]["CEP"].ToString();
-            pessoa.Pais = registro.Rows[0]["PAIS"] == DBNull.Value ? String.Empty : registro.Rows[0]["PAIS"].ToString();
-            pessoa.Situacao = registro.Rows[0]["SITUACAO"] == DBNull.Value ? 0 : Convert.ToInt32(registro.Rows[0]["SITUACAO"]);
-            pessoa.DescricaoSituacao = registro.Rows[0]["SITUACAO"] == DBNull.Value ? "Inativo" : (Convert.ToInt32(registro.Rows[0]["SITUACAO"]) == 0 ? "Inativo" : "Ativo");
-            pessoa.Ativo = registro.Rows[0]["SITUACAO"] == DBNull.Value ? false : (Convert.ToInt32(registro.Rows[0]["SITUACAO"]) == 0 ? false : true);
-            pessoa.Observacao = registro.Rows[0]["OBSERVACAO"] == DBNull.Value ? String.Empty : registro.Rows[0]["OBSERVACAO"].ToString();
-            /* DataCadastro =  Convert.ToDateTime(item["DATACADASTRO"]);
-             DataNascimento = Convert.ToDateTime(item["DATANASCIMENTO"]);
-             EnderecoEntrega = item["ENDERECOENTREGA"].ToString();
-             BairroEntrega = item["BAIRROENTREGA"].ToString();
-             CidadeEntrega = item["CIDADEENTREGA"].ToString();
-             EstadoEntrega = item["ESTADOENTREGA"].ToString();
-             CepEntrega = item["CEPENTREGA"].ToString();
-             PaisEntrega = item["PAISENTREGA"].ToString();
-             NomeDestinatario = item["NOMEDESTINATARIO"].ToString(); */
+            List<PessoasMOD> pessoas = new List<PessoasMOD>();
+
+            pessoas = RetornLista(_strSql);
+
+            pessoa = pessoas.FirstOrDefault();
 
             return pessoa;
 
         }
 
-        public void Insert(PessoasMOD pessoa)
+
+        public PessoasMOD Insert(PessoasMOD pessoa)
         {
             try
             {
                 string storedProcedure = "INSERIR_PESSOA";
                 var cmd = new SqlCommand(storedProcedure);
                 cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter outPutVal = new SqlParameter("@NOVOID", SqlDbType.Int);
+                outPutVal.Direction = ParameterDirection.Output;
+
+                cmd.Parameters.Add(outPutVal);
                 cmd.Parameters.AddWithValue("@NOME", pessoa.Nome);
                 cmd.Parameters.AddWithValue("@ENDERECO", pessoa.Endereco, null);
-                cmd.Parameters.AddWithValue("@BAIRRO", pessoa.Bairro,null);
+                cmd.Parameters.AddWithValue("@BAIRRO", pessoa.Bairro, null);
                 cmd.Parameters.AddWithValue("@CIDADE", pessoa.Cidade, null);
                 cmd.Parameters.AddWithValue("@ESTADO", pessoa.Estado, null);
                 cmd.Parameters.AddWithValue("@CEP", pessoa.Cep, null);
@@ -166,6 +120,49 @@ namespace AnnaLeaoStore.Repository
                 cmd.Parameters.AddWithValue("@OBSERVACAO", pessoa.Observacao, null);
                 cmd.Parameters.AddWithValue("@TIPOPESSOA", pessoa.TipoPessoa);
                 cmd.Parameters.AddWithValue("@DATACADASTRO", pessoa.DataCadastro, null);
+                cmd.Parameters.AddWithValue("@DATANASCIMENTO", pessoa.DataNascimento, null);
+                cmd.Parameters.AddWithValue("@ENDERECOENTREGA", pessoa.EnderecoEntrega, null);
+                cmd.Parameters.AddWithValue("@BAIRROENTREGA", pessoa.BairroEntrega, null);
+                cmd.Parameters.AddWithValue("@CIDADEENTREGA", pessoa.CidadeEntrega, null);
+                cmd.Parameters.AddWithValue("@ESTADOENTREGA", pessoa.EstadoEntrega, null);
+                cmd.Parameters.AddWithValue("@CEPENTREGA", pessoa.CepEntrega, null);
+                cmd.Parameters.AddWithValue("@PAISENTREGA", pessoa.PaisEntrega, null);
+                cmd.Parameters.AddWithValue("@NOMEDESTINATARIO", pessoa.NomeDestinatario, null);
+
+                _ado.ExecutarSql(_ado.ObterCommand(cmd));
+
+                if (outPutVal.Value != DBNull.Value) pessoa.ID = Convert.ToInt32(outPutVal.Value);
+
+                return pessoa;
+
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+
+        }
+
+        public void Update(PessoasMOD pessoa)
+        {
+            try
+            {
+                string storedProcedure = "ATUALIZAR_PESSOA";
+                var cmd = new SqlCommand(storedProcedure);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", pessoa.ID);
+                cmd.Parameters.AddWithValue("@NOME", pessoa.Nome);
+                cmd.Parameters.AddWithValue("@ENDERECO", pessoa.Endereco, null);
+                cmd.Parameters.AddWithValue("@BAIRRO", pessoa.Bairro, null);
+                cmd.Parameters.AddWithValue("@CIDADE", pessoa.Cidade, null);
+                cmd.Parameters.AddWithValue("@ESTADO", pessoa.Estado, null);
+                cmd.Parameters.AddWithValue("@CEP", pessoa.Cep, null);
+                cmd.Parameters.AddWithValue("@PAIS", pessoa.Pais, null);
+                cmd.Parameters.AddWithValue("@SITUACAO", pessoa.Situacao);
+                cmd.Parameters.AddWithValue("@OBSERVACAO", pessoa.Observacao, null);
+                cmd.Parameters.AddWithValue("@TIPOPESSOA", pessoa.TipoPessoa);
                 cmd.Parameters.AddWithValue("@DATANASCIMENTO", pessoa.DataNascimento, null);
                 cmd.Parameters.AddWithValue("@ENDERECOENTREGA", pessoa.EnderecoEntrega, null);
                 cmd.Parameters.AddWithValue("@BAIRROENTREGA", pessoa.BairroEntrega, null);
@@ -186,40 +183,46 @@ namespace AnnaLeaoStore.Repository
 
         }
 
-        public void Update(PessoasMOD pessoa)
+        void IRepositoryBase<PessoasMOD>.Insert(PessoasMOD entity)
         {
-            try
+            throw new NotImplementedException();
+        }
+
+        private List<PessoasMOD> RetornLista(string select)
+        {
+            List<PessoasMOD> pessoas = new List<PessoasMOD>();
+
+            DataTable registros = _ado.RetornarTabela(select);
+
+            foreach (DataRow item in registros.Rows)
             {
-                _strSql = $@"UPDATE PESSOAS
-   SET NOME = {pessoa.Nome}
-      ,ENDERECO = {pessoa.Endereco}
-      ,BAIRRO = {pessoa.Bairro}
-      ,CIDADE = {pessoa.Cidade}
-      ,ESTADO = {pessoa.Estado}
-      ,CEP = {pessoa.Cep}
-      ,PAIS = {pessoa.Pais}
-      ,SITUACAO = {pessoa.Situacao}
-      ,OBSERVACAO = {pessoa.Observacao}
-      ,TIPOPESSOA = {pessoa.TipoPessoa}
-      ,DATACADASTRO = {pessoa.DataCadastro}
-      ,DATANASCIMENTO = {pessoa.DataNascimento}
-      ,ENDERECOENTREGA = {pessoa.EnderecoEntrega}
-      ,BAIRROENTREGA = {pessoa.BairroEntrega}
-      ,CIDADEENTREGA = {pessoa.CidadeEntrega}
-      ,ESTADOENTREGA = {pessoa.EstadoEntrega}
-      ,CEPENTREGA = {pessoa.CepEntrega}
-      ,PAISENTREGA = {pessoa.PaisEntrega}
-      ,NOMEDESTINATARIO = {pessoa.NomeDestinatario}
- WHERE ID = {pessoa.ID}";
-
-                _ado.ExecutarComando(_strSql);
-            }
-            catch (Exception e)
-            {
-
-                throw new Exception(e.Message);
+                pessoas.Add(new PessoasMOD
+                {
+                    ID = item.GetValue<int>("ID"),
+                    Nome = item.GetText("NOME"),
+                    Endereco = item.GetText("ENDERECO"),
+                    Bairro = item.GetText("BAIRRO"),
+                    Cidade = item.GetText("CIDADE"),
+                    Estado = item.GetText("ESTADO"),
+                    Cep = item.GetText("CEP"),
+                    Pais = item.GetText("PAIS"),
+                    Situacao = item.GetValue<int>("SITUACAO"),
+                    DescricaoSituacao = item.GetText("DESC_SITUACAO"),
+                    Ativo = item.GetBool("Ativo"),
+                    Observacao = item.GetText("OBSERVACAO"),
+                    DataCadastro = item.GetValue<DateTime>("DATACADASTRO"),
+                    DataNascimento = item.GetValue<DateTime>("DATANASCIMENTO"),
+                    EnderecoEntrega = item.GetText("ENDERECOENTREGA"),
+                    BairroEntrega = item.GetText("BAIRROENTREGA"),
+                    CidadeEntrega = item.GetText("CIDADEENTREGA"),
+                    EstadoEntrega = item.GetText("ESTADOENTREGA"),
+                    CepEntrega = item.GetText("CEPENTREGA"),
+                    PaisEntrega = item.GetText("PAISENTREGA"),
+                    NomeDestinatario = item.GetText("NOMEDESTINATARIO")
+                });
             }
 
+            return pessoas;
         }
 
     }

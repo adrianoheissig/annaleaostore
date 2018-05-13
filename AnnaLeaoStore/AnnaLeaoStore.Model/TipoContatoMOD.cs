@@ -9,7 +9,7 @@ namespace AnnaLeaoStore.Model
 {
     public class TipoContatoMOD
     {
-        public Int32 ID { get; set; }
+        public int? ID { get; set; }
         public string Descricao { get; set; }
     }
 }
