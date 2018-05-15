@@ -172,67 +172,149 @@
 @section Scripts {
     @Scripts.Render("~/plugins/sweetAlert")
 
-    <script>
-        $(document).ready(function () {
-            var titulo;
-            if ($("#ID").val() > 0)
-                titulo = "Atualizado";
-            else
-                titulo = "Cadastrado";
+<script>$(document).ready(function() {
+        var titulo;
+        if ($("#ID").val() > 0)
+            titulo = "Atualizado";
+        else
+            titulo = "Cadastrado";
 
-             $("#frmCadastrarCliente").submit(function (e) {
+        $("#frmCadastrarCliente").submit(function(e) {
 
-                var url = "/Pessoas/Atualizar/";
+            var url = "/Pessoas/Atualizar/";
 
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: $("#frmCadastrarCliente").serialize(), // serializes the form's elements.
-                    success: function (response) {
-                        if (response.status) {
-                            swal({
-                                title: "Cliente " + titulo + " com Sucesso!",
-                                text: "Deseja Adicionar um Novo Contato?",
-                                type: "warning",
-                                showCancelButton: true,
-                                confirmButtonClass: "btn-danger",
-                                confirmButtonText: "Sim!",
-                                cancelButtonText: "Não!",
-                                closeOnConfirm: false,
-                                closeOnCancel: false
-                            },
-                                function (isConfirm) {
-                                    if (isConfirm) {
-                                        swal("Adicionar!", "Adicionando Contato do Cliente: " + response.ID, "success");
-                                    } else {
-                                        Voltar();
-                                    }
-                                });
-                        } else {
-                            swal("Falhou!", response.responseText, "error");
-                        }
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $("#frmCadastrarCliente").serialize(), // serializes the form's elements.
+                success: function(response) {
+                    if (response.status) {
+                        swal({
+                            title: "Cliente " + titulo + " com Sucesso!",
+                            text: "Deseja Adicionar um Novo Contato?",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonClass: "btn-danger",
+                            confirmButtonText: "Sim!",
+                            cancelButtonText: "Não!",
+                            closeOnConfirm: false,
+                            closeOnCancel: false
+                        },
+                            function(isConfirm) {
+                                if (isConfirm) {
+                                    swal("Adicionar!", "Adicionando Contato do Cliente: " + response.ID, "success");
+                                } else {
+                                    Voltar();
+                                }
+                            });
+                    } else {
+                        swal("Falhou!", response.responseText, "error");
                     }
-                });
-                e.preventDefault();
+                }
             });
-
-            $("#Sair").on("click", function () {
-                Voltar();
-            })
-
-            $(".copiaEndereco").on("click", function () {
-                $("#EnderecoEntrega").val($("#Endereco").val());
-                $("#BairroEntrega").val($("#Bairro").val());
-                $("#CidadeEntrega").val($("#Cidade").val());
-                $("#EstadoEntrega").val($("#Estado").val());
-                $("#CepEntrega").val($("#Cep").val());
-                $("#PaisEntrega").val($("#Pais").val());
-            });
-
-            function Voltar() {
-                location = "/Pessoas/Clientes";
-            };
+            e.preventDefault();
         });
 
-    </script>
+        $("#Sair").on("click", function() {
+            Voltar();
+        })
+
+        $(".copiaEndereco").on("click", function() {
+            $("#EnderecoEntrega").val($("#Endereco").val());
+            $("#BairroEntrega").val($("#Bairro").val());
+            $("#CidadeEntrega").val($("#Cidade").val());
+            $("#EstadoEntrega").val($("#Estado").val());
+            $("#CepEntrega").val($("#Cep").val());
+            $("#PaisEntrega").val($("#Pais").val());
+        });
+
+        function Voltar() {
+            location = "/Pessoas/Clientes";
+        };
+});
+
+
+
+// Quando clicar no editar, abre a tela com os dados prontos para edição
+$('.tablecontainer').on('click', 'a.popup', function(e) {
+        e.preventDefault();
+        OpenPopup($(this).attr('href'));
+})
+
+//Carrega lista de fornecedores no momento em que a tela esta sendo apresentada para o usuario
+// dessa forma, fica mais rapido a tela de edicao e inclusao.
+var fornecedores = null;
+$.getJSON('/SIRS/PessoaFj/ListarIdNome', function(resposta) {
+        fornecedores = resposta;
+});
+
+
+// Chama o popup de edição/inserção
+function OpenPopup(pageUrl) {
+        var $pageContent = $('<div/>');
+        $pageContent.load(pageUrl, function() {
+
+            //Limpar a select list para carregar os novos fornecedores, porque senao limpar, poderá duplicar os registros na select.
+            $('.listadefornecedores').empty();
+
+            //Monta a select com os fornecedores que foram previamente carregados.
+            $.each(fornecedores, function(key, val) {
+                if ($('#IdPessoaFjExistente').val() == key) {
+                    $('.listadefornecedores').append('<option value="' + key + '" selected>' + val + '</option>');
+                } else {
+                    $('.listadefornecedores').append('<option value="' + key + '">' + val + '</option>');
+                }
+            })
+        });
+
+        var $dialog = $('<div class="popupWindow modal" ></div>')
+            .html($pageContent)
+            .dialog({
+                draggable: false,
+                autoOpen: false,
+                resizable: false,
+                model: true,
+                modal: true,
+                title: 'Cadastro de Studio',
+                height: 600,
+                width: 650,
+                close: function() {
+                    $dialog.dialog('destroy').remove();
+                },
+                buttons: [{
+                    "text": "Sair",
+                    "click": function() {
+                        $(this).dialog("close");
+                    }
+                },
+                {
+                    "text": "Salvar",
+                    "click": function() {
+                        var url = $('#popupForm')[0].action;
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: $('#popupForm').serialize(),
+                            success: function(data) {
+                                if (data.status) {
+                                    $dialog.dialog('close');
+                                    oTable.ajax.reload();
+                                } else {
+                                    swal("Falhou!", data.responseText, "error");
+                                }
+                            }
+                        });
+                    }
+                }],
+                open: function(event) {
+                    $('.ui-dialog-buttonpane').find('button:contains("Sair")').addClass('btn btn-danger');
+                    $('.ui-dialog-buttonpane').find('button:contains("Salvar")').addClass('btn btn-primary');
+                }
+
+            });
+
+        $dialog.dialog('open');
+}
+
+</script>
 }
