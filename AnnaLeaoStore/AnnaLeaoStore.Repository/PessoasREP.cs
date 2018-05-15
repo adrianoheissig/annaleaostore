@@ -192,7 +192,7 @@ namespace AnnaLeaoStore.Repository
         {
             List<PessoasMOD> pessoas = new List<PessoasMOD>();
 
-            DataTable registros = _ado.RetornarTabela(select);
+			DataTable registros = _ado.RetornarTabela(select, CommandType.Text);
 
             foreach (DataRow item in registros.Rows)
             {

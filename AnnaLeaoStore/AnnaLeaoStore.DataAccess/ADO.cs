@@ -39,7 +39,7 @@ namespace AnnaLeaoStore.DataAccess
         }
 
 
-        public DataTable RetornarTabela(String sql)
+		public DataTable RetornarTabela(String sql, CommandType cmd)
         {
             /*DataTable -> é um Objeto do DataSet que contem um conjunto de informações 
                            em linhas e colunas(tabela em memoria) */
@@ -57,7 +57,7 @@ namespace AnnaLeaoStore.DataAccess
                 {
                     comando.CommandText = sql;
 
-                    comando.CommandType = CommandType.Text;
+                    comando.CommandType = cmd;
 
                     comando.Connection = conexao;
 

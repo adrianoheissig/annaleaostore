@@ -1,7 +1,9 @@
-﻿using AnnaLeaoStore.Model;
+﻿using AnnaLeaoStore.DataAccess;
+using AnnaLeaoStore.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using AnnaLeaoStore.Repository.Extensions;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,47 +13,27 @@ namespace AnnaLeaoStore.Repository
 {
     public class TipoContatoREP
     {
+		private ADO _ado = new ADO();
         public List<TipoContatoMOD> GetAll()
         {
             string storedProcedure = "LISTARTIPODECONTATO";
             var cmd = new SqlCommand(storedProcedure);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            List<TipoContatoMOD> pessoas = new List<TipoContatoMOD>();
+            List<TipoContatoMOD> tiposContato = new List<TipoContatoMOD>();
 
-            DataTable registros = _ado.RetornarTabela(select);
+			DataTable registros = _ado.RetornarTabela(storedProcedure, CommandType.StoredProcedure);
 
             foreach (DataRow item in registros.Rows)
             {
-                pessoas.Add(new PessoasMOD
+				tiposContato.Add(new TipoContatoMOD
                 {
-                    ID = item.GetValue<int>("ID"),
-                    Nome = item.GetText("NOME"),
-                    Endereco = item.GetText("ENDERECO"),
-                    Bairro = item.GetText("BAIRRO"),
-                    Cidade = item.GetText("CIDADE"),
-                    Estado = item.GetText("ESTADO"),
-                    Cep = item.GetText("CEP"),
-                    Pais = item.GetText("PAIS"),
-                    Situacao = item.GetValue<int>("SITUACAO"),
-                    DescricaoSituacao = item.GetText("DESC_SITUACAO"),
-                    Ativo = item.GetBool("Ativo"),
-                    Observacao = item.GetText("OBSERVACAO"),
-                    DataCadastro = item.GetValue<DateTime>("DATACADASTRO"),
-                    DataNascimento = item.GetValue<DateTime>("DATANASCIMENTO"),
-                    EnderecoEntrega = item.GetText("ENDERECOENTREGA"),
-                    BairroEntrega = item.GetText("BAIRROENTREGA"),
-                    CidadeEntrega = item.GetText("CIDADEENTREGA"),
-                    EstadoEntrega = item.GetText("ESTADOENTREGA"),
-                    CepEntrega = item.GetText("CEPENTREGA"),
-                    PaisEntrega = item.GetText("PAISENTREGA"),
-                    NomeDestinatario = item.GetText("NOMEDESTINATARIO")
+					ID = item.GetValue<int>("ID"),
+					Descricao = item.GetText("DESCRICAO")
                 });
             }
 
-            return pessoas;
-
-
+			return tiposContato;
 
         }
     }

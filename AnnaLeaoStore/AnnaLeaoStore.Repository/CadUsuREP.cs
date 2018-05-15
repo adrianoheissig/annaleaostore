@@ -18,7 +18,7 @@ namespace AnnaLeaoStore.Repository
 
             _strSql = $@"SELECT DESCRICAO FROM CADUSU USU JOIN CADNIVEL NIV ON USU.NIVEL = NIV.ID WHERE USUARIO = '{dados.Usuario}' AND SENHA = '{senha}'";
 
-            DataTable registro = _ado.RetornarTabela(_strSql);
+			DataTable registro = _ado.RetornarTabela(_strSql, CommandType.Text);
 
             CadUsuMOD usuario = new CadUsuMOD
             {

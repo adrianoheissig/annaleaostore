@@ -10,11 +10,6 @@ namespace AnnaLeaoStoreMVC.Controllers
     public class ContatosController : Controller
     {
         // GET: Contatos
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult ListarPorIdCliente(int id)
         {
             return null; 
