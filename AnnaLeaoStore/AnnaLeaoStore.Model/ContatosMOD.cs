@@ -9,9 +9,9 @@ namespace AnnaLeaoStore.Model
 {
     public class ContatosMOD
     {
-        public Int32 ID { get; set; }
-        public Int32 IDTipoRedeSocial { get; set; }
-        public string TipoCadastro { get; set; }
+        public int? ID { get; set; }
+        public int? IDTipoRedeSocial { get; set; }
+        public string TipoContato { get; set; }
         public string Descricao { get; set; }
         public string IDPessoa { get; set; }
     }

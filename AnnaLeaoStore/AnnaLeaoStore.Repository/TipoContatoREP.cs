@@ -17,9 +17,6 @@ namespace AnnaLeaoStore.Repository
         public List<TipoContatoMOD> GetAll()
         {
             string storedProcedure = "LISTARTIPODECONTATO";
-            var cmd = new SqlCommand(storedProcedure);
-            cmd.CommandType = CommandType.StoredProcedure;
-
             List<TipoContatoMOD> tiposContato = new List<TipoContatoMOD>();
 
 			DataTable registros = _ado.RetornarTabela(storedProcedure, CommandType.StoredProcedure);

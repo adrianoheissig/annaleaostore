@@ -39,7 +39,7 @@ namespace AnnaLeaoStore.DataAccess
         }
 
 
-		public DataTable RetornarTabela(String sql, CommandType cmd)
+		public DataTable RetornarTabela(String sql, CommandType cmd, params object[] parametros)
         {
             /*DataTable -> é um Objeto do DataSet que contem um conjunto de informações 
                            em linhas e colunas(tabela em memoria) */
@@ -61,6 +61,14 @@ namespace AnnaLeaoStore.DataAccess
 
                     comando.Connection = conexao;
 
+					if (parametros.Length > 0)
+                    {
+                        for (int i = 0; i < parametros.Length; i += 2)
+                        {
+                            comando.Parameters.AddWithValue(parametros[i].ToString(), parametros[i + 1]);
+                        }
+                    }
+
                     using (SqlDataAdapter da = new SqlDataAdapter())
                     {
                         da.SelectCommand = comando;
@@ -78,7 +86,7 @@ namespace AnnaLeaoStore.DataAccess
 
         #region DataBase-Helper
 
-        public DbCommand ObterCommand(string sql, params object[] parametros)
+		public DbCommand ObterCommand(string sql, params object[] parametros)
         {
             var cn = new SqlConnection(_strConn);
             var cmd = new SqlCommand();

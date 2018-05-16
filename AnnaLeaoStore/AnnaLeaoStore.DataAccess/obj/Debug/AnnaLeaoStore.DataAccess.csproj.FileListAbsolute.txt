@@ -14,7 +14,6 @@ C:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.DataAccess/bin/Debug/EntityFramewor
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.DataAccess/bin/Debug/EntityFramework.SqlServer.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.DataAccess/bin/Debug/EntityFramework.xml
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.DataAccess/bin/Debug/EntityFramework.SqlServer.xml
-/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.DataAccess/obj/Debug/AnnaLeaoStore.DataAccess.csprojResolveAssemblyReference.cache
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.DataAccess/obj/Debug/AnnaLeaoStore.DataAccess.csproj.CoreCompileInputs.cache
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.DataAccess/obj/Debug/AnnaLeaoStore.DataAccess.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.DataAccess/obj/Debug/AnnaLeaoStore.DataAccess.pdb
