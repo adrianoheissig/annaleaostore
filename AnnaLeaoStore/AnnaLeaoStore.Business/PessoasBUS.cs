@@ -99,7 +99,7 @@ namespace AnnaLeaoStore.Business
 
         void IServiceBase<PessoasMOD>.Insert(PessoasMOD entity)
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

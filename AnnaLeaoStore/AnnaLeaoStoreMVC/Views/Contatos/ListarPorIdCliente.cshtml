@@ -1,66 +1,40 @@
 ﻿@model AnnaLeaoStore.Model.ContatosMOD
 
-<form id="popupForm" action="/SIRS/Studio/Save/" method="post" novalidate="novalidate">
+<form id="popupForm" action="/Contatos/Salvar" method="post" novalidate="novalidate">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="alert-success"><label>Detalhes do Desenho</label></div>
+                        <div class="alert-success"><label>Contatos</label></div>
                         <br class="b-r-lg" />
                         <hr />
-                        @if (Model != null && Model.Id > 0)
+                        @if (Model != null && Model.ID > 0)
                         {
-                        @Html.HiddenFor(a => a.Id)
+                        @Html.HiddenFor(a => a.ID)
                         }
+                        @Html.HiddenFor(a => a.IDPessoa)
                         <div class="file-name">
-                            <label>Studio:</label>
-                            @Html.HiddenFor(a => a.IdPessoaFj, new { Name = "IdPessoaFjExistente", Id = "IdPessoaFjExistente"})
-                            <select id="IdPessoaFj" name="IdPessoaFj" class="listadefornecedores form-control"></select>
+                            <label>Tipos de Contato:</label>
+                            @Html.HiddenFor(a => a.IDTipoRedeSocial, new { Name = "IdPessoaFjExistente", Id = "IdPessoaFjExistente" })
+                            <select id="IDTipoRedeSocial" name="IDTipoRedeSocial" class="listadecontatos form-control"></select>
                         </div>
-                        <div class="file-name">
-                            <label>Código Desenho:</label>
-                            @Html.TextBoxFor(a => a.CodigoDesenhoStudio, new { @class = "form-control" })
-                        </div>
-                        <div class="file-name">
-                            <label>Nome Desenho:</label>
-                            @Html.TextBoxFor(a => a.NomeDesenhoStudio, new { @class = "form-control" })
-                        </div>
-                        <br />
-                        <div class="alert-success">
-                            <label>Detalhes da Compra</label>
-                        </div>
+                        
                         <br class="b-r-lg" />
                         <div class="form-group" id="data_1">
-                            <label class="file-name">Data da Compra:</label>
+                            <label class="file-name">Tipo de Contato:</label>
                             <div class="input-group date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                 @Html.TextBoxFor(a => a.DataCompra, new { @class = "form-control" })
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label class="file-name">Valor Compra:</label>
+                            <label class="file-name">Descrição:</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-usd"></i></span>
                                 @Html.TextBoxFor(a => a.ValorCompra, new { @class = "form-control" })
                             </div>
-                            <label class="file-name">Tipo Moeda:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-                                @Html.TextBoxFor(a => a.TipoMoeda, new { @class = "form-control" })
-                            </div>
-                            <label class="file-name">Forma Pagamento:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                                @Html.TextBoxFor(a => a.IdFormaPagamento, new { @class = "form-control" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Grátis?</label>
-                            @Html.CheckBoxFor(a => a.Gratis)
-                            &nbsp; &nbsp;
-                            <label>Consignado?</label>
-                            @Html.CheckBoxFor(a => a.Consignado)
                         </div>
                     </div>
                 </div>

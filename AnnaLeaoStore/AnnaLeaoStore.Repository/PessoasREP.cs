@@ -185,7 +185,7 @@ namespace AnnaLeaoStore.Repository
 
         void IRepositoryBase<PessoasMOD>.Insert(PessoasMOD entity)
         {
-            throw new NotImplementedException();
+            
         }
 
         private List<PessoasMOD> RetornLista(string select)

@@ -12,9 +12,16 @@ namespace AnnaLeaoStoreMVC.Controllers
 		private TipoContatoBUS _tipoContatoBUS = new TipoContatoBUS();
         public ActionResult ListarContatos()
         {
-			var lista = _tipoContatoBUS.GetAll();
+			try
+			{
+				var lista = _tipoContatoBUS.GetAll();
+				return Json(new { success = true, data = lista }, JsonRequestBehavior.AllowGet);
+			}
+			catch (Exception ex)
+			{
+				return Json(new { success = false, mensagem = ex.Message }, JsonRequestBehavior.AllowGet);
+			}
 
-            return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
     }
 }
