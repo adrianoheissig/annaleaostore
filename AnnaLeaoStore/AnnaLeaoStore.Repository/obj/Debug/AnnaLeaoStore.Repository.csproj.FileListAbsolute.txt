@@ -8,10 +8,6 @@ c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.
 c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Model.pdb
 c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
 C:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.DataAccess.dll.config
-/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
-/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.csproj.CoreCompileInputs.cache
-/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.dll
-/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Repository.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Repository.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.DataAccess.dll
@@ -19,3 +15,7 @@ C:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.DataAccess.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.DataAccess.dll.config
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Model.pdb
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.csproj.CoreCompileInputs.cache
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.dll
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.pdb

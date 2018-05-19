@@ -1,44 +1,46 @@
-﻿@model AnnaLeaoStore.Model.ContatosMOD
-
-<form id="popupForm" action="/Contatos/Salvar" method="post" novalidate="novalidate">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="alert-success"><label>Contatos</label></div>
-                        <br class="b-r-lg" />
-                        <hr />
-                        @if (Model != null && Model.ID > 0)
-                        {
-                        @Html.HiddenFor(a => a.ID)
-                        }
-                        @Html.HiddenFor(a => a.IDPessoa)
-                        <div class="file-name">
-                            <label>Tipos de Contato:</label>
-                            @Html.HiddenFor(a => a.IDTipoRedeSocial, new { Name = "IdPessoaFjExistente", Id = "IdPessoaFjExistente" })
-                            <select id="IDTipoRedeSocial" name="IDTipoRedeSocial" class="listadecontatos form-control"></select>
-                        </div>
-                        
-                        <br class="b-r-lg" />
-                        <div class="form-group" id="data_1">
-                            <label class="file-name">Tipo de Contato:</label>
-                            <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                @Html.TextBoxFor(a => a.DataCompra, new { @class = "form-control" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="file-name">Descrição:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-usd"></i></span>
-                                @Html.TextBoxFor(a => a.ValorCompra, new { @class = "form-control" })
+﻿@model List<AnnaLeaoStore.Model.ContatosMOD>
+    <form id="popupForm" action="/Contatos/Salvar" method="post" novalidate="novalidate">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="alert-success"><label>Contatos</label></div>
+                            <br class="b-r-lg" />
+                            <hr />
+                            <table class="table table-bordered table-striped table-hover table-responsive dt-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center col-sm-2">Tipo de Contato</th>
+                                        <th class="text-center col-sm-2">Descrição</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                    var index = 0;
+                                    foreach (var contato in Model)
+                                    {
+                                    <tr>
+                                        <input type="hidden" name="[@index].ID" id="[@index].ID" value="@contato.ID" />
+                                        <td>
+                                            @contato.TipoContato
+                                        </td>
+                                        <td class="text-right">
+                                            <input type="text" class="text-right" name="[@index].Descricao" id="[@index].Descricao" />
+                                        </td>
+                                    </tr>
+                                    index++;
+                                    }
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="submit">
+                                <button type="submit" class="btn  btn-primary"><span class="glyphicon glyphicon-floppy-saved"></span>Gravar</button>
+                                <input type="button" name="Sair" value="Sair" id="Sair" class="btn btn-danger" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
