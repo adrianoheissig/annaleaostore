@@ -1,0 +1,41 @@
+﻿@model List<AnnaLeaoStore.Model.ContatosMOD>
+    <form id="popupForm" action="/Cadastros/Contatos/Salvar" method="post" novalidate="novalidate">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-striped table-hover table-responsive dt-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center col-sm-2">Tipo de Contato</th>
+                                        <th class="text-center col-sm-2">Descrição</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                    var index = 0;
+                                    foreach (var contato in Model)
+                                    {
+                                    <tr>
+                                        <td>
+                                            <input type="hidden" name="[@index].IDTipoRedeSocial" id="[@index].IDTipoRedeSocial" value="@contato.IDTipoRedeSocial" />
+                                            <input type="hidden" name="[@index].ID" id="[@index].ID" value="@contato.ID" />
+                                            <input type="hidden" name="[@index].IDPessoa" id="[@index].IDPessoa" value="@contato.IDPessoa" />
+                                            @contato.TipoContato
+                                        </td>
+                                        <td class="text-right">
+                                            <input type="text" class="text-right" name="[@index].Descricao" id="[@index].Descricao" value="@contato.Descricao" />
+                                        </td>
+                                    </tr>
+                                    index++;
+                                    }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>

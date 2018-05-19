@@ -19,12 +19,7 @@
             close: function () {
                 $dialog.dialog('destroy').remove();
             },
-            buttons: [{
-                "text": "Sair",
-                "click": function () {
-                    $(this).dialog("close");
-                }
-            },
+            buttons: [
             {
                 "text": "Salvar",
                 "click": function () {
@@ -36,14 +31,18 @@
                         success: function (data) {
                             if (data.status) {
                                 $dialog.dialog('close');
-                                oTable.ajax.reload();
                             } else {
                                 swal("Falhou!", data.responseText, "error");
                             }
                         }
                     });
                 }
-            }],
+                }, {
+                    "text": "Sair",
+                    "click": function () {
+                        $(this).dialog("close");
+                    }
+                }],
             open: function (event) {
                 $('.ui-dialog-buttonpane').find('button:contains("Sair")').addClass('btn btn-danger');
                 $('.ui-dialog-buttonpane').find('button:contains("Salvar")').addClass('btn btn-primary');

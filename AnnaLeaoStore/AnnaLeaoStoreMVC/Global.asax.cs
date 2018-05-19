@@ -17,9 +17,6 @@ namespace AnnaLeaoStoreMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            AreaRegistration.RegisterAllAreas();
-
-
 
         }
     }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AnnaLeaoStoreMVC.Controllers
+namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 {
 	public class ContatosController : Controller
 	{
@@ -48,11 +48,11 @@ namespace AnnaLeaoStoreMVC.Controllers
 			try
 			{
 				_contatoBUS.Inserir(contatos);
-				return new JsonResult { Data = new { sucesso = true } };
+				return new JsonResult { Data = new { status = true } };
 			}
 			catch (Exception ex)
 			{
-				return new JsonResult { Data = new { sucesso = false, ex.Message } };
+				return new JsonResult { Data = new { status = false, ex.Message } };
 			}
 
 		}

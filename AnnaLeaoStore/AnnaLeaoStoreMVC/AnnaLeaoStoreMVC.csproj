@@ -261,6 +261,7 @@
     <Content Include="fonts\font-awesome\scss\_screen-reader.scss" />
     <Content Include="fonts\font-awesome\scss\_stacked.scss" />
     <Content Include="fonts\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\Cadastros\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -621,21 +622,22 @@
     <Content Include="Views\Shared\_TopNavbar.cshtml" />
     <Content Include="Views\Shared\_Unauthorized.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Contatos\ListarPorIdCliente.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Contatos\ListarPorIdCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ContatosController.cs" />
+    <Compile Include="Areas\Cadastros\CadastrosAreaRegistration.cs" />
+    <Compile Include="Areas\Cadastros\Controllers\ContatosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\PessoasController.cs" />
+    <Compile Include="Areas\Cadastros\Controllers\PessoasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\TipoContatoController.cs" />
+    <Compile Include="Areas\Cadastros\Controllers\TipoContatoController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -663,9 +665,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Pessoas\Clientes.cshtml" />
-    <Content Include="Views\Pessoas\Fornecedores.cshtml" />
-    <Content Include="Views\Pessoas\CadastrarCliente.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Pessoas\Clientes.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Pessoas\Fornecedores.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Pessoas\CadastrarCliente.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -675,6 +677,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Cadastros\Models\" />
+    <Folder Include="Areas\Cadastros\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

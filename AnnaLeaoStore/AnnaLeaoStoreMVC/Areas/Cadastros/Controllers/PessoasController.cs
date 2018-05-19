@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace AnnaLeaoStoreMVC.Controllers
+namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 {
     //[Authorize]
     public class PessoasController : Controller
@@ -30,6 +30,12 @@ namespace AnnaLeaoStoreMVC.Controllers
             var lista = _pessoasBUS.GetAll(tipo);
 
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult DetalhesCliente(int id)
+        {
+            return View();
         }
 
 

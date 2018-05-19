@@ -31,7 +31,8 @@ namespace AnnaLeaoStore.Repository
                         ID = item.GetValue<int>("ID"),
 						IDTipoRedeSocial = item.GetValue<int>("ID_TIPOREDESOCIAL"),
 						TipoContato = item.GetText("TIPODECONTATO"),
-						Descricao = item.GetText("DESCRICAO")
+						Descricao = item.GetText("DESCRICAO"),
+                        IDPessoa = id
 					});
 				}
 				return contatos;

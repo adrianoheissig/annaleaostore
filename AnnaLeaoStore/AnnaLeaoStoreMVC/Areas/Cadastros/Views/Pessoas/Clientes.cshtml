@@ -24,7 +24,7 @@
 
 <!--Tabela de Clientes-->
 <div class="tablecontainer container-fluid">
-    <a class="popup btn btn-primary" href="/Pessoas/CadastrarCliente/0" style="margin-bottom:20px; margin-top:20px;">Novo</a>
+    <a class="popup btn btn-primary" href="/Cadastros/Pessoas/CadastrarCliente/0" style="margin-bottom:20px; margin-top:20px;">Novo</a>
     <table class="table table-striped dt-responsive nowrap " data-page-size="15" id="tbClientes">
         <thead>
             <tr>
@@ -77,12 +77,12 @@
                     { "data": "DescricaoSituacao", "autoWidth": true },
                     {
                         "data": "ID", "autoWidth": true, "render": function (data) {
-                            return '<a class="popup" href="/Pessoas/CadastrarCliente/' + data + '"><i class="fa fa-edit"></i></a>';
+                            return '<a class="popup" href="/Cadastros/Pessoas/CadastrarCliente/' + data + '"><i class="fa fa-edit"></i></a>';
                         }
                     },
                     {
                         "data": "ID", "autoWidth": true, "render": function (data) {
-                            return '<a class="remove" href="/Pessoas/Deletar/' + data + '"><i class="fa fa-remove"></i></a>';
+                            return '<a class="remove" href="/Cadastros/Pessoas/Deletar/' + data + '"><i class="fa fa-remove"></i></a>';
                         }
                     }
                 ]
