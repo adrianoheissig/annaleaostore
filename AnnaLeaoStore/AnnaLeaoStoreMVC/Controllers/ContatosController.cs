@@ -12,18 +12,20 @@ namespace AnnaLeaoStoreMVC.Controllers
 	{
 		private ContatosBUS _contatoBUS = new ContatosBUS();
 		// GET: Contatos
+		[HttpGet]
 		public ActionResult ListarPorIdCliente(int id)
 		{
 			try
 			{
 				var lista = _contatoBUS.GetID(id);
-				//return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
 
-				return new JsonResult { Data = new { sucesso = true, data = lista } };
+				return View(lista);
+			
 			}
 			catch (Exception ex)
 			{
-				return new JsonResult { Data = new { sucesso = false, mensagem = ex.Message } };
+
+				return Json(new { sucesso = false, mensagem = ex.Message }, JsonRequestBehavior.AllowGet);
 			}
 		}
 

@@ -142,15 +142,14 @@
     @Scripts.Render("~/plugins/sweetAlert")
     <script src="~/Scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
+    <script>$(document).ready(function() {
             var titulo;
             if ($("#ID").val() > 0)
                 titulo = "Atualizado";
             else
                 titulo = "Cadastrado";
 
-            $("#frmCadastrarCliente").submit(function (e) {
+            $("#frmCadastrarCliente").submit(function(e) {
 
                 var url = "/Pessoas/Atualizar/";
 
@@ -158,7 +157,7 @@
                     type: "POST",
                     url: url,
                     data: $("#frmCadastrarCliente").serialize(), // serializes the form's elements.
-                    success: function (response) {
+                    success: function(response) {
                         if (response.status) {
                             swal({
                                 title: "Cliente " + titulo + " com Sucesso!",
@@ -171,7 +170,7 @@
                                 closeOnConfirm: false,
                                 closeOnCancel: false
                             },
-                                function (isConfirm) {
+                                function(isConfirm) {
                                     if (isConfirm) {
                                         swal("Adicionar!", "Adicionando Contato do Cliente: " + response.ID, "success");
                                     } else {
@@ -186,11 +185,11 @@
                 e.preventDefault();
             });
 
-            $("#Sair").on("click", function () {
+            $("#Sair").on("click", function() {
                 Voltar();
             })
 
-            $(".copiaEndereco").on("click", function () {
+            $(".copiaEndereco").on("click", function() {
                 $("#EnderecoEntrega").val($("#Endereco").val());
                 $("#BairroEntrega").val($("#Bairro").val());
                 $("#CidadeEntrega").val($("#Cidade").val());
@@ -199,7 +198,7 @@
                 $("#PaisEntrega").val($("#Pais").val());
             });
 
-            $("#btnContatos").on("click", function () {
+            $("#btnContatos").on("click", function() {
                 var id = $("#ID").val();
                 OpenPopup("/Contatos/ListarPorIdCliente/" + id, "Cadastrar Contatos");
             });
@@ -208,9 +207,6 @@
                 location = "/Pessoas/Clientes";
             };
 
-        });
-
-    </script>
-    <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
+});</script>
 
 }

@@ -26,7 +26,6 @@
         <div id="page-wrapper" class="gray-bg">
             <!-- Top Navbar -->
             @Html.Partial("_TopNavbar")
-
             <!-- Main view  -->
             @RenderBody()
             <!-- Footer -->
@@ -40,7 +39,8 @@
     @Scripts.Render("~/bundles/inspinia")
     @Scripts.Render("~/plugins/slimScroll")
     @RenderSection("scripts", required: false)
-    <!-- RenderSection("novo_studio", false)-->
+    <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
+
 </body>
 </html>
 

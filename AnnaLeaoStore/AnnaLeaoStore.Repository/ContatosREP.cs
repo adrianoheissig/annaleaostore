@@ -29,7 +29,7 @@ namespace AnnaLeaoStore.Repository
 					contatos.Add(new ContatosMOD
 					{
                         ID = item.GetValue<int>("ID"),
-						IDTipoRedeSocial = item.GetValue<int>("IDTIPOREDESOCIAL"),
+						IDTipoRedeSocial = item.GetValue<int>("ID_TIPOREDESOCIAL"),
 						TipoContato = item.GetText("TIPODECONTATO"),
 						Descricao = item.GetText("DESCRICAO")
 					});
