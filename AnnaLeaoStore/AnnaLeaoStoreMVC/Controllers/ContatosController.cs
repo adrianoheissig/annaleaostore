@@ -41,7 +41,7 @@ namespace AnnaLeaoStoreMVC.Controllers
 
 		}
 
-		public ActionResult Salvar(ContatosMOD contatos)
+		public ActionResult Salvar(IEnumerable<ContatosMOD> contatos)
 		{
 			try
 			{

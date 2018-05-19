@@ -26,14 +26,29 @@ namespace AnnaLeaoStore.Business
 
 		}
 
-		public void Inserir(ContatosMOD contatos){
+		public void Inserir(IEnumerable<ContatosMOD> contatos){
 			try
 			{
-				if (String.IsNullOrEmpty(contatos.Descricao))
-				{
-					throw new Exception("Descrição não pode ser em branco");
-				}
-				_contatosREP.Inserir(contatos);
+
+                foreach (var contato in contatos)
+                {
+                    if (contato.ID != null && String.IsNullOrEmpty(contato.Descricao))
+                    {
+                        Deletar(Convert.ToInt32(contato.ID));
+                    }
+
+                    if (contato.ID == null && !String.IsNullOrEmpty(contato.Descricao))
+                    {
+                        _contatosREP.Inserir(contato);
+                    }
+
+                    if (contato.ID !=null && !String.IsNullOrEmpty(contato.Descricao))
+                    {
+                        _contatosREP.Atualizar(contato);
+
+                    }
+                }
+
 			}
 			catch (Exception ex)
 			{

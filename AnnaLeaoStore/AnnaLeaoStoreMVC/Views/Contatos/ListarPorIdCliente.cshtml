@@ -21,8 +21,9 @@
                                     foreach (var contato in Model)
                                     {
                                     <tr>
-                                        <input type="hidden" name="[@index].ID" id="[@index].ID" value="@contato.ID" />
                                         <td>
+                                            <input type="hidden" name="[@index].ID" id="[@index].ID" value="@contato.ID" />
+                                            <input type="hidden" name="[@index].IDPessoa" id="[@index].IDPessoa" value="@contato.IDPessoa" />
                                             @contato.TipoContato
                                         </td>
                                         <td class="text-right">

@@ -77,5 +77,26 @@ namespace AnnaLeaoStore.Repository
 				throw new Exception(ex.Message);
 			}
 		}
+
+        public void Atualizar(ContatosMOD contatos)
+        {
+            try
+            {
+                string storedProcedure = "ATUALIZARCONTATO";
+                var cmd = new SqlCommand(storedProcedure);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ID", contatos.ID);
+                cmd.Parameters.AddWithValue("@DESCRICAO", contatos.Descricao);
+
+                _ado.ExecutarSql(_ado.ObterCommand(cmd));
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

@@ -223,6 +223,7 @@
     <Content Include="Global.asax" />
     <Content Include="Imagens\coroa.png" />
     <Content Include="Imagens\coroa_white.png" />
+    <Content Include="Scripts\annaleaostorescripts\openPopup.js" />
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\skin.config.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -675,7 +676,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Contatos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AnnaLeaoStore.Business\AnnaLeaoStore.Business.csproj">

@@ -1,10 +1,8 @@
 ﻿@model AnnaLeaoStore.Model.PessoasMOD
-
 @{
     ViewBag.Title = "Clientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>Clientes</h2>
@@ -24,9 +22,7 @@
     </div>
 </div>
 
-
 <form id="frmCadastrarCliente" method="post" novalidate="novalidate">
-
     <div class="modal-content">
         <div class="modal-body">
             <div class="row">
@@ -35,7 +31,6 @@
                     <br class="b-r-lg" />
                     <hr />
                     <input type="hidden" name="TipoPessoa" value="1" />
-
                     @if (Model != null && Model.ID > 0)
                     {
                         @Html.HiddenFor(a => a.ID)
@@ -44,43 +39,35 @@
                         <label>Nome:</label>
                         @Html.TextBoxFor(a => a.Nome, new { @class = "form-control" })
                     </div>
-
                     <div class="file-name">
                         <label>Endereço:</label>
                         @Html.TextBoxFor(a => a.Endereco, new { @class = "form-control" })
                     </div>
-
                     <div class="file-name">
                         <label>Bairro:</label>
                         @Html.TextBoxFor(a => a.Bairro, new { @class = "form-control" })
                     </div>
-
                     <div class="file-name">
                         <label>Cidade:</label>
                         @Html.TextBoxFor(a => a.Cidade, new { @class = "form-control" })
                     </div>
-
                     <div class="file-name">
                         <label>Estado:</label>
                         @Html.TextBoxFor(a => a.Estado, new { @class = "form-control" })
                     </div>
-
                     <div class="file-name">
                         <label>CEP:</label>
                         @Html.TextBoxFor(a => a.Cep, new { @class = "form-control" })
                     </div>
-
                     <div class="file-name">
                         <label>País:</label>
                         @Html.TextBoxFor(a => a.Pais, new { @class = "form-control" })
                     </div>
-
                     <div class="form-group">
                         <label>Ativo?</label>
                         @Html.CheckBoxFor(a => a.Ativo)
                         &nbsp; &nbsp;
                     </div>
-
                     <div class="form-group" id="data_1">
                         <label class="file-name">Data Nascimento:</label>
                         <div class="input-group date">
@@ -88,233 +75,142 @@
                             @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control" })
                         </div>
                     </div>
-
                     <div class="file-name">
                         <label>Observação:</label>
                         @Html.TextBoxFor(a => a.Observacao, new { @class = "form-control" })
                     </div>
-
                     <br class="b-r-lg" />
-
                     <div class="alert-success">
                         <label>Detalhes da Entrega</label>
                     </div>
                     <br class="b-r-lg" />
-
                     <div class="form-group" id="data_1">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-map-pin"></i> Endereço de Entrega Igual Principal:</span>
                             <input type="radio" class="copiaEndereco" />
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="file-name">Endereco Entrega:</label>
                         <div class="input-group">
                             @Html.TextBoxFor(a => a.EnderecoEntrega, new { @class = "form-control" })
                         </div>
-
                         <label class="file-name">Bairro Entrega:</label>
                         <div class="input-group">
                             @Html.TextBoxFor(a => a.BairroEntrega, new { @class = "form-control" })
                         </div>
-
                         <label class="file-name">Cidade Entrega:</label>
                         <div class="input-group">
                             @Html.TextBoxFor(a => a.CidadeEntrega, new { @class = "form-control" })
                         </div>
-
                         <label class="file-name">Estado Entrega:</label>
                         <div class="input-group">
                             @Html.TextBoxFor(a => a.EstadoEntrega, new { @class = "form-control" })
                         </div>
-
                         <label class="file-name">Cep Entrega:</label>
                         <div class="input-group">
                             @Html.TextBoxFor(a => a.CepEntrega, new { @class = "form-control" })
                         </div>
-
                         <label class="file-name">País Entrega:</label>
                         <div class="input-group">
                             @Html.TextBoxFor(a => a.PaisEntrega, new { @class = "form-control" })
                         </div>
-
                         <label class="file-name">Destinatário:</label>
                         <div class="input-group">
                             @Html.TextBoxFor(a => a.NomeDestinatario, new { @class = "form-control" })
                         </div>
-
                         <hr />
                         <div class="submit">
                             @if (Model != null && Model.ID > 0)
                             {
-                                <input type="button" name="Contatos" value="Contatos" class="btn btn-success" /> 
+                                <input type="button" name="Contatos" value="Contatos" id="btnContatos" class="btn btn-success" />
                             }
                             &nbsp;&nbsp;&nbsp;<input type="submit" name="Gravar" value="Salvar" class="btn btn-primary" /> &nbsp;&nbsp;&nbsp;
                             <input type="button" name="Sair" value="Sair" id="Sair" class="btn btn-danger" />
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
 </form>
-
-
 @section Styles {
     @Styles.Render("~/plugins/sweetAlertStyles")
     @Styles.Render("~/Scripts/plugins/jquery-ui/jqueryuiStyles")
 }
-
 @section Scripts {
     @Scripts.Render("~/plugins/sweetAlert")
+    <script src="~/Scripts/plugins/jquery-ui/jquery-ui.min.js"></script>
 
-<script>$(document).ready(function() {
-        var titulo;
-        if ($("#ID").val() > 0)
-            titulo = "Atualizado";
-        else
-            titulo = "Cadastrado";
+    <script>
+        $(document).ready(function () {
+            var titulo;
+            if ($("#ID").val() > 0)
+                titulo = "Atualizado";
+            else
+                titulo = "Cadastrado";
 
-        $("#frmCadastrarCliente").submit(function(e) {
+            $("#frmCadastrarCliente").submit(function (e) {
 
-            var url = "/Pessoas/Atualizar/";
+                var url = "/Pessoas/Atualizar/";
 
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: $("#frmCadastrarCliente").serialize(), // serializes the form's elements.
-                success: function(response) {
-                    if (response.status) {
-                        swal({
-                            title: "Cliente " + titulo + " com Sucesso!",
-                            text: "Deseja Adicionar um Novo Contato?",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonClass: "btn-danger",
-                            confirmButtonText: "Sim!",
-                            cancelButtonText: "Não!",
-                            closeOnConfirm: false,
-                            closeOnCancel: false
-                        },
-                            function(isConfirm) {
-                                if (isConfirm) {
-                                    swal("Adicionar!", "Adicionando Contato do Cliente: " + response.ID, "success");
-                                } else {
-                                    Voltar();
-                                }
-                            });
-                    } else {
-                        swal("Falhou!", response.responseText, "error");
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: $("#frmCadastrarCliente").serialize(), // serializes the form's elements.
+                    success: function (response) {
+                        if (response.status) {
+                            swal({
+                                title: "Cliente " + titulo + " com Sucesso!",
+                                text: "Deseja Adicionar um Novo Contato?",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonClass: "btn-danger",
+                                confirmButtonText: "Sim!",
+                                cancelButtonText: "Não!",
+                                closeOnConfirm: false,
+                                closeOnCancel: false
+                            },
+                                function (isConfirm) {
+                                    if (isConfirm) {
+                                        swal("Adicionar!", "Adicionando Contato do Cliente: " + response.ID, "success");
+                                    } else {
+                                        Voltar();
+                                    }
+                                });
+                        } else {
+                            swal("Falhou!", response.responseText, "error");
+                        }
                     }
-                }
+                });
+                e.preventDefault();
             });
-            e.preventDefault();
-        });
 
-        $("#Sair").on("click", function() {
-            Voltar();
-        })
-
-        $(".copiaEndereco").on("click", function() {
-            $("#EnderecoEntrega").val($("#Endereco").val());
-            $("#BairroEntrega").val($("#Bairro").val());
-            $("#CidadeEntrega").val($("#Cidade").val());
-            $("#EstadoEntrega").val($("#Estado").val());
-            $("#CepEntrega").val($("#Cep").val());
-            $("#PaisEntrega").val($("#Pais").val());
-        });
-
-        function Voltar() {
-            location = "/Pessoas/Clientes";
-        };
-});
-
-
-
-// Quando clicar no editar, abre a tela com os dados prontos para edição
-$('.tablecontainer').on('click', 'a.popup', function(e) {
-        e.preventDefault();
-        OpenPopup($(this).attr('href'));
-})
-
-//Carrega lista de fornecedores no momento em que a tela esta sendo apresentada para o usuario
-// dessa forma, fica mais rapido a tela de edicao e inclusao.
-var fornecedores = null;
-$.getJSON('/SIRS/PessoaFj/ListarIdNome', function(resposta) {
-        fornecedores = resposta;
-});
-
-
-// Chama o popup de edição/inserção
-function OpenPopup(pageUrl) {
-        var $pageContent = $('<div/>');
-        $pageContent.load(pageUrl, function() {
-
-            //Limpar a select list para carregar os novos fornecedores, porque senao limpar, poderá duplicar os registros na select.
-            $('.listadefornecedores').empty();
-
-            //Monta a select com os fornecedores que foram previamente carregados.
-            $.each(fornecedores, function(key, val) {
-                if ($('#IdPessoaFjExistente').val() == key) {
-                    $('.listadefornecedores').append('<option value="' + key + '" selected>' + val + '</option>');
-                } else {
-                    $('.listadefornecedores').append('<option value="' + key + '">' + val + '</option>');
-                }
+            $("#Sair").on("click", function () {
+                Voltar();
             })
-        });
 
-        var $dialog = $('<div class="popupWindow modal" ></div>')
-            .html($pageContent)
-            .dialog({
-                draggable: false,
-                autoOpen: false,
-                resizable: false,
-                model: true,
-                modal: true,
-                title: 'Cadastro de Studio',
-                height: 600,
-                width: 650,
-                close: function() {
-                    $dialog.dialog('destroy').remove();
-                },
-                buttons: [{
-                    "text": "Sair",
-                    "click": function() {
-                        $(this).dialog("close");
-                    }
-                },
-                {
-                    "text": "Salvar",
-                    "click": function() {
-                        var url = $('#popupForm')[0].action;
-                        $.ajax({
-                            type: "POST",
-                            url: url,
-                            data: $('#popupForm').serialize(),
-                            success: function(data) {
-                                if (data.status) {
-                                    $dialog.dialog('close');
-                                    oTable.ajax.reload();
-                                } else {
-                                    swal("Falhou!", data.responseText, "error");
-                                }
-                            }
-                        });
-                    }
-                }],
-                open: function(event) {
-                    $('.ui-dialog-buttonpane').find('button:contains("Sair")').addClass('btn btn-danger');
-                    $('.ui-dialog-buttonpane').find('button:contains("Salvar")').addClass('btn btn-primary');
-                }
-
+            $(".copiaEndereco").on("click", function () {
+                $("#EnderecoEntrega").val($("#Endereco").val());
+                $("#BairroEntrega").val($("#Bairro").val());
+                $("#CidadeEntrega").val($("#Cidade").val());
+                $("#EstadoEntrega").val($("#Estado").val());
+                $("#CepEntrega").val($("#Cep").val());
+                $("#PaisEntrega").val($("#Pais").val());
             });
 
-        $dialog.dialog('open');
-}
+            $("#btnContatos").on("click", function () {
+                var id = $("#ID").val();
+                OpenPopup("/Contatos/ListarPorIdCliente/" + id, "Cadastrar Contatos");
+            });
 
-</script>
+            function Voltar() {
+                location = "/Pessoas/Clientes";
+            };
+
+        });
+
+    </script>
+    <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
+
 }
