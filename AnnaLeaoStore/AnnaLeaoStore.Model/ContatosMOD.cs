@@ -14,5 +14,7 @@ namespace AnnaLeaoStore.Model
         public string TipoContato { get; set; }
         public string Descricao { get; set; }
         public int IDPessoa { get; set; }
+
+		public virtual PessoasMOD Pessoas{get;set;}
     }
 }

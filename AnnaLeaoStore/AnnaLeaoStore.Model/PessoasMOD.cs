@@ -32,6 +32,7 @@ namespace AnnaLeaoStore.Model
         public string PaisEntrega { get; set; }
         public string NomeDestinatario { get; set; }
 
+		public virtual ICollection<ContatosMOD> Contatos { get; set; }
 
     }
 }

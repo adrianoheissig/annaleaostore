@@ -52,3 +52,40 @@
 
     $dialog.dialog('open');
 }
+
+function OpenPopupSimple(pageUrl, pageTitle) {
+    var $pageContent = $('<div/>');
+    $pageContent.load(pageUrl, function () {
+
+
+    });
+
+    var $dialog = $('<div class="popupWindow modal" ></div>')
+        .html($pageContent)
+        .dialog({
+            draggable: false,
+            autoOpen: false,
+            resizable: false,
+            model: true,
+            modal: true,
+            title: pageTitle,
+            height: 600,
+            width: 650,
+            close: function () {
+                $dialog.dialog('destroy').remove();
+            },
+            buttons: [
+             {
+                    "text": "Sair",
+                    "click": function () {
+                        $(this).dialog("close");
+                    }
+                }],
+            open: function (event) {
+                $('.ui-dialog-buttonpane').find('button:contains("Sair")').addClass('btn btn-danger');
+            }
+
+        });
+
+    $dialog.dialog('open');
+}

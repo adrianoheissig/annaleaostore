@@ -623,6 +623,8 @@
     <Content Include="Views\Shared\_Unauthorized.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Areas\Cadastros\Views\Contatos\ListarPorIdCliente.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Pessoas\DetalhesPessoa.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Pessoas\CadastrarFornecedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />

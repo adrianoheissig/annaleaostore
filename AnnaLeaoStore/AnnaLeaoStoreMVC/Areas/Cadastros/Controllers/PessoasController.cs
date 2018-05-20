@@ -13,6 +13,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
     {
 
         private PessoasBUS _pessoasBUS = new PessoasBUS();
+		private ContatosBUS _contatosBUS = new ContatosBUS();
 
         public ActionResult Clientes()
         {
@@ -33,9 +34,12 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         }
 
         [HttpGet]
-        public ActionResult DetalhesCliente(int id)
+        public ActionResult DetalhesPessoa(int id)
         {
-            return View();
+			var pessoa = _pessoasBUS.GetByID(id);
+			pessoa.Contatos = _contatosBUS.GetID(Convert.ToInt32(pessoa.ID));
+
+            return View(pessoa);
         }
 
 
@@ -55,6 +59,18 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
  
         [HttpGet]
         public ActionResult CadastrarCliente(int id)
+        {
+            PessoasMOD pessoa = new PessoasMOD();
+            if (id > 0)
+            {
+                pessoa = _pessoasBUS.GetByID(id);
+            }
+
+            return View(pessoa);
+        }
+
+		[HttpGet]
+        public ActionResult CadastrarFornecedor(int id)
         {
             PessoasMOD pessoa = new PessoasMOD();
             if (id > 0)
