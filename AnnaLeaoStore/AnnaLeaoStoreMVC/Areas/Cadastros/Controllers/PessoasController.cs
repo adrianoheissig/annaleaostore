@@ -15,17 +15,20 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         private PessoasBUS _pessoasBUS = new PessoasBUS();
 		private ContatosBUS _contatosBUS = new ContatosBUS();
 
+        [Authorize]
         public ActionResult Clientes()
         {
             return View();
         }
 
+        [Authorize]
         public ActionResult Fornecedores()
         {
             return View();
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Listar(int tipo)
         {
             var lista = _pessoasBUS.GetAll(tipo);
@@ -34,6 +37,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult DetalhesPessoa(int id)
         {
 			var pessoa = _pessoasBUS.GetByID(id);
@@ -43,6 +47,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         }
 
 
+        [Authorize]
         public ActionResult Deletar(int id)
         {
             try
@@ -58,6 +63,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 
  
         [HttpGet]
+        [Authorize]
         public ActionResult CadastrarCliente(int id)
         {
             PessoasMOD pessoa = new PessoasMOD();
@@ -70,6 +76,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         }
 
 		[HttpGet]
+        [Authorize]
         public ActionResult CadastrarFornecedor(int id)
         {
             PessoasMOD pessoa = new PessoasMOD();
@@ -82,6 +89,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Atualizar(PessoasMOD pessoa)
         {
             try

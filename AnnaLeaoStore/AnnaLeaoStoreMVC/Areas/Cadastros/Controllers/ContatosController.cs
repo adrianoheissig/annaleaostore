@@ -11,8 +11,9 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 	public class ContatosController : Controller
 	{
 		private ContatosBUS _contatoBUS = new ContatosBUS();
-		// GET: Contatos
-		[HttpGet]
+        // GET: Contatos
+        [Authorize]
+        [HttpGet]
 		public ActionResult ListarPorIdCliente(int id)
 		{
 			try
@@ -29,7 +30,8 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 			}
 		}
 
-		public ActionResult Deletar(int id)
+        [Authorize]
+        public ActionResult Deletar(int id)
 		{
 			try
 			{
@@ -43,7 +45,8 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 
 		}
 
-		public ActionResult Salvar(IEnumerable<ContatosMOD> contatos)
+        [Authorize]
+        public ActionResult Salvar(IEnumerable<ContatosMOD> contatos)
 		{
 			try
 			{

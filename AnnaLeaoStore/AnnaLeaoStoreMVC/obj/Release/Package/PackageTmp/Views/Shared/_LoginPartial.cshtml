@@ -1,0 +1,16 @@
+﻿
+@if (Request.IsAuthenticated)
+{
+    <form action="/Login/LogOff" id="logoutForm1" method="post">
+
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li>
+                <label>Bem Vindo @ViewBag.Usuario !</label>
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm1').submit()">Sair</a></li>
+        </ul>
+    </form>
+
+}

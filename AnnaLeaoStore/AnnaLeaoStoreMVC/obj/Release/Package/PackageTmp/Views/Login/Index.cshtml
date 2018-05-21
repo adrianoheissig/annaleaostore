@@ -1,0 +1,63 @@
+﻿@model AnnaLeaoStore.Model.CadUsuMOD
+
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Leão Store | Login</title>
+    
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="~/Content/plugins/login/login.css">
+</head>
+
+<body class="gray-bg">
+    <br /><br />
+    <div class="cont">
+        <div class="form sign-in">
+            @using (Html.BeginForm("Index", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h2>Bem Vindo ao Gerenciador da Anna Leão Store</h2>
+                <small>Use seu usuário e senha cadastrado para Entrar.</small>
+                <hr />
+
+                <label>
+                    <span>Usuário</span>
+                    <input autofocus data-val="true" data-val-required="O campo Usuário: é obrigatório." id="Usuario" name="Usuario" type="text" value="" />
+                </label>
+
+
+                <label>
+                    <span>Senha</span>
+                    <input data-val="true" data-val-required="O campo Senha:  é obrigatório." id="Senha" name="Senha" type="password" />
+                </label>
+
+                <button type="submit" class="submit">Entrar</button>
+
+                <p><span class="forgot-pass">@Html.ValidationSummary(true)</span></p>
+                <p><span class="forgot-pass">@Html.ValidationMessageFor(m => m.Usuario)</span></p>
+                <p><span class="forgot-pass">@Html.ValidationMessageFor(m => m.Senha)</span></p>
+
+            }
+        </div>
+
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h2>Anna Leão Store</h2>
+                    <p>A combinação perfeita entre Moda e Estilo!</p>
+                </div>
+                <div class="img__text m--in">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/plugins/login")
+}

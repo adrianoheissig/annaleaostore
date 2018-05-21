@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNet.Identity
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+
+                <div class="profile-element">
+                    <span>
+                        <a class="navbar-minimalize" href="#">
+                            <img src="~/Imagens/coroa_white.png" alt="ALS" height="42" width="42" />
+                        </a>
+                    </span>
+                    <form method="post" id="logoutForm" action="/Login/LogOff">
+                        @Html.AntiForgeryToken()
+                    </form>
+                    <span class="clear">
+                        <span class="block m-t-xs">
+                            <strong class="font-bold">
+                            </strong>
+                        </span>
+                        <span class="text-muted text-xs block"></span>
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            <span class="font-bold pull-left">
+                                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i> &nbsp; Sair </a>
+                            </span>
+                        }
+                    </span>
+                </div>
+                <div class="logo-element">
+                    <a class="navbar-minimalize" href="#">
+                        <img src="~/Imagens/coroa_white.png" alt="ALS" height="62" width="62" />
+                    </a>
+                </div>
+            </li>
+                       <li class="">
+                <a href="/Home/Index" title="Home"><i class="fa fa-home"></i><span class="nav-label">Home</span></a>
+            </li>
+               
+
+            <li>
+                <a href="#" title="Cadastros"><i class="fa fa-laptop"></i> <span class="nav-label" data-i18n="nav.menulevels">Cadastros</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class=""><a href="/Cadastros/Pessoas/Clientes">Clientes</a></li>
+                    <li class=""><a href="/Cadastros/Pessoas/Fornecedores">Fornecedores</a></li>
+                    <li class=""><a href="#">Produtos</a></li>
+                    <li class=""><a href="#">Lista de Preços</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" title="Digitação de Pedidos"><i class="fa fa-telegram"></i> <span class="nav-label" data-i18n="nav.menulevels">Digitação de Pedidos</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class=""><a href="#">Venda</a></li>
+                    <li class=""><a href="#">Compra</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" title="Devoluções"><i class="fa fa-telegram"></i> <span class="nav-label" data-i18n="nav.menulevels">Devoluções</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class=""><a href="#">Venda</a></li>
+                    <li class=""><a href="#">Compra</a></li>
+                </ul>
+            </li>
+
+                      <li>
+                <a href="#" title="Estoques"><i class="fa fa-sliders"></i> <span class="nav-label" data-i18n="nav.menulevels">Estoques</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class=""><a href="#">Inventário</a></li>
+                    <li class=""><a href="#">Posição de Estoque</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</nav>

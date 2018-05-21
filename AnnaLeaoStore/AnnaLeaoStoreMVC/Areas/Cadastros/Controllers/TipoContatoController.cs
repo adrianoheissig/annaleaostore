@@ -10,6 +10,8 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
     public class TipoContatoController : Controller
     {
 		private TipoContatoBUS _tipoContatoBUS = new TipoContatoBUS();
+
+        [Authorize]
         public ActionResult ListarContatos()
         {
 			try

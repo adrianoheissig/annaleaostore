@@ -1,13 +1,3 @@
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Repository.dll
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Repository.pdb
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.DataAccess.dll
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Model.dll
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.DataAccess.pdb
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.DataAccess.dll.config
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Model.pdb
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.dll
-c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Repository.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.Repository.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/bin/Debug/AnnaLeaoStore.DataAccess.dll
@@ -19,3 +9,13 @@ c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.csproj.CoreCompileInputs.cache
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Repository/obj/Debug/AnnaLeaoStore.Repository.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.Repository.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.Repository.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.DataAccess.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.Model.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.DataAccess.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.DataAccess.dll.config
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Debug\AnnaLeaoStore.Model.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\AnnaLeaoStore.Repository.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Debug\AnnaLeaoStore.Repository.pdb

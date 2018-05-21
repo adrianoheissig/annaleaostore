@@ -1,0 +1,10 @@
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Release\AnnaLeaoStore.DataAccess.dll.config
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Release\AnnaLeaoStore.DataAccess.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Release\AnnaLeaoStore.DataAccess.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Release\EntityFramework.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Release\EntityFramework.SqlServer.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Release\EntityFramework.xml
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\bin\Release\EntityFramework.SqlServer.xml
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\obj\Release\AnnaLeaoStore.DataAccess.csprojResolveAssemblyReference.cache
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\obj\Release\AnnaLeaoStore.DataAccess.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.DataAccess\obj\Release\AnnaLeaoStore.DataAccess.pdb

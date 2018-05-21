@@ -1,0 +1,11 @@
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Release\AnnaLeaoStore.Repository.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Release\AnnaLeaoStore.Repository.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Release\AnnaLeaoStore.DataAccess.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Release\AnnaLeaoStore.Model.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Release\System.Web.Helpers.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Release\AnnaLeaoStore.DataAccess.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Release\AnnaLeaoStore.DataAccess.dll.config
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\bin\Release\AnnaLeaoStore.Model.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Release\AnnaLeaoStore.Repository.csprojResolveAssemblyReference.cache
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Release\AnnaLeaoStore.Repository.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStore.Repository\obj\Release\AnnaLeaoStore.Repository.pdb

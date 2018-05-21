@@ -1,0 +1,67 @@
+﻿@model AnnaLeaoStore.Model.PessoasMOD
+
+<div class="col-lg-12">
+    <div class="widget lazur-bg p-xl">
+        <h2>
+            @{ 
+                @Model.Nome
+            }
+
+        </h2>
+        <ul class="list-unstyled m-t-md">
+            <li>
+                <span class="fa fa-home m-r-xs"></span>
+                <label>Endereço:</label>
+                @{ @Model.Endereco }
+            </li>
+            <li>
+                <span class="fa fa-home m-r-xs"></span>
+                <label>Bairro:</label>
+                @{ @Model.Bairro }
+            </li>
+            <li>
+                <span class="fa fa-home m-r-xs"></span>
+                <label>Cidade:</label>
+                @{ @Model.Cidade } - @{ @Model.Bairro}
+            </li>
+            <li>
+                <span class="fa fa-home m-r-xs"></span>
+                <label>CEP:</label>
+                @{ @Model.Cep }
+            </li>
+            <li>
+                <span class="fa fa-pencil m-r-xs"></span>
+                <label>Situação:</label>
+                @{ @Model.DescricaoSituacao}
+            </li>
+
+            <li>
+                <span class="fa fa-phone m-r-xs"></span>
+                <label>Contatos:</label>
+            </li>
+                    <table class="table table-responsive dt-responsive">
+                        <thead>
+                            <tr>
+                                <th class="text-center col-sm-2">Tipo de Contato</th>
+                                <th class="text-center col-sm-2">Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                            foreach (var contato in Model.Contatos)
+                            {
+                            <tr>
+                                <td class=text-right>
+                                    @contato.TipoContato :
+                                </td>
+                                <td class="text-left">
+                                    @contato.Descricao
+                                </td>
+                            </tr>
+                            }
+                            }
+                        </tbody>
+                    </table>
+        </ul>
+    </div>
+</div>

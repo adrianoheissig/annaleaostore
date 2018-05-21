@@ -1,0 +1,132 @@
+﻿@{
+                /**/
+
+                ViewBag.Title = "Clientes";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Clientes</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/Home/Index">Home</a>
+            </li>
+            <li>
+                <a>Cadastros</a>
+            </li>
+            <li class="active">
+                <strong>Clientes</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<!--Tabela de Clientes-->
+<div class="tablecontainer container-fluid">
+    <a class="popup btn btn-primary" href="/Cadastros/Pessoas/CadastrarCliente/0" style="margin-bottom:20px; margin-top:20px;">Novo</a>
+    <table class="table table-striped dt-responsive nowrap " data-page-size="15" id="tbClientes">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Bairro</th>
+                <th>Cidade</th>
+                <th>UF</th>
+                <th>Situação</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+    @Styles.Render("~/Scripts/plugins/jquery-ui/jqueryuiStyles")
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+    @Scripts.Render("~/plugins/dataTables")
+    <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
+
+    <script>$(document).ready(function() {
+
+            // Tabela Para exibir os dados
+            var oTable = $('#tbClientes').DataTable({
+                "ajax": {
+                    "url": '/Pessoas/Listar?tipo=1',
+                    "type": "get",
+                    "datatype": "json"
+                },
+                "columnDefs": [{
+                    "targets": [7, 8],
+                    "className": "text-right",
+                    "orderable": false
+                }],
+                "columns": [
+                    {
+                        "data": "ID", "autoWidth": true, "render": function(data) {
+                            return '<a class="detalhes" href="/Cadastros/Pessoas/DetalhesPessoa/' + data + '">' + data + '</a>';
+                        }
+                    },
+                    { "data": "Nome", "autoWidth": true },
+                    { "data": "Endereco", "autoWidth": true },
+                    { "data": "Bairro", "autoWidth": true },
+                    { "data": "Cidade", "autoWidth": true },
+                    { "data": "Estado", "autoWidth": true },
+                    { "data": "DescricaoSituacao", "autoWidth": true },
+                    {
+                        "data": "ID", "autoWidth": true, "render": function(data) {
+                            return '<a class="popup" href="/Cadastros/Pessoas/CadastrarCliente/' + data + '"><i class="fa fa-edit"></i></a>';
+                        }
+                    },
+                    {
+                        "data": "ID", "autoWidth": true, "render": function(data) {
+                            return '<a class="remove" href="/Cadastros/Pessoas/Deletar/' + data + '"><i class="fa fa-remove"></i></a>';
+                        }
+                    }
+                ]
+            });
+
+            $(".tablecontainer").on("click", "a.detalhes", function(e) {
+                e.preventDefault();
+                var url = e.currentTarget.href;
+                OpenPopupSimple(url, "Detalhes do Cliente");
+            });
+
+
+            // Quando clicar no excluir , abre a tela para o usuario confirmar e executa via AJAX
+            $('.tablecontainer').on('click', 'a.remove', function(e) {
+                e.preventDefault();
+                var url = e.currentTarget;
+                swal({
+                    title: "Deseja Excluir?",
+                    text: "Excluindo, todos os dados do Cliente serão perdidos!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Sim",
+                    closeOnConfirm: false,
+                    cancelButtonText: "Cancelar"
+                }, function() {
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        success: function(response) {
+                            if (response.success) {
+                                swal("Sucesso!", response.responseText, "success");
+                            } else {
+                                swal("Falhou!", response.responseText, "error");
+                            }
+                            oTable.ajax.reload();
+                        }
+                    });
+                });
+            });
+
+
+
+})</script>
+}
