@@ -1,12 +1,13 @@
-﻿@{
+﻿@model List<AnnaLeaoStore.Model.ProdutosMOD>
+@{
                 /**/
 
-                ViewBag.Title = "Fornecedores";
+                ViewBag.Title = "Produtos";
                 Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Fornecedores</h2>
+        <h2>Produtos</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="/Home/Index">Home</a>
@@ -15,30 +16,50 @@
                 <a>Cadastros</a>
             </li>
             <li class="active">
-                <strong>Fornecedores</strong>
+                <strong>Produtos</strong>
             </li>
         </ol>
     </div>
     <div class="col-lg-2">
     </div>
 </div>
-<!--Tabela de Fornecedores-->
+<!--Tabela de Produtos-->
 <div class="tablecontainer container-fluid">
-    <a class="popup btn btn-primary" href="/Cadastros/Pessoas/CadastrarFornecedor/0" style="margin-bottom:20px; margin-top:20px;">Novo</a>
-    <table class="table table-striped dt-responsive nowrap " data-page-size="15" id="tbFornecedores">
+    <a class="popup btn btn-primary" href="/Cadastros/Produtos/Cadastrar/0" style="margin-bottom:20px; margin-top:20px;">Novo</a>
+    <table class="table table-striped dt-responsive nowrap " data-page-size="15" id="tbProdutos">
         <thead>
             <tr>
                 <th>Código</th>
-                <th>Nome</th>
-                <th>Endereço</th>
-                <th>Bairro</th>
-                <th>Cidade</th>
-                <th>UF</th>
+                <th>Refer. ID</th>
+                <th>Descrição</th>
+                <th>Cor</th>
+                <th>Fornecedor</th>
                 <th>Situação</th>
+                <th>Total Estoque</th>
                 <th></th>
                 <th></th>
             </tr>
         </thead>
+
+        <tbody>
+                @{
+            foreach(var produto in Model)
+                {
+            <tr>
+                <td><a class="detalhes" href="/Cadastros/Produtos/Detalhes/@produto.ID">@produto.ID</a></td>
+                <td>@produto.ReferId</td>
+                <td>@produto.Descricao</td>
+                <td>@produto.Cor</td>
+                <td>@produto.Pessoas.Nome</td>
+                <td>@produto.DescricaoSituacao</td>
+                <td>@produto.QtdeEstoque</td>
+                <td><a class="popup" href="/Cadastros/Produtos/Cadastrar/@produto.ID"><i class="fa fa-edit"></i></a></td>
+                <td><a class="remove" href="/Cadastros/Produtos/Deletar/@produto.ID"><i class="fa fa-remove"></i></a></td>
+            </tr>
+                }
+                }
+        </tbody>
+            
     </table>
 </div>
 @section Styles {
@@ -54,46 +75,17 @@
     <script>$(document).ready(function() {
 
             // Tabela Para exibir os dados
-            var oTable = $('#tbFornecedores').DataTable({
-                "ajax": {
-                    "url": '/Cadastros/Pessoas/Listar?tipo=2',
-                    "type": "get",
-                    "datatype": "json"
-                },
+            var oTable = $('#tbProdutos').DataTable({
                 "columnDefs": [{
                     "targets": [7, 8],
-                    "className": "text-right",
                     "orderable": false
-                }],
-                "columns": [
-                    {
-                        "data": "ID", "autoWidth": true, "render": function(data) {
-                            return '<a class="detalhes" href="/Cadastros/Pessoas/DetalhesPessoa/' + data + '">' + data + '</a>';
-                        }
-                    },
-                    { "data": "Nome", "autoWidth": true },
-                    { "data": "Endereco", "autoWidth": true },
-                    { "data": "Bairro", "autoWidth": true },
-                    { "data": "Cidade", "autoWidth": true },
-                    { "data": "Estado", "autoWidth": true },
-                    { "data": "DescricaoSituacao", "autoWidth": true },
-                    {
-                        "data": "ID", "autoWidth": true, "render": function(data) {
-                            return '<a class="popup" href="/Cadastros/Pessoas/CadastrarFornecedor/' + data + '"><i class="fa fa-edit"></i></a>';
-                        }
-                    },
-                    {
-                        "data": "ID", "autoWidth": true, "render": function(data) {
-                            return '<a class="remove" href="/Cadastros/Pessoas/Deletar/' + data + '"><i class="fa fa-remove"></i></a>';
-                        }
-                    }
-                ]
-            });
+                }]
+            }); 
 
             $(".tablecontainer").on("click", "a.detalhes", function(e) {
                 e.preventDefault();
                 var url = e.currentTarget.href;
-                OpenPopupSimple(url, "Detalhes do Fornecedor");
+                OpenPopupSimple(url, "Detalhes do Produto");
             });
 
 
@@ -103,7 +95,7 @@
                 var url = e.currentTarget;
                 swal({
                     title: "Deseja Excluir?",
-                    text: "Excluindo, todos os dados do Fornecedor serão perdidos!",
+                    text: "Excluindo, todos os dados do Produto serão perdidos!",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
@@ -120,7 +112,8 @@
                             } else {
                                 swal("Falhou!", response.responseText, "error");
                             }
-                            oTable.ajax.reload();
+                            location = "/Cadastros/Produtos/ListarProdutos/";
+
                         }
                     });
                 });

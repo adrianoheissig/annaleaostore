@@ -627,6 +627,9 @@
     <Content Include="Areas\Cadastros\Views\Contatos\ListarPorIdCliente.cshtml" />
     <Content Include="Areas\Cadastros\Views\Pessoas\DetalhesPessoa.cshtml" />
     <Content Include="Areas\Cadastros\Views\Pessoas\CadastrarFornecedor.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Produtos\ListarProdutos.cshtml" />
+    <Content Include="Scripts\annaleaostorescripts\annaleaostorejs.js" />
+    <Content Include="Areas\Cadastros\Views\Produtos\Cadastrar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -642,6 +645,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\Cadastros\Controllers\TipoContatoController.cs" />
+    <Compile Include="Areas\Cadastros\Controllers\ProdutosController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

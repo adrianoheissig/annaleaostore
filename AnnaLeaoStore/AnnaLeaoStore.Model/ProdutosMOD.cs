@@ -10,7 +10,7 @@ namespace AnnaLeaoStore.Model
     public class ProdutosMOD
     {
         public int? ID { get; set; }
-        public string Referid { get; set; }
+        public string ReferId { get; set; }
         public string Descricao { get; set; }
         public string DescricaoSituacao { get; set; }
         public string Cor { get; set; }
@@ -19,8 +19,10 @@ namespace AnnaLeaoStore.Model
         public string Observacao { get; set; }
         public string LinkProduto { get; set; }
 
-        public virtual PessoasMOD Pessoas { get; set; }
-        public virtual GradeProdutosMOD Grade { get; set; }
+		public decimal? QtdeEstoque { get; set; }
+
+        public PessoasMOD Pessoas { get; set; }
+        public GradeProdutosMOD Grade { get; set; }
 
 
 

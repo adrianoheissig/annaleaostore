@@ -14,7 +14,7 @@ namespace AnnaLeaoStore.Repository
 
         private string _strSQL;
 
-        public List<ProdutosMOD> GetID()
+		public List<ProdutosMOD> GetAll()
         {
             try
             {
@@ -29,7 +29,12 @@ namespace AnnaLeaoStore.Repository
                     produtos.Add(new ProdutosMOD
                     {
                         ID = item.GetValue<int>("ID"),
+                        ReferId = item.GetText("REFERID"),
                         Descricao = item.GetText("DESCRICAO"),
+                        Cor = item.GetText("COR"),
+                        Pessoas = new PessoasMOD { Nome = item.GetText("NOME") },
+                        DescricaoSituacao = item.GetText("DESC_SITUACAO"),
+                        QtdeEstoque = item.GetValue<decimal>("QTDE_ESTOQUE")
                     });
                 }
                 return produtos;
@@ -60,17 +65,22 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-        public void Inserir(ContatosMOD contatos)
+		public void Inserir(ProdutosMOD produtos)
         {
             try
             {
-                string storedProcedure = "INSERIRCONTATO";
+				string storedProcedure = "INSERIRPRODUTO";
                 var cmd = new SqlCommand(storedProcedure);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@IDTIPOREDESOCIAL", contatos.IDTipoRedeSocial);
-                cmd.Parameters.AddWithValue("@DESCRICAO", contatos.Descricao);
-                cmd.Parameters.AddWithValue("@IDPESSOAS", contatos.IDPessoa);
+				cmd.Parameters.AddWithValue("@REFERID", produtos.ReferId);
+				cmd.Parameters.AddWithValue("@DESCRICAO", produtos.Descricao);
+				cmd.Parameters.AddWithValue("@COR", produtos.Cor);
+				cmd.Parameters.AddWithValue("@IDGRADE", produtos.Grade.ID);
+				cmd.Parameters.AddWithValue("@IDFORNECEDOR", produtos.Pessoas.ID);
+				cmd.Parameters.AddWithValue("@SITUACAO", produtos.Situacao);
+				cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao);
+				cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto);
 
                 _ado.ExecutarSql(_ado.ObterCommand(cmd));
             }
@@ -80,7 +90,7 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-        public void Atualizar(ContatosMOD contatos)
+		public void Atualizar(ProdutosMOD produtos)
         {
             try
             {
@@ -88,8 +98,15 @@ namespace AnnaLeaoStore.Repository
                 var cmd = new SqlCommand(storedProcedure);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@ID", contatos.ID);
-                cmd.Parameters.AddWithValue("@DESCRICAO", contatos.Descricao);
+				cmd.Parameters.AddWithValue("@ID", produtos.ID);
+				cmd.Parameters.AddWithValue("@REFERID", produtos.ReferId);
+                cmd.Parameters.AddWithValue("@DESCRICAO", produtos.Descricao);
+                cmd.Parameters.AddWithValue("@COR", produtos.Cor);
+                cmd.Parameters.AddWithValue("@IDGRADE", produtos.Grade.ID);
+                cmd.Parameters.AddWithValue("@IDFORNECEDOR", produtos.Pessoas.ID);
+                cmd.Parameters.AddWithValue("@SITUACAO", produtos.Situacao);
+                cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao);
+                cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto);
 
                 _ado.ExecutarSql(_ado.ObterCommand(cmd));
 
