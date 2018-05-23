@@ -34,6 +34,7 @@ namespace AnnaLeaoStore.Repository
                         Cor = item.GetText("COR"),
                         Pessoas = new PessoasMOD { Nome = item.GetText("NOME") },
                         DescricaoSituacao = item.GetText("DESC_SITUACAO"),
+                        DataUltimaCompra = item.GetValue<DateTime>("DATAULTIMACOMPRA"),
                         QtdeEstoque = item.GetValue<decimal>("QTDE_ESTOQUE")
                     });
                 }
@@ -46,6 +47,37 @@ namespace AnnaLeaoStore.Repository
 
         }
 
+        public ProdutosMOD GetById(int id)
+        {
+            try
+            {
+                _strSQL = "LISTARPRODUTOPORID";
+
+                ProdutosMOD produto = new ProdutosMOD();
+
+                DataTable registros = _ado.RetornarTabela(_strSQL, CommandType.StoredProcedure,"@ID",id);
+
+                foreach (DataRow item in registros.Rows)
+                {
+                    produto.ReferId = item.GetText("REFERID");
+                    produto.Descricao = item.GetText("DESCRICAO");
+                    produto.Cor = item.GetText("COR");
+                    produto.Grade.ID = item.GetValue<int>("IDGRADE");
+                    produto.Grade.Descricao = item.GetText("DESCRICAOGRADE");
+                    produto.Pessoas.ID = item.GetValue<int>("IDFORNECEDOR");
+                    produto.Pessoas.Nome= item.GetText("NOME");
+                    produto.Ativo = item.GetBool("ATIVO");
+                    produto.Observacao = item.GetText("OBSERVACAO");
+                    produto.LinkProduto = item.GetText("LINKPRODUTO");
+                }
+                return produto;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
         public void Deletar(int id)
         {
             try

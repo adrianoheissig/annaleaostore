@@ -9,7 +9,7 @@ namespace AnnaLeaoStore.Model
 {
     public class GradeProdutosMOD
     {
-        public Int32 ID { get; set; }
+        public int? ID { get; set; }
         public string Descricao { get; set; }
         public string Tam1 { get; set; }
         public string Tam2 { get; set; }

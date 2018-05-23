@@ -1,5 +1,6 @@
 ﻿using AnnaLeaoStore.Business;
 using AnnaLeaoStore.Model;
+using AnnaLeaoStoreMVC.Areas.Cadastros.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
     {
 
         private PessoasBUS _pessoasBUS = new PessoasBUS();
-		private ContatosBUS _contatosBUS = new ContatosBUS();
+        private ContatosBUS _contatosBUS = new ContatosBUS();
 
         [Authorize]
         public ActionResult Clientes()
@@ -40,8 +41,8 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         [Authorize]
         public ActionResult DetalhesPessoa(int id)
         {
-			var pessoa = _pessoasBUS.GetByID(id);
-			pessoa.Contatos = _contatosBUS.GetID(Convert.ToInt32(pessoa.ID));
+            var pessoa = _pessoasBUS.GetByID(id);
+            pessoa.Contatos = _contatosBUS.GetID(Convert.ToInt32(pessoa.ID));
 
             return View(pessoa);
         }
@@ -52,7 +53,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         {
             try
             {
-                 _pessoasBUS.Delete(new PessoasMOD { ID = id });
+                _pessoasBUS.Delete(new PessoasMOD { ID = id });
                 return Json(new { success = true, responseText = "Os dados do Cliente Foram Excluídos com Sucesso!" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -61,7 +62,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
             }
         }
 
- 
+
         [HttpGet]
         [Authorize]
         public ActionResult CadastrarCliente(int id)
@@ -75,7 +76,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
             return View(pessoa);
         }
 
-		[HttpGet]
+        [HttpGet]
         [Authorize]
         public ActionResult CadastrarFornecedor(int id)
         {
@@ -116,6 +117,51 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
                 return new JsonResult { Data = new { status = false, responseText = e.Message } };
             }
         }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult ListarFornecedores()
+        {
+            try
+            {
+                List<ModelToVIew> lista = new List<ModelToVIew>();
+                foreach (var item in _pessoasBUS.GetAll(2))
+                {
+                    lista.Add(new ModelToVIew
+                    {
+                        Codigo = Convert.ToInt32(item.ID),
+                        Descricao = item.Nome
+
+                    });
+                }
+
+                return PartialView("ConsultaPadrao", lista);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
+            //return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult DetalhePessoaNome(int id)
+        {
+            try
+            {
+                var pessoa = _pessoasBUS.GetByID(id);
+                return Json(new { status = true, Nome = pessoa.Nome }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = false, responseText = ex.Message}, JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 
 }

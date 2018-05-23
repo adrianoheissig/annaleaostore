@@ -1,9 +1,9 @@
 ﻿@model List<AnnaLeaoStore.Model.ProdutosMOD>
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Produtos";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Produtos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
@@ -34,6 +34,7 @@
                 <th>Descrição</th>
                 <th>Cor</th>
                 <th>Fornecedor</th>
+                <th>Última Compra</th>
                 <th>Situação</th>
                 <th>Total Estoque</th>
                 <th></th>
@@ -41,25 +42,6 @@
             </tr>
         </thead>
 
-        <tbody>
-                @{
-            foreach(var produto in Model)
-                {
-            <tr>
-                <td><a class="detalhes" href="/Cadastros/Produtos/Detalhes/@produto.ID">@produto.ID</a></td>
-                <td>@produto.ReferId</td>
-                <td>@produto.Descricao</td>
-                <td>@produto.Cor</td>
-                <td>@produto.Pessoas.Nome</td>
-                <td>@produto.DescricaoSituacao</td>
-                <td>@produto.QtdeEstoque</td>
-                <td><a class="popup" href="/Cadastros/Produtos/Cadastrar/@produto.ID"><i class="fa fa-edit"></i></a></td>
-                <td><a class="remove" href="/Cadastros/Produtos/Deletar/@produto.ID"><i class="fa fa-remove"></i></a></td>
-            </tr>
-                }
-                }
-        </tbody>
-            
     </table>
 </div>
 @section Styles {
@@ -72,17 +54,52 @@
     @Scripts.Render("~/plugins/dataTables")
     <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
 
-    <script>$(document).ready(function() {
+    <script>
+$(document).ready(function () {
 
             // Tabela Para exibir os dados
             var oTable = $('#tbProdutos').DataTable({
+                "ajax": {
+                    "url": '/Cadastros/Produtos/ListarProdutos',
+                    "type": "get",
+                    "datatype": "json"
+                },
                 "columnDefs": [{
                     "targets": [7, 8],
+                    "className": "text-right",
                     "orderable": false
-                }]
-            }); 
+                }],
+                "columns": [
+                    {
+                        "data": "ID", "autoWidth": true, "render": function (data) {
+                            return '<a class="detalhes" href="/Cadastros/Produtos/Detalhes/' + data + '">' + data + '</a>';
+                        }
+                    },
+                    { "data": "ReferId", "autoWidth": true },
+                    { "data": "Descricao", "autoWidth": true },
+                    { "data": "Cor", "autoWidth": true },
+                    {
+                        "data": "Pessoas", "autoWidth": true, "render": function (data) {
+                            return data.Nome;
+                        }
+                    },
 
-            $(".tablecontainer").on("click", "a.detalhes", function(e) {
+                    { "data": "DataUltimaCompra", "autoWidth": true },
+                    { "data": "DescricaoSituacao", "autoWidth": true },
+                    { "data": "QtdeEstoque", "autoWidth": true },
+                    {
+                        "data": "ID", "autoWidth": true, "render": function (data) {
+                            return '<a class="popup" href="/Cadastros/Produtos/Cadastrar/' + data + '"><i class="fa fa-edit"></i></a>';
+                        }
+                    },
+                    {
+                        "data": "ID", "autoWidth": true, "render": function (data) {
+                            return '<a class="remove" href="/Cadastros/Produtos/Deletar/' + data + '"><i class="fa fa-remove"></i></a>';
+                        }
+                    }
+                ]
+            });
+            $(".tablecontainer").on("click", "a.detalhes", function (e) {
                 e.preventDefault();
                 var url = e.currentTarget.href;
                 OpenPopupSimple(url, "Detalhes do Produto");
@@ -90,7 +107,7 @@
 
 
             // Quando clicar no excluir , abre a tela para o usuario confirmar e executa via AJAX
-            $('.tablecontainer').on('click', 'a.remove', function(e) {
+            $('.tablecontainer').on('click', 'a.remove', function (e) {
                 e.preventDefault();
                 var url = e.currentTarget;
                 swal({
@@ -102,11 +119,11 @@
                     confirmButtonText: "Sim",
                     closeOnConfirm: false,
                     cancelButtonText: "Cancelar"
-                }, function() {
+                }, function () {
                     $.ajax({
                         type: "GET",
                         url: url,
-                        success: function(response) {
+                        success: function (response) {
                             if (response.success) {
                                 swal("Sucesso!", response.responseText, "success");
                             } else {
@@ -121,5 +138,5 @@
 
 
 
-})</script>
+        })</script>
 }

@@ -262,6 +262,7 @@
     <Content Include="fonts\font-awesome\scss\_stacked.scss" />
     <Content Include="fonts\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\Cadastros\Views\web.config" />
+    <Content Include="Areas\Cadastros\Views\Shared\ConsultaPadrao.cshtml" />
     <None Include="Properties\PublishProfiles\annaleaostore - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\annaleaostore - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -627,7 +628,7 @@
     <Content Include="Areas\Cadastros\Views\Contatos\ListarPorIdCliente.cshtml" />
     <Content Include="Areas\Cadastros\Views\Pessoas\DetalhesPessoa.cshtml" />
     <Content Include="Areas\Cadastros\Views\Pessoas\CadastrarFornecedor.cshtml" />
-    <Content Include="Areas\Cadastros\Views\Produtos\ListarProdutos.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Produtos\Consulta.cshtml" />
     <Content Include="Scripts\annaleaostorescripts\annaleaostorejs.js" />
     <Content Include="Areas\Cadastros\Views\Produtos\Cadastrar.cshtml" />
   </ItemGroup>
@@ -637,6 +638,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Cadastros\CadastrosAreaRegistration.cs" />
     <Compile Include="Areas\Cadastros\Controllers\ContatosController.cs" />
+    <Compile Include="Areas\Cadastros\Models\ModelToVIew.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Areas\Cadastros\Controllers\PessoasController.cs" />
@@ -685,8 +687,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Cadastros\Models\" />
-    <Folder Include="Areas\Cadastros\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

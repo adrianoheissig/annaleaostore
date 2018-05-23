@@ -15,10 +15,14 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 
 		public ActionResult ListarProdutos(){
 			var produtos = _produtosBus.GetAll();
-			return View(produtos);
-			//return Json(new { data = produtos }, JsonRequestBehavior.AllowGet);
+			return Json(new { data = produtos }, JsonRequestBehavior.AllowGet);
 
 		}
+
+        public ActionResult Consulta()
+        {
+            return View();
+        }
 
 		public ActionResult Deletar(int id){
 			try
@@ -38,6 +42,8 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         public ActionResult Cadastrar(int id)
         {
 			ProdutosMOD produto = new ProdutosMOD();
+            produto.Grade = new GradeProdutosMOD();
+            produto.Pessoas = new PessoasMOD();
             if (id > 0)
             {
 				produto = _produtosBus.GetByID(id);
@@ -48,7 +54,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         
 		[HttpPost]
         [Authorize]
-		public ActionResult Salvar(ProdutosMOD produto)
+		public ActionResult Atualizar(ProdutosMOD produto)
         {
             try
             {

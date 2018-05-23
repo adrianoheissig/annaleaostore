@@ -18,8 +18,9 @@ namespace AnnaLeaoStore.Model
         public int? Situacao { get; set; }
         public string Observacao { get; set; }
         public string LinkProduto { get; set; }
+        public bool Ativo { get; set; }
 
-		public decimal? QtdeEstoque { get; set; }
+        public decimal? QtdeEstoque { get; set; }
 
         public PessoasMOD Pessoas { get; set; }
         public GradeProdutosMOD Grade { get; set; }

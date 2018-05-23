@@ -1,0 +1,36 @@
+﻿@model List<AnnaLeaoStoreMVC.Areas.Cadastros.Models.ModelToVIew>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-bordered table-striped table-hover table-responsive dt-responsive tabelapadrao">
+                        <thead>
+                            <tr>
+                                <th class="text-center col-sm-2">Código</th>
+                                <th class="text-center col-sm-2">Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="text-right"><a href="#" onclick="SetValue(@item.Codigo)">@item.Codigo</a></td>
+                                        <td class="text-left">@item.Descricao</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function SetValue(id) {
+        $("#idRetorno").val(id); // Tem que criar dentro da view main um hidden para receber o retorno
+        $('.modal').modal('toggle');
+    }
+</script>

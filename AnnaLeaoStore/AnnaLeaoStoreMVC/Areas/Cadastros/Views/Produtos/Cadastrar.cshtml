@@ -21,118 +21,124 @@
     <div class="col-lg-2">
     </div>
 </div>
+
 <form id="frmCadastrarProduto" method="post" novalidate="novalidate">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="alert-success"><label>Cadastro de Produtos</label></div>
-                    <br class="b-r-lg" />
-                    <hr />
-                    <input type="hidden" name="TipoPessoa" value="1" />
-                    @if (Model != null && Model.ID > 0)
-                    {
-                        @Html.HiddenFor(a => a.ID)
-                    }
-                    <div class="file-name">
-                        <label>Nome:</label>
-                        @Html.TextBoxFor(a => a.Nome, new { @class = "form-control" })
-                    </div>
-                    <div class="file-name">
-                        <label>Endereço:</label>
-                        @Html.TextBoxFor(a => a.Endereco, new { @class = "form-control" })
-                    </div>
-                    <div class="file-name">
-                        <label>Bairro:</label>
-                        @Html.TextBoxFor(a => a.Bairro, new { @class = "form-control" })
-                    </div>
-                    <div class="file-name">
-                        <label>Cidade:</label>
-                        @Html.TextBoxFor(a => a.Cidade, new { @class = "form-control" })
-                    </div>
-                    <div class="file-name">
-                        <label>Estado:</label>
-                        @Html.TextBoxFor(a => a.Estado, new { @class = "form-control" })
-                    </div>
-                    <div class="file-name">
-                        <label>CEP:</label>
-                        @Html.TextBoxFor(a => a.Cep, new { @class = "form-control" })
-                    </div>
-                    <div class="file-name">
-                        <label>País:</label>
-                        @Html.TextBoxFor(a => a.Pais, new { @class = "form-control" })
-                    </div>
-                    <div class="form-group">
-                        <label>Ativo?</label>
-                        @Html.CheckBoxFor(a => a.Ativo)
-                        &nbsp; &nbsp;
-                    </div>
-                    <div class="form-group" id="data_1">
-                        <label class="file-name">Data Nascimento:</label>
-                        <div class="input-group date">
-                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="file-name">
-                        <label>Observação:</label>
-                        @Html.TextBoxFor(a => a.Observacao, new { @class = "form-control" })
-                    </div>
-                    <br class="b-r-lg" />
-                    <div class="alert-success">
-                        <label>Detalhes da Entrega</label>
-                    </div>
-                    <br class="b-r-lg" />
-                    <div class="form-group" id="data_1">
-                        <div class="input-group date">
-                            <span class="input-group-addon"><i class="fa fa-map-pin"></i> Endereço de Entrega Igual Principal:</span>
-                            <input type="radio" class="copiaEndereco" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="file-name">Endereco Entrega:</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(a => a.EnderecoEntrega, new { @class = "form-control" })
-                        </div>
-                        <label class="file-name">Bairro Entrega:</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(a => a.BairroEntrega, new { @class = "form-control" })
-                        </div>
-                        <label class="file-name">Cidade Entrega:</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(a => a.CidadeEntrega, new { @class = "form-control" })
-                        </div>
-                        <label class="file-name">Estado Entrega:</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(a => a.EstadoEntrega, new { @class = "form-control" })
-                        </div>
-                        <label class="file-name">Cep Entrega:</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(a => a.CepEntrega, new { @class = "form-control" })
-                        </div>
-                        <label class="file-name">País Entrega:</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(a => a.PaisEntrega, new { @class = "form-control" })
-                        </div>
-                        <label class="file-name">Destinatário:</label>
-                        <div class="input-group">
-                            @Html.TextBoxFor(a => a.NomeDestinatario, new { @class = "form-control" })
-                        </div>
-                        <hr />
-                        <div class="submit">
-                            @if (Model != null && Model.ID > 0)
-                            {
-                                <input type="button" name="Contatos" value="Contatos" id="btnContatos" class="btn btn-success" />
-                            }
-                            &nbsp;&nbsp;&nbsp;<input type="submit" name="Gravar" value="Salvar" class="btn btn-primary" /> &nbsp;&nbsp;&nbsp;
-                            <input type="button" name="Sair" value="Sair" id="Sair" class="btn btn-danger" />
-                        </div>
-                    </div>
-                </div>
+    <div class="alert-success col-sm-12"><label>Cadastro de Produtos</label></div>
+    <br class="b-r-lg" />
+    <hr />
+    @if (Model != null && Model.ID > 0)
+    {
+        @Html.HiddenFor(a => a.ID)
+    }
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="input-group col-sm-3" >
+                <label>Refer. Id:</label>
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(a => a.ReferId, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-3">
+                
             </div>
         </div>
+
+        <div class="form-group">
+            <div class="input-group col-sm-3">
+                <label>Descrição:</label>
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(a => a.Descricao, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group col-sm-3">
+                <label>Cor:</label>
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(a => a.Cor, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group col-sm-3">
+                <label>Grade:</label>
+            </div>
+            <div class="col-sm-3">
+                @Html.TextBoxFor(a => a.Grade.ID, new { @class = "form-control form-inline codigoGrade" })
+            </div>
+            <div class="col-sm-6">
+                <span class="descricaoGrade">@Model.Grade.Descricao</span><i class="fa fa-search pesquisaGrade"></i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group col-sm-3">
+                <label>Fornecedor:</label>
+            </div>
+            <div class="col-sm-3">
+                @Html.TextBoxFor(a => a.Pessoas.ID, new { @class = "form-control codigoFornecedor" })
+            </div>
+            <div class="col-sm-6">
+                <span class="nomeFornecedor">@Model.Pessoas.Nome</span><i class="fa fa-search pesquisaFornecedor"></i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group col-sm-3">
+                <label>Ativo?:</label>
+            </div>
+            <div class="col-sm-3">
+                @Html.CheckBoxFor(a => a.Ativo)
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group col-sm-3">
+                <label>Observação:</label>
+            </div>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(a => a.Observacao, new { @class = "form-control" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="input-group col-sm-3">
+                <label>Link para o Produto:</label>
+            </div>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(a => a.LinkProduto, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <hr />
+        <div class="submit">
+            <input type="submit" name="Gravar" value="Salvar" class="btn btn-primary" /> &nbsp;&nbsp;&nbsp;
+            <input type="button" name="Sair" value="Sair" id="Sair" class="btn btn-danger" />
+        </div>
+
     </div>
+
 </form>
+<input type="hidden" name="idRetorno" id="idRetorno" />
+<div class="modal" id="fornecedor-container" tabindex="-1" role="dialog" aria-labelledby="fornecedor-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="fornecedor-content-container"></div>
+    </div>
+</div>
+
+
 @section Styles {
     @Styles.Render("~/plugins/sweetAlertStyles")
     @Styles.Render("~/Scripts/plugins/jquery-ui/jqueryuiStyles")
@@ -141,42 +147,26 @@
     @Scripts.Render("~/plugins/sweetAlert")
     <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
 
-    <script>$(document).ready(function() {
+    <script>
+        $(document).ready(function () {
             var titulo;
+            var $idRetorno = $("#idRetorno");
             if ($("#ID").val() > 0)
                 titulo = "Atualizado";
             else
                 titulo = "Cadastrado";
 
-            $("#frmCadastrarCliente").submit(function(e) {
+            $("#frmCadastrarProduto").submit(function (e) {
 
-                var url = "/Cadastros/Pessoas/Atualizar/";
+                var url = "/Cadastros/Produtos/Atualizar/";
 
                 $.ajax({
                     type: "POST",
                     url: url,
-                    data: $("#frmCadastrarCliente").serialize(), // serializes the form's elements.
-                    success: function(response) {
+                    data: $("#frmCadastrarProduto").serialize(),
+                    success: function (response) {
                         if (response.status) {
-                            swal({
-                                title: "Cliente " + titulo + " com Sucesso!",
-                                //text: "Deseja Adicionar um Novo Contato?",
-                                type: "success",
-                                showCancelButton: true,
-                                confirmButtonClass: "btn-danger",
-                                confirmButtonText: "Sim!",
-                                cancelButtonText: "Não!",
-                                closeOnConfirm: true,
-                                closeOnCancel: true
-                            },
-                                function(isConfirm) {
-                                    if (isConfirm) {
-                                        var id = response.ID;
-                                        OpenPopup("/Cadastros/Contatos/ListarPorIdCliente/" + id, "Cadastrar Contatos");
-                                    } else {
-                                        Voltar();
-                                    }
-                                });
+                            Voltar();
                         } else {
                             swal("Falhou!", response.responseText, "error");
                         }
@@ -185,10 +175,40 @@
                 e.preventDefault();
             });
 
-            $("#Sair").on("click", function() {
-                location = "/Cadastros/Pessoas/Clientes";
+            $("#Sair").on("click", function () {
+                Voltar();
             })
 
+            function Voltar() {
+                location = "/Cadastros/Produtos/ListarProdutos";
+            }
 
-});</script>
+            $(".pesquisaFornecedor").on("click", function () {
+                var url = "/Cadastros/Pessoas/ListarFornecedores";
+                $idRetorno.val("");
+
+                $.get(url, function (data) {
+                    $('#fornecedor-container').modal('show');
+                    $('#fornecedor-content-container').html(data);
+                });
+            });
+
+            $('#fornecedor-container').on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+
+                if ($idRetorno.val() !== "") {
+                    $.get("/Cadastros/Pessoas/DetalhePessoaNome/" + $idRetorno.val(), function (data) {
+                        if (data.status) {
+                            $(".codigoFornecedor").val($idRetorno.val());
+                            $(".nomeFornecedor").text(data.Nome);
+                        } else {
+                            swal("Falhou!", response.responseText, "error");
+                        }
+                    });
+                }
+            });
+
+
+
+        });</script>
 }
