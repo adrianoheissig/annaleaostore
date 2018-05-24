@@ -151,7 +151,8 @@
     <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
     <script src="~/Scripts/annaleaostorescripts/annaleaostorejs.js"></script>
 
-    <script>$(document).ready(function() {
+    <script>
+$(document).ready(function () {
             var titulo;
             var $idRetorno = $("#idRetorno");
             if ($("#ID").val() > 0)
@@ -159,7 +160,7 @@
             else
                 titulo = "Cadastrado";
 
-            $("#frmCadastrarProduto").submit(function(e) {
+            $("#frmCadastrarProduto").submit(function (e) {
 
                 var url = "/Cadastros/Produtos/Atualizar/";
 
@@ -167,7 +168,7 @@
                     type: "POST",
                     url: url,
                     data: $("#frmCadastrarProduto").serialize(),
-                    success: function(response) {
+                    success: function (response) {
                         if (response.status) {
                             Voltar();
                         } else {
@@ -178,7 +179,7 @@
                 e.preventDefault();
             });
 
-            $("#Sair").on("click", function() {
+            $("#Sair").on("click", function () {
                 Voltar();
             })
 
@@ -186,41 +187,41 @@
                 location = "/Cadastros/Produtos/ListarProdutos";
             }
 
-            $(".pesquisaFornecedor").on("click", function() {
+            $(".pesquisaFornecedor").on("click", function () {
                 var url = "/Cadastros/Pessoas/ListarFornecedores";
                 $idRetorno.val("");
 
-                $.get(url, function(data) {
+                $.get(url, function (data) {
                     $('#fornecedor-container').modal('show');
                     $('#fornecedor-content-container').html(data);
                 });
             });
 
-            $('#fornecedor-container').on('hidden.bs.modal', function() {
+            $('#fornecedor-container').on('hidden.bs.modal', function () {
                 $(this).removeData('bs.modal');
                 if ($idRetorno.val() !== "") {
                     pesquisaFornecedor($idRetorno.val());
                 }
             });
 
-            $("#Pessoas_ID").keyup(function() {
+            $("#Pessoas_ID").keyup(function () {
                 pesquisaFornecedor($(this).val());
             });
 
 
             function pesquisaFornecedor($idFornecedor) {
-                $.get("/Cadastros/Pessoas/DetalheFornecedorNome/" + $idFornecedor, function(data) {
+                $.get("/Cadastros/Pessoas/DetalheFornecedorNome/" + $idFornecedor, function (data) {
                     if (data.status) {
                         $(".codigoFornecedor").val($idFornecedor);
                         $(".nomeFornecedor").text(data.Nome);
                     } else {
                         $(".nomeFornecedor").text("Não Encontrado");
                     }
-                }).fail(function() {
+                }).fail(function () {
                     $(".nomeFornecedor").text("");
                 });
             }
 
 
-});</script>
+        });</script>
 }

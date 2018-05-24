@@ -69,7 +69,7 @@ namespace AnnaLeaoStore.Repository
         {
             PessoasMOD pessoa = new PessoasMOD();
 
-            _strSql = _strSql = $@"SELECT ID,NOME,ENDERECO,BAIRRO
+            _strSql = $@"SELECT ID,NOME,ENDERECO,BAIRRO
                               ,CIDADE,ESTADO,CEP,PAIS
                               ,SITUACAO
 							  ,CASE WHEN SITUACAO = 0 THEN 'INATIVO' ELSE 'ATIVO' END AS DESC_SITUACAO
@@ -196,6 +196,7 @@ namespace AnnaLeaoStore.Repository
 
             foreach (DataRow item in registros.Rows)
             {
+
                 pessoas.Add(new PessoasMOD
                 {
                     ID = item.GetValue<int>("ID"),
@@ -207,7 +208,7 @@ namespace AnnaLeaoStore.Repository
                     Cep = item.GetText("CEP"),
                     Pais = item.GetText("PAIS"),
 					Situacao = item.GetValue<int>("SITUACAO"),
-					TipoPessoa = item.GetValue<int>("TIPOPESSOA"),
+					TipoPessoa = Convert.ToInt32(item["TIPOPESSOA"]),
                     DescricaoSituacao = item.GetText("DESC_SITUACAO"),
                     Ativo = item.GetBool("Ativo"),
                     Observacao = item.GetText("OBSERVACAO"),

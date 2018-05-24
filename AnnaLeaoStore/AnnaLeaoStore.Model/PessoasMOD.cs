@@ -21,7 +21,7 @@ namespace AnnaLeaoStore.Model
         public bool Ativo { get; set; }
         public string DescricaoSituacao { get; set; }
         public string Observacao { get; set; }
-        public int? TipoPessoa { get; set; }
+        public int TipoPessoa { get; set; }
         public DateTime? DataCadastro { get; set; }
         public DateTime? DataNascimento { get; set; }
         public string EnderecoEntrega { get; set; }
