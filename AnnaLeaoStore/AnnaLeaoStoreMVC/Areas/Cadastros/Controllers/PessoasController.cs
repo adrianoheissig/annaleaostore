@@ -149,12 +149,18 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 
         [HttpGet]
         [Authorize]
-        public ActionResult DetalhePessoaNome(int id)
+        public ActionResult DetalheFornecedorNome(int id)
         {
             try
             {
                 var pessoa = _pessoasBUS.GetByID(id);
-                return Json(new { status = true, Nome = pessoa.Nome }, JsonRequestBehavior.AllowGet);
+
+				if (pessoa.TipoPessoa != 2)
+				{
+					throw new Exception("Nao Encontrado");
+				}
+
+				return Json(new { status = true, Nome = pessoa.Nome }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
