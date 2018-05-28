@@ -17,10 +17,13 @@ c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/obj/Debug/AnnaLeaoStore.Bu
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/AnnaLeaoStore.Repository.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/AnnaLeaoStore.DataAccess.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/System.Web.Helpers.dll
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/EntityFramework.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/AnnaLeaoStore.Model.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/AnnaLeaoStore.Repository.pdb
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/AnnaLeaoStore.Repository.dll.config
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/AnnaLeaoStore.DataAccess.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/AnnaLeaoStore.DataAccess.dll.config
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/bin/Debug/EntityFramework.xml
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/obj/Debug/AnnaLeaoStore.Business.csprojResolveAssemblyReference.cache
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/obj/Debug/AnnaLeaoStore.Business.csproj.CoreCompileInputs.cache
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStore.Business/obj/Debug/AnnaLeaoStore.Business.dll

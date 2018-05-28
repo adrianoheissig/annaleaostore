@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using AnnaLeaoStore.DataAccess;
 using AnnaLeaoStore.Model;
 using AnnaLeaoStore.Repository.Extensions;
@@ -14,11 +15,13 @@ namespace AnnaLeaoStore.Repository
 
         private string _strSQL;
 
+		private DBContext db = new DBContext();
+
 		public List<ListaPrecosMOD> GetAll()
         {
             try
             {
-				_strSQL = "LISTARPRECOS";
+				/*_strSQL = "LISTARPRECOS";
 
                 List<ListaPrecosMOD> precos = new List<ListaPrecosMOD>();
 
@@ -35,6 +38,8 @@ namespace AnnaLeaoStore.Repository
                     });
                 }
                 return precos;
+                */
+				return db.ListaPrecosMOD.ToList();
             }
             catch (Exception ex)
             {

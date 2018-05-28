@@ -1,4 +1,4 @@
-﻿var $excluir = $('.tablecontainer').on('click', 'a.remove', function(e) {
+﻿$excluir = $('.tablecontainer').on('click', 'a.remove', function(e) {
                 e.preventDefault();
                 var url = e.currentTarget;
                 swal({

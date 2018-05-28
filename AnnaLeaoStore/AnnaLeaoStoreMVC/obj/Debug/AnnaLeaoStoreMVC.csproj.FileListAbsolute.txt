@@ -108,6 +108,7 @@ c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/obj/Debug/AnnaLeaoStoreMVC.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/WebGrease.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/AnnaLeaoStore.Repository.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/AnnaLeaoStore.DataAccess.dll
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/EntityFramework.dll
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/AnnaLeaoStore.Business.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/AnnaLeaoStore.Model.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/Antlr3.Runtime.pdb
@@ -122,8 +123,10 @@ c:/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/obj/Debug/AnnaLeaoStoreMVC.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/System.Web.Helpers.xml
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/System.Web.Mvc.xml
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/AnnaLeaoStore.Repository.pdb
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/AnnaLeaoStore.Repository.dll.config
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/AnnaLeaoStore.DataAccess.pdb
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/AnnaLeaoStore.DataAccess.dll.config
+/Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/bin/EntityFramework.xml
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/obj/Debug/AnnaLeaoStoreMVC.csprojResolveAssemblyReference.cache
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/obj/Debug/AnnaLeaoStoreMVC.csproj.CoreCompileInputs.cache
 /Users/adrianoheissig/Documents/GitHub/annaleaostore/AnnaLeaoStore/AnnaLeaoStoreMVC/obj/Debug/AnnaLeaoStoreMVC.dll
