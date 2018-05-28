@@ -39,7 +39,8 @@ namespace AnnaLeaoStore.Repository
                 }
                 return precos;
                 */
-				return db.ListaPrecosMOD.ToList();
+
+                return db.ListaPrecosMOD.ToList();
             }
             catch (Exception ex)
             {
@@ -52,19 +53,7 @@ namespace AnnaLeaoStore.Repository
         {
             try
             {
-                _strSQL = "LISTARPRECOPORID";
-
-                ListaPrecosMOD preco = new ListaPrecosMOD();
-
-                DataTable registros = _ado.RetornarTabela(_strSQL, CommandType.StoredProcedure,"@ID",id);
-
-                foreach (DataRow item in registros.Rows)
-                {
-                    preco.Descricao = item.GetText("DESCRICAO");
-					preco.Validade = item.GetValue<DateTime>("VALIDADE");
-					preco.DataValidadeFmt = preco.Validade.ToString().Substring(1,10);
-                }
-                return preco;
+                return db.ListaPrecosMOD.Find(id);
             }
             catch (Exception ex)
             {
@@ -76,13 +65,12 @@ namespace AnnaLeaoStore.Repository
         {
             try
             {
-                _strSQL = "DELETARPRECO";
-                var cmd = new SqlCommand(_strSQL);
+             
+                ListaPrecosMOD preco = new ListaPrecosMOD();
+                preco = GetById(id);
+                db.ListaPrecosMOD.Remove(preco);
 
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", id);
-
-                _ado.ExecutarSql(_ado.ObterCommand(cmd));
+                db.SaveChanges();
 
             }
             catch (Exception ex)
@@ -95,22 +83,10 @@ namespace AnnaLeaoStore.Repository
         {
             try
             {
-				string storedProcedure = "INSERIRPRECO";
-                var cmd = new SqlCommand(storedProcedure);
-                cmd.CommandType = CommandType.StoredProcedure;
+                db.ListaPrecosMOD.Add(precos);
+                db.SaveChanges();
 
-				SqlParameter outPutVal = new SqlParameter("@NOVOID", SqlDbType.Int);
-                outPutVal.Direction = ParameterDirection.Output;
-
-                cmd.Parameters.Add(outPutVal);
-				cmd.Parameters.AddWithValue("@DESCRICAO", precos.Descricao);
-				cmd.Parameters.AddWithValue("@VALIDADE", precos.Validade);
-                
-                _ado.ExecutarSql(_ado.ObterCommand(cmd));
-
-				if (outPutVal.Value != DBNull.Value) precos.ID = Convert.ToInt32(outPutVal.Value);
-
-				return precos;
+                return precos;
             }
             catch (Exception ex)
             {
@@ -118,19 +94,17 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-		public void Atualizar(ListaPrecosMOD precos)
+		public void Atualizar(ListaPrecosMOD preco)
         {
             try
             {
-                string storedProcedure = "ATUALIZARPRECO";
-                var cmd = new SqlCommand(storedProcedure);
-                cmd.CommandType = CommandType.StoredProcedure;
+                ListaPrecosMOD precoOri = new ListaPrecosMOD();
+                precoOri = GetById((int)preco.ID);
 
-				cmd.Parameters.AddWithValue("@ID", precos.ID);
-				cmd.Parameters.AddWithValue("@DESCRICAO", precos.Descricao);
-				cmd.Parameters.AddWithValue("@VALIDADE", precos.Validade);
-
-                _ado.ExecutarSql(_ado.ObterCommand(cmd));
+                precoOri.Descricao = preco.Descricao;
+                precoOri.Validade = preco.Validade;
+                
+                db.SaveChanges();
 
             }
             catch (Exception ex)
