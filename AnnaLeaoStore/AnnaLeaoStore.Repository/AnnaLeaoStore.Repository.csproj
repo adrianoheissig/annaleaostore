@@ -53,6 +53,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoContatoREP.cs" />
     <Compile Include="ContatosREP.cs" />
+    <Compile Include="GradeREP.cs" />
+    <Compile Include="PrecosREP.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AnnaLeaoStore.DataAccess\AnnaLeaoStore.DataAccess.csproj">

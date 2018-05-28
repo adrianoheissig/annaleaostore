@@ -44,14 +44,22 @@ namespace AnnaLeaoStore.Business
 
 		public ProdutosMOD GetByID(int id)
         {
-			return null;
-        }
+			try
+			{
+				return _produtosRep.GetById(id);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
+		}
 
 		public void Insert(ProdutosMOD produtos)
         {
             try
             {
-				_produtosRep.Inserir(produtos);
+				_produtosMOD = ValidaProduto(produtos);
+				_produtosRep.Inserir(_produtosMOD);
 
             }
             catch (Exception ex)
@@ -65,7 +73,8 @@ namespace AnnaLeaoStore.Business
         {
             try
             {
-				_produtosRep.Atualizar(produtos);
+				_produtosMOD = ValidaProduto(produtos);
+				_produtosRep.Atualizar(_produtosMOD);
             }
             catch (Exception e)
             {
@@ -74,18 +83,26 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-        public PessoasMOD ValidaPessoa(PessoasMOD pessoa)
+		public ProdutosMOD ValidaProduto(ProdutosMOD produto)
         {
             try
             {
-                if (String.IsNullOrEmpty(pessoa.Nome))
+				if (String.IsNullOrEmpty(produto.ReferId))
                 {
-                    throw new Exception("Nome não pode ser Em Branco!");
+                    throw new Exception("Preencha o Código de Referência para o Produto!");
+                }
+				if (String.IsNullOrEmpty(produto.Descricao))
+                {
+                    throw new Exception("Preencha a Descrição do Produto!");
+                }
+				if (String.IsNullOrEmpty(produto.Cor))
+                {
+                    throw new Exception("Preencha a Cor do Produto!");
                 }
 
-                pessoa.Situacao = pessoa.Ativo ? 1 : 0;
+                produto.Situacao = produto.Ativo ? 1 : 0;
 
-                return pessoa;
+				return produto;
 
 
             }

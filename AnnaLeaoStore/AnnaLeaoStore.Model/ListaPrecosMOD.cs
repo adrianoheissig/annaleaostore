@@ -9,8 +9,9 @@ namespace AnnaLeaoStore.Model
 {
     public class ListaPrecosMOD
     {
-        public Int32 ID { get; set; }
+        public int? ID { get; set; }
         public string Descricao { get; set; }
-        public DateTime Validade { get; set; }
+        public DateTime? Validade { get; set; }
+		public string DataValidadeFmt { get; set; }
     }
 }

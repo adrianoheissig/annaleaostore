@@ -1,0 +1,126 @@
+﻿@model List<AnnaLeaoStore.Model.ListaPrecosMOD>
+@{
+    /**/
+
+    ViewBag.Title = "Lista de Precos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Lista de Precos</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/Home/Index">Home</a>
+            </li>
+            <li>
+                <a>Cadastros</a>
+            </li>
+            <li class="active">
+                <strong>Lista de Precos</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<!--Tabela de Produtos-->
+<div class="tablecontainer container-fluid">
+    <a class="popup btn btn-primary" href="/Cadastros/Precos/Cadastrar/0" style="margin-bottom: 20px; margin-top: 20px;">Novo</a>
+    <table class="table table-striped dt-responsive nowrap " data-page-size="15" id="tbPrecos">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Validade</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+    </table>
+</div>
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+    @Styles.Render("~/Scripts/plugins/jquery-ui/jqueryuiStyles")
+    @Styles.Render("~/Content/plugins/dataTables/dataTablesStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+    @Scripts.Render("~/plugins/dataTables")
+    <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
+
+    <script>$(document).ready(function() {
+
+            // Tabela Para exibir os dados
+
+           
+                var oTable = $('#tbPrecos').DataTable({
+                    "ajax": {
+                        "url": '/Cadastros/Precos/ListarPrecos',
+                        "type": "get",
+                        "datatype": "json"
+                    },
+                    "columnDefs": [{
+                        "targets": [3, 4],
+                        "className": "text-right",
+                        "orderable": false
+                    }],
+                    "columns": [
+                        {
+                            "data": "ID", "autoWidth": true, "render": function (data) {
+                                return '<a class="detalhes" href="/Cadastros/Precos/Detalhes/' + data + '">' + data + '</a>';
+                            }
+                        },
+                        { "data": "Descricao", "autoWidth": true },
+                        { "data": "DataValidadeFmt", "autoWidth": true },
+                        {
+                            "data": "ID", "autoWidth": true, "render": function (data) {
+                                return '<a class="popup" href="/Cadastros/Precos/Cadastrar/' + data + '"><i class="fa fa-edit"></i></a>';
+                            }
+                        },
+                        {
+                            "data": "ID", "autoWidth": true, "render": function (data) {
+                                return '<a class="remove" href="/Cadastros/Precos/Deletar/' + data + '"><i class="fa fa-remove"></i></a>';
+                            }
+                        }
+                    ]
+                });
+
+            $(".tablecontainer").on("click", "a.detalhes", function(e) {
+                e.preventDefault();
+                var url = e.currentTarget.href;
+                OpenPopupSimple(url, "Detalhes da Lista de Precos");
+            });
+
+
+            // Quando clicar no excluir , abre a tela para o usuario confirmar e executa via AJAX
+            $('.tablecontainer').on('click', 'a.remove', function(e) {
+                e.preventDefault();
+                var url = e.currentTarget;
+                swal({
+                    title: "Deseja Excluir?",
+                    text: "Excluindo, A Lista de Precos , todos os itens serão perdidos!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Sim",
+                    closeOnConfirm: false,
+                    cancelButtonText: "Cancelar"
+                }, function() {
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        success: function(response) {
+                            if (response.success) {
+                                swal("Sucesso!", response.responseText, "success");
+                            } else {
+                                swal("Falhou!", response.responseText, "error");
+                            }
+                            location = "/Cadastros/Precos/Consulta/";
+
+                        }
+                    });
+                });
+            });
+})</script>
+}

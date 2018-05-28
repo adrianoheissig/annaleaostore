@@ -1,0 +1,122 @@
+﻿@model AnnaLeaoStore.Model.ListaPrecosMOD
+@{
+    ViewBag.Title = "Produtos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Lista de Preços</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/Home/Index">Home</a>
+            </li>
+            <li>
+                <a>Cadastros</a>
+            </li>
+            <li class="active">
+                <strong>Lista de Preços</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<form id="frmCadastrarPrecos" method="post" novalidate="novalidate">
+    <div class="alert-success col-sm-12"><label>Cadastro da Lista de Preços</label></div>
+    <br class="b-r-lg" />
+    <hr />
+    @Html.HiddenFor(a => a.ID)
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label>Descrição:</label>
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(a => a.Descricao, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label>Validade:</label>
+            </div>
+            <div class="col-sm-6">
+                @Html.TextBoxFor(a => a.Validade, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-5">
+
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <div class="submit col-sm-12">
+                <input type="submit" name="Gravar" value="Salvar" class="btn btn-primary" /> &nbsp;&nbsp;&nbsp;
+                <input type="button" name="Sair" value="Sair" id="Sair" class="btn btn-danger" />
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+<input type="hidden" name="idRetorno" id="idRetorno" />
+
+<div class="modal" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="modal-content-container"></div>
+    </div>
+</div>
+
+
+
+@section Styles {
+    @Styles.Render("~/plugins/sweetAlertStyles")
+    @Styles.Render("~/Scripts/plugins/jquery-ui/jqueryuiStyles")
+}
+@section Scripts {
+    @Scripts.Render("~/plugins/sweetAlert")
+    <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
+    <script src="~/Scripts/annaleaostorescripts/annaleaostorejs.js"></script>
+
+    <script>$(document).ready(function() {
+            var titulo;
+            if ($("#ID").val() > 0)
+                titulo = "Atualizado";
+            else
+                titulo = "Cadastrado";
+
+            $("#frmCadastrarPrecos").submit(function(e) {
+
+                var url = "/Cadastros/Precos/Atualizar/";
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: $("#frmCadastrarPrecos").serialize(),
+                    success: function(response) {
+                        if (response.status) {
+                            Voltar();
+                        } else {
+                            swal("Falhou!", response.responseText, "error");
+                        }
+                    }
+                });
+                e.preventDefault();
+            });
+
+            $("#Sair").on("click", function() {
+                Voltar();
+            })
+
+            function Voltar() {
+                location = "/Cadastros/Precos/Consulta";
+            }
+
+});</script>
+}

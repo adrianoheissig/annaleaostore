@@ -26,10 +26,7 @@
     <div class="alert-success col-sm-12"><label>Cadastro de Produtos</label></div>
     <br class="b-r-lg" />
     <hr />
-    @if (Model != null && Model.ID > 0)
-    {
-        @Html.HiddenFor(a => a.ID)
-    }
+    @Html.HiddenFor(a => a.ID)
     <div class="form-horizontal">
         <div class="form-group">
             <div class="col-sm-1">
@@ -75,7 +72,7 @@
                 @Html.TextBoxFor(a => a.Grade.ID, new { @class = "form-control form-inline codigoGrade" })
             </div>
             <div class="col-sm-8">
-                <span class="descricaoGrade">@Model.Grade.Descricao</span><i class="fa fa-search pesquisaGrade"></i>
+                <span class="descricaoGrade">@Model.Grade.Descricao</span>&nbsp;&nbsp;<i class="fa fa-search pesquisaGrade"></i>
             </div>
         </div>
 
@@ -135,11 +132,13 @@
 
 </form>
 <input type="hidden" name="idRetorno" id="idRetorno" />
-<div class="modal" id="fornecedor-container" tabindex="-1" role="dialog" aria-labelledby="fornecedor-title">
+
+<div class="modal" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="modal-title">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" id="fornecedor-content-container"></div>
+        <div class="modal-content" id="modal-content-container"></div>
     </div>
 </div>
+
 
 
 @section Styles {
@@ -155,6 +154,7 @@
 $(document).ready(function () {
             var titulo;
             var $idRetorno = $("#idRetorno");
+            var $tipoGrade = 0;
             if ($("#ID").val() > 0)
                 titulo = "Atualizado";
             else
@@ -184,30 +184,33 @@ $(document).ready(function () {
             })
 
             function Voltar() {
-                location = "/Cadastros/Produtos/ListarProdutos";
+                location = "/Cadastros/Produtos/Consulta";
             }
 
+            /**** Pesquisa de Fornecedor ***/
             $(".pesquisaFornecedor").on("click", function () {
                 var url = "/Cadastros/Pessoas/ListarFornecedores";
+                $tipoGrade = 1;
                 $idRetorno.val("");
 
                 $.get(url, function (data) {
-                    $('#fornecedor-container').modal('show');
-                    $('#fornecedor-content-container').html(data);
+                    $('#modal-container').modal('show');
+                    $('#modal-content-container').html(data);
                 });
             });
 
-            $('#fornecedor-container').on('hidden.bs.modal', function () {
+            $('#modal-container').on('hidden.bs.modal', function () {
+                if($tipoGrade === 1){
                 $(this).removeData('bs.modal');
                 if ($idRetorno.val() !== "") {
                     pesquisaFornecedor($idRetorno.val());
+                }
                 }
             });
 
             $("#Pessoas_ID").keyup(function () {
                 pesquisaFornecedor($(this).val());
             });
-
 
             function pesquisaFornecedor($idFornecedor) {
                 $.get("/Cadastros/Pessoas/DetalheFornecedorNome/" + $idFornecedor, function (data) {
@@ -221,6 +224,46 @@ $(document).ready(function () {
                     $(".nomeFornecedor").text("");
                 });
             }
+            /**** Fim da Pesquisa de Fornecedor *****/
+
+            /**** Pesquisa de Grade ***/
+            $(".pesquisaGrade").on("click", function () {
+                var url = "/Cadastros/Grade/ListarGrade";
+                $tipoGrade = 2;
+                $idRetorno.val("");
+
+                $.get(url, function (data) {
+                    $('#modal-container').modal('show');
+                    $('#modal-content-container').html(data);
+                });
+            });
+
+            $('#modal-container').on('hidden.bs.modal', function () {
+                if($tipoGrade === 2){
+                $(this).removeData('bs.modal');
+                if ($idRetorno.val() !== "") {
+                    pesquisaGrade($idRetorno.val());
+                }
+                }
+            });
+
+            $("#Grade_ID").keyup(function () {
+                pesquisaGrade($(this).val());
+            });
+
+            function pesquisaGrade($idGrade) {
+                $.get("/Cadastros/Grade/DetalheGrade/" + $idGrade, function (data) {
+                    if (data.status) {
+                        $(".codigoGrade").val($idGrade);
+                        $(".descricaoGrade").text(data.Descricao);
+                    } else {
+                        $(".descricaoGrade").text("Não Encontrado");
+                    }
+                }).fail(function () {
+                    $(".descricaoGrade").text("");
+                });
+            }
+            /**** Fim da Pesquisa de Fornecedor *****/
 
 
         });</script>

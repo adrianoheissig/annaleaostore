@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Model
 {
-    public class GradeProdutosMOD
+    public class GradeMOD
     {
         public int? ID { get; set; }
         public string Descricao { get; set; }

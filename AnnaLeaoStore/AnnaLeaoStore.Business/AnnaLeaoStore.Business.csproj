@@ -62,6 +62,8 @@
     <Compile Include="TipoContatoBUS.cs" />
     <Compile Include="ContatosBUS.cs" />
     <Compile Include="ProdutosBUS.cs" />
+    <Compile Include="GradeBUS.cs" />
+    <Compile Include="PrecosBUS.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

@@ -631,6 +631,9 @@
     <Content Include="Areas\Cadastros\Views\Produtos\Consulta.cshtml" />
     <Content Include="Scripts\annaleaostorescripts\annaleaostorejs.js" />
     <Content Include="Areas\Cadastros\Views\Produtos\Cadastrar.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Precos\Consulta.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Precos\Cadastrar.cshtml" />
+    <Content Include="Areas\Cadastros\Views\Produtos\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -648,6 +651,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\Cadastros\Controllers\TipoContatoController.cs" />
     <Compile Include="Areas\Cadastros\Controllers\ProdutosController.cs" />
+    <Compile Include="Areas\Cadastros\Controllers\GradeController.cs" />
+    <Compile Include="Areas\Cadastros\Controllers\PrecosController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

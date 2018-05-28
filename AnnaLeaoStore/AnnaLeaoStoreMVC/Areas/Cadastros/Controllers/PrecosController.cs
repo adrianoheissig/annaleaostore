@@ -9,26 +9,36 @@ using AnnaLeaoStore.Model;
 
 namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 {
-    public class ProdutosController : Controller
+	public class PrecosController : Controller
     {
-		private ProdutosBUS _produtosBus = new ProdutosBUS();
+		private PrecosBUS _precosBus = new PrecosBUS();
+		private ListaPrecosMOD _precosMOD = new ListaPrecosMOD();
 
-		public ActionResult ListarProdutos(){
-			var produtos = _produtosBus.GetAll();
-			return Json(new { data = produtos }, JsonRequestBehavior.AllowGet);
 
-		}
-
-        public ActionResult Consulta()
+		public ActionResult Consulta()
         {
             return View();
         }
 
+		public ActionResult ListarPrecos(){
+			try
+			{
+				var precos = _precosBus.GetAll();
+                return Json(new { data = precos }, JsonRequestBehavior.AllowGet);
+
+			}
+			catch (Exception ex)
+			{
+				return Json(new { status = false, responseText = ex.Message }, JsonRequestBehavior.AllowGet);
+			}
+
+		}
+
 		public ActionResult Deletar(int id){
 			try
 			{
-				_produtosBus.Delete(id);
-				return Json(new { success = true, responseText = "Os dados do Produto Foram Excluídos com Sucesso!" }, JsonRequestBehavior.AllowGet);
+				_precosBus.Deletar(id);
+				return Json(new { success = true, responseText = "A tabela de Preço foi Excluída com Sucesso!" }, JsonRequestBehavior.AllowGet);
 
 			}
 			catch (Exception ex)
@@ -43,20 +53,17 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         {
 			try
 			{
-
-				ProdutosMOD produto = new ProdutosMOD();
-                produto.Grade = new GradeMOD();
-                produto.Pessoas = new PessoasMOD();
+				ListaPrecosMOD preco = new ListaPrecosMOD();
                 if (id > 0)
                 {
-                    produto = _produtosBus.GetByID(id);
+					preco = _precosBus.GetById(id);
                 }
 
-                if (produto == null)
+				if (preco == null)
 				{
-					throw new Exception("Produto Não Encontrado!");
+					throw new Exception("Preço Não Encontrado!");
 				}
-				return View(produto);
+				return View(preco);
 
 			}
 			catch (Exception ex)
@@ -67,19 +74,20 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         
 		[HttpPost]
         [Authorize]
-		public ActionResult Atualizar(ProdutosMOD produto)
+		public ActionResult Atualizar(ListaPrecosMOD preco)
         {
             try
             {
-                if (produto.ID > 0)
+				if (preco.ID > 0)
                 {
                     //Atualizar
-					_produtosBus.Update(produto);
+					_precosBus.Update(preco);
+
                 }
                 else
                 {
                     //Novo
-					_produtosBus.Insert(produto);
+					_precosMOD = _precosBus.Insert(preco);
                 }
 
                 return new JsonResult { Data = new { status = true } };
@@ -90,14 +98,6 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
             }
         }
 
-		[HttpGet]
-        [Authorize]
-        public ActionResult Detalhes(int id)
-        {
-			var produto = _produtosBus.GetByID(id);
-
-            return View(produto);
-        }
 
 
     }

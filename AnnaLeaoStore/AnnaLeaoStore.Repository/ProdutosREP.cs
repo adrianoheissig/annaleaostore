@@ -62,10 +62,8 @@ namespace AnnaLeaoStore.Repository
                     produto.ReferId = item.GetText("REFERID");
                     produto.Descricao = item.GetText("DESCRICAO");
                     produto.Cor = item.GetText("COR");
-                    produto.Grade.ID = item.GetValue<int>("IDGRADE");
-                    produto.Grade.Descricao = item.GetText("DESCRICAOGRADE");
-                    produto.Pessoas.ID = item.GetValue<int>("IDFORNECEDOR");
-                    produto.Pessoas.Nome= item.GetText("NOME");
+					produto.Grade = new GradeMOD{ ID = item.GetValue<int>("IDGRADE"), Descricao = item.GetText("DESCRICAOGRADE")};
+					produto.Pessoas = new PessoasMOD { ID = item.GetValue<int>("IDFORNECEDOR"), Nome = item.GetText("NOME") };
                     produto.Ativo = item.GetBool("ATIVO");
                     produto.Observacao = item.GetText("OBSERVACAO");
                     produto.LinkProduto = item.GetText("LINKPRODUTO");
@@ -111,8 +109,8 @@ namespace AnnaLeaoStore.Repository
 				cmd.Parameters.AddWithValue("@IDGRADE", produtos.Grade.ID);
 				cmd.Parameters.AddWithValue("@IDFORNECEDOR", produtos.Pessoas.ID);
 				cmd.Parameters.AddWithValue("@SITUACAO", produtos.Situacao);
-				cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao);
-				cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto);
+				cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao, null);
+				cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto, null);
 
                 _ado.ExecutarSql(_ado.ObterCommand(cmd));
             }
@@ -126,7 +124,7 @@ namespace AnnaLeaoStore.Repository
         {
             try
             {
-                string storedProcedure = "ATUALIZARCONTATO";
+                string storedProcedure = "ATUALIZARPRODUTO";
                 var cmd = new SqlCommand(storedProcedure);
                 cmd.CommandType = CommandType.StoredProcedure;
 
@@ -137,8 +135,8 @@ namespace AnnaLeaoStore.Repository
                 cmd.Parameters.AddWithValue("@IDGRADE", produtos.Grade.ID);
                 cmd.Parameters.AddWithValue("@IDFORNECEDOR", produtos.Pessoas.ID);
                 cmd.Parameters.AddWithValue("@SITUACAO", produtos.Situacao);
-                cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao);
-                cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto);
+				cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao, null);
+				cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto, null);
 
                 _ado.ExecutarSql(_ado.ObterCommand(cmd));
 
