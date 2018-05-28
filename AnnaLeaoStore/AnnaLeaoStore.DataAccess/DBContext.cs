@@ -7,13 +7,16 @@ namespace AnnaLeaoStore.DataAccess
 	public class DBContext : DbContext
     {
      
-		public DbSet<ListaPrecosMOD> ListaPrecosMOD { get; set;}
+		public DbSet<ListaPrecos> ListaPrecosMOD { get; set; }
+		public DbSet<ListaPrecosItemMOD> ListaPrecosItemMOD { get; set;}
 
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			//base.OnModelCreating(modelBuilder);
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+			Database.SetInitializer<DBContext>(null);
+            base.OnModelCreating(modelBuilder); 
 		}
 
         private void FixEfProviderServicesProblem()

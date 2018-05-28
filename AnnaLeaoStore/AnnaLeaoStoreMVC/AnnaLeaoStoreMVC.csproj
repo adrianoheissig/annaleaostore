@@ -634,6 +634,7 @@
     <Content Include="Areas\Cadastros\Views\Precos\Consulta.cshtml" />
     <Content Include="Areas\Cadastros\Views\Precos\Cadastrar.cshtml" />
     <Content Include="Areas\Cadastros\Views\Produtos\Detalhes.cshtml" />
+    <Content Include="Scripts\annaleaostorescripts\Precos.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />

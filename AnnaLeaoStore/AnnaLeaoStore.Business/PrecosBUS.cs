@@ -11,22 +11,22 @@ namespace AnnaLeaoStore.Business
     public class PrecosBUS
     {
 		private PrecosREP _precosREP = new PrecosREP();
-		private ListaPrecosMOD _precoMOD = new ListaPrecosMOD();
+		private ListaPrecos _precoMOD = new ListaPrecos();
 
-		public List<ListaPrecosMOD> GetAll()
+		public List<ListaPrecos> GetAll()
         {
-            List<ListaPrecosMOD> precos = new List<ListaPrecosMOD>();
+            List<ListaPrecos> precos = new List<ListaPrecos>();
 
             foreach (var item in _precosREP.GetAll())
             {
-                item.DataValidadeFmt = item.Validade.ToString().Substring(1, 10);
+                item.DataValidadeFmt = item.Validade.ToString().Substring(0, 10);
                 precos.Add(item);
             }
 
             return precos;
 
         }
-
+        
 		public void Deletar(int id){
 			try
 			{
@@ -39,7 +39,7 @@ namespace AnnaLeaoStore.Business
 			}
 		}
 
-		public ListaPrecosMOD GetById(int id)
+		public ListaPrecos GetById(int id)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-		public ListaPrecosMOD Insert(ListaPrecosMOD preco)
+		public ListaPrecos Insert(ListaPrecos preco)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-		public void Update(ListaPrecosMOD preco)
+		public void Update(ListaPrecos preco)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-		public ListaPrecosMOD ValidaPreco(ListaPrecosMOD preco)
+		public ListaPrecos ValidaPreco(ListaPrecos preco)
         {
             try
             {

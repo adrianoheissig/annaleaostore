@@ -12,7 +12,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 	public class PrecosController : Controller
     {
 		private PrecosBUS _precosBus = new PrecosBUS();
-		private ListaPrecosMOD _precosMOD = new ListaPrecosMOD();
+		private ListaPrecos _precosMOD = new ListaPrecos();
 
 
 		public ActionResult Consulta()
@@ -53,7 +53,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         {
 			try
 			{
-				ListaPrecosMOD preco = new ListaPrecosMOD();
+				ListaPrecos preco = new ListaPrecos();
                 if (id > 0)
                 {
 					preco = _precosBus.GetById(id);
@@ -74,7 +74,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         
 		[HttpPost]
         [Authorize]
-		public ActionResult Atualizar(ListaPrecosMOD preco)
+		public ActionResult Atualizar(ListaPrecos preco)
         {
             try
             {

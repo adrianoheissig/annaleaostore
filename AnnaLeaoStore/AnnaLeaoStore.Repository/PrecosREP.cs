@@ -17,29 +17,10 @@ namespace AnnaLeaoStore.Repository
 
 		private DBContext db = new DBContext();
 
-		public List<ListaPrecosMOD> GetAll()
+		public List<ListaPrecos> GetAll()
         {
             try
             {
-				/*_strSQL = "LISTARPRECOS";
-
-                List<ListaPrecosMOD> precos = new List<ListaPrecosMOD>();
-
-                DataTable registros = _ado.RetornarTabela(_strSQL, CommandType.StoredProcedure);
-
-                foreach (DataRow item in registros.Rows)
-                {
-                    precos.Add(new ListaPrecosMOD
-                    {
-                        ID = item.GetValue<int>("ID"),
-                        Descricao = item.GetText("DESCRICAO"),
-						Validade = item.GetValue<DateTime>("VALIDADE"),
-						DataValidadeFmt = item.GetValue<DateTime>("VALIDADE").ToString()
-                    });
-                }
-                return precos;
-                */
-
                 return db.ListaPrecosMOD.ToList();
             }
             catch (Exception ex)
@@ -49,7 +30,7 @@ namespace AnnaLeaoStore.Repository
 
         }
 
-        public ListaPrecosMOD GetById(int id)
+        public ListaPrecos GetById(int id)
         {
             try
             {
@@ -66,10 +47,10 @@ namespace AnnaLeaoStore.Repository
             try
             {
              
-                ListaPrecosMOD preco = new ListaPrecosMOD();
+                ListaPrecos preco = new ListaPrecos();
                 preco = GetById(id);
                 db.ListaPrecosMOD.Remove(preco);
-
+                
                 db.SaveChanges();
 
             }
@@ -79,7 +60,7 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-		public ListaPrecosMOD Inserir(ListaPrecosMOD precos)
+		public ListaPrecos Inserir(ListaPrecos precos)
         {
             try
             {
@@ -94,11 +75,11 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-		public void Atualizar(ListaPrecosMOD preco)
+		public void Atualizar(ListaPrecos preco)
         {
             try
             {
-                ListaPrecosMOD precoOri = new ListaPrecosMOD();
+                ListaPrecos precoOri = new ListaPrecos();
                 precoOri = GetById((int)preco.ID);
 
                 precoOri.Descricao = preco.Descricao;

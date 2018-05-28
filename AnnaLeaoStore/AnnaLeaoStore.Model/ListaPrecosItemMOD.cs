@@ -16,6 +16,6 @@ namespace AnnaLeaoStore.Model
         public Decimal? DescontoMaxPermitido { get; set; }
 
 		public ProdutosMOD Produtos { get; set; }
-		public ListaPrecosMOD ListaPrecos { get; set; }
+		public ListaPrecos ListaPrecos { get; set; }
     }
 }

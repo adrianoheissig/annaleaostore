@@ -51,7 +51,7 @@
     <Compile Include="PedidoCompraMOD.cs" />
     <Compile Include="MovimentoMOD.cs" />
     <Compile Include="ListaPrecosItemMOD.cs" />
-    <Compile Include="ListaPrecosMOD.cs" />
+    <Compile Include="ListaPrecos.cs" />
     <Compile Include="EstoqueMOD.cs" />
     <Compile Include="DevolucaoVendaMOD.cs" />
     <Compile Include="DevolucaoCompraMOD.cs" />
