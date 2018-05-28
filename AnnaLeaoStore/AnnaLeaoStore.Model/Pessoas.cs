@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Model
 {
-    public class PessoasMOD
+    public class Pessoas
     {
         public int? ID { get; set; }
         public string Nome { get; set; }
@@ -32,7 +32,7 @@ namespace AnnaLeaoStore.Model
         public string PaisEntrega { get; set; }
         public string NomeDestinatario { get; set; }
 
-		public virtual ICollection<ContatosMOD> Contatos { get; set; }
+		public virtual ICollection<Contatos> Contatos { get; set; }
 
     }
 }

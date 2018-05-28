@@ -14,19 +14,19 @@ namespace AnnaLeaoStore.Repository
 
 		private string _strSQL;
         
-		public List<ContatosMOD> GetID(int id)
+		public List<Contatos> GetID(int id)
         {
             try
 			{
 				_strSQL = "LISTARCONTATOSPORID";
 
-				List<ContatosMOD> contatos = new List<ContatosMOD>();
+				List<Contatos> contatos = new List<Contatos>();
 
 				DataTable registros = _ado.RetornarTabela(_strSQL, CommandType.StoredProcedure,"@IDPESSOA",id);
 
 				foreach (DataRow item in registros.Rows)
 				{
-					contatos.Add(new ContatosMOD
+					contatos.Add(new Contatos
 					{
                         ID = item.GetValue<int>("ID"),
 						IDTipoRedeSocial = item.GetValue<int>("ID_TIPOREDESOCIAL"),
@@ -60,7 +60,7 @@ namespace AnnaLeaoStore.Repository
 			}
 		}
 
-		public void Inserir(ContatosMOD contatos){
+		public void Inserir(Contatos contatos){
 			try
 			{
 				string storedProcedure = "INSERIRCONTATO";
@@ -79,7 +79,7 @@ namespace AnnaLeaoStore.Repository
 			}
 		}
 
-        public void Atualizar(ContatosMOD contatos)
+        public void Atualizar(Contatos contatos)
         {
             try
             {

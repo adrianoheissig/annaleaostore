@@ -15,18 +15,18 @@ namespace AnnaLeaoStore.Repository
     {
 		private ADO _ado = new ADO();
 
-		public List<GradeMOD> GetAll()
+		public List<Grade> GetAll()
         {
             try
             {
                 string storedProcedure = "LISTARGRADE";
-                List<GradeMOD> grades = new List<GradeMOD>();
+                List<Grade> grades = new List<Grade>();
 
                 DataTable registros = _ado.RetornarTabela(storedProcedure, CommandType.StoredProcedure);
 
 				foreach (DataRow item in registros.Rows)
 				{
-					grades.Add(new GradeMOD
+					grades.Add(new Grade
 					{
 						ID = item.GetValue<int>("ID"),
 						Descricao = item.GetText("DESCRICAO"),
@@ -51,12 +51,12 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-		public GradeMOD GetPorId(int id)
+		public Grade GetPorId(int id)
         {
 			try
 			{
 				string storedProcedure = "LISTARGRADEPORID";
-                GradeMOD grade = new GradeMOD();
+                Grade grade = new Grade();
 
                 DataTable registros = _ado.RetornarTabela(storedProcedure, CommandType.StoredProcedure, "@ID", id);
 

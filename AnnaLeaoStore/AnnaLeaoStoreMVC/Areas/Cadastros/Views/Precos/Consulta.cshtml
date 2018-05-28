@@ -72,7 +72,11 @@
                             }
                         },
                         { "data": "Descricao", "autoWidth": true },
-                        { "data": "DataValidadeFmt", "autoWidth": true },
+                        {
+                            "data": "Validade", "autoWidth": true, "render": function (data) {
+                                return new Date(Number(data.match(/(\d)+/)[0])).toLocaleString("pt-BR");
+                            }
+                        },
                         {
                             "data": "ID", "autoWidth": true, "render": function (data) {
                                 return '<a class="popup" href="/Cadastros/Precos/Cadastrar/' + data + '"><i class="fa fa-edit"></i></a>';

@@ -44,9 +44,9 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 			try
 			{
 
-				ProdutosMOD produto = new ProdutosMOD();
-                produto.Grade = new GradeMOD();
-                produto.Pessoas = new PessoasMOD();
+				Produtos produto = new Produtos();
+                produto.Grade = new Grade();
+                produto.Pessoas = new Pessoas();
                 if (id > 0)
                 {
                     produto = _produtosBus.GetByID(id);
@@ -67,7 +67,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         
 		[HttpPost]
         [Authorize]
-		public ActionResult Atualizar(ProdutosMOD produto)
+		public ActionResult Atualizar(Produtos produto)
         {
             try
             {

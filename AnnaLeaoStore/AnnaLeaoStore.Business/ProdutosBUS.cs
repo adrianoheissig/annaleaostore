@@ -13,7 +13,7 @@ namespace AnnaLeaoStore.Business
     {
 		private ProdutosREP _produtosRep = new ProdutosREP();
 
-		private ProdutosMOD _produtosMOD = new ProdutosMOD();
+		private Produtos _Produtos = new Produtos();
 
 		public void Delete(int id)
         {
@@ -29,7 +29,7 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-		public List<ProdutosMOD> GetAll()
+		public List<Produtos> GetAll()
         {
 			try
 			{
@@ -42,7 +42,7 @@ namespace AnnaLeaoStore.Business
 
         }
 
-		public ProdutosMOD GetByID(int id)
+		public Produtos GetByID(int id)
         {
 			try
 			{
@@ -54,12 +54,12 @@ namespace AnnaLeaoStore.Business
 			}
 		}
 
-		public void Insert(ProdutosMOD produtos)
+		public void Insert(Produtos produtos)
         {
             try
             {
-				_produtosMOD = ValidaProduto(produtos);
-				_produtosRep.Inserir(_produtosMOD);
+				_Produtos = ValidaProduto(produtos);
+				_produtosRep.Inserir(_Produtos);
 
             }
             catch (Exception ex)
@@ -69,12 +69,12 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-		public void Update(ProdutosMOD produtos)
+		public void Update(Produtos produtos)
         {
             try
             {
-				_produtosMOD = ValidaProduto(produtos);
-				_produtosRep.Atualizar(_produtosMOD);
+				_Produtos = ValidaProduto(produtos);
+				_produtosRep.Atualizar(_Produtos);
             }
             catch (Exception e)
             {
@@ -83,7 +83,7 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-		public ProdutosMOD ValidaProduto(ProdutosMOD produto)
+		public Produtos ValidaProduto(Produtos produto)
         {
             try
             {

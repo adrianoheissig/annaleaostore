@@ -11,10 +11,6 @@ namespace AnnaLeaoStore.Repository
 {
     public class PrecosREP
     {
-        private ADO _ado = new ADO();
-
-        private string _strSQL;
-
 		private DBContext db = new DBContext();
 
 		public List<ListaPrecos> GetAll()

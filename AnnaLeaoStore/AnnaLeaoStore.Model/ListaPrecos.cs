@@ -12,6 +12,5 @@ namespace AnnaLeaoStore.Model
         public int? ID { get; set; }
         public string Descricao { get; set; }
         public DateTime? Validade { get; set; }
-		public string DataValidadeFmt { get; set; }
     }
 }

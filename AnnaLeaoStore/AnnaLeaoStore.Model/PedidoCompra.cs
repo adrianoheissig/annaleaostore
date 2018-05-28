@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Model
 {
-    public class EstoqueMOD
+    public class PedidoCompra
     {
         public Int32 ID { get; set; }
-        public Int32 IDProduto { get; set; }
-        public Decimal Quantidade { get; set; }
-        public Decimal EstoqueSeguranca { get; set; }
+        public Int32 IDTipoPagamento { get; set; }
+        public DateTime DataCompra { get; set; }
+        public Int32 IDPessoa { get; set; }
     }
 }

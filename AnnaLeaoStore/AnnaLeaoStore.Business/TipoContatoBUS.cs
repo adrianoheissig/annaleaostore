@@ -12,7 +12,7 @@ namespace AnnaLeaoStore.Business
     {
 		private TipoContatoREP _tipoContatoREP = new TipoContatoREP();
 
-        public List<TipoContatoMOD> GetAll()
+        public List<TipoContato> GetAll()
         {
 			return _tipoContatoREP.GetAll();
         }

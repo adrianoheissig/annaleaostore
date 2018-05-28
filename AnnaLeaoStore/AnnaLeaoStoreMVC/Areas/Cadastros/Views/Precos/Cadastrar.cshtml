@@ -45,7 +45,7 @@
                 <label>Validade:</label>
             </div>
             <div class="col-sm-6">
-                @Html.TextBoxFor(a => a.Validade, new { @class = "form-control" })
+                @Html.TextBoxFor(a => a.Validade, "{0:dd/MM/yyyy}", new { @class = "form-control" })
             </div>
             <div class="col-sm-5">
 
@@ -65,6 +65,10 @@
 
 </form>
 
+<div id="divItens">
+
+</div>
+
 <input type="hidden" name="idRetorno" id="idRetorno" />
 
 <div class="modal" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="modal-title">
@@ -83,5 +87,4 @@
     @Scripts.Render("~/plugins/sweetAlert")
     <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
     <script src="~/Scripts/annaleaostorescripts/Precos.js"></script>
-
 }

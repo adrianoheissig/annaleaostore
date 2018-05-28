@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Business
 {
-    public class PessoasBUS : IServiceBase<PessoasMOD>
+    public class PessoasBUS : IServiceBase<Pessoas>
     {
         private PessoasREP _pessoasRep = new PessoasREP();
 
-        private PessoasMOD _pessoaMOD = new PessoasMOD();
+        private Pessoas _pessoaMOD = new Pessoas();
 
-        public void Delete(PessoasMOD pessoa)
+        public void Delete(Pessoas pessoa)
         {
             try
             {
@@ -29,22 +29,22 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-        public List<PessoasMOD> GetAll()
+        public List<Pessoas> GetAll()
         {
             return null;
         }
 
-        public List<PessoasMOD> GetAll(int tipo)
+        public List<Pessoas> GetAll(int tipo)
         {
             return _pessoasRep.GetAll(tipo);
         }
 
-        public PessoasMOD GetByID(int id)
+        public Pessoas GetByID(int id)
         {
             return _pessoasRep.GetByID(id);
         }
 
-        public PessoasMOD Insert(PessoasMOD pessoa)
+        public Pessoas Insert(Pessoas pessoa)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-        public void Update(PessoasMOD pessoa)
+        public void Update(Pessoas pessoa)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-        public PessoasMOD ValidaPessoa(PessoasMOD pessoa)
+        public Pessoas ValidaPessoa(Pessoas pessoa)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace AnnaLeaoStore.Business
             }
         }
 
-        void IServiceBase<PessoasMOD>.Insert(PessoasMOD entity)
+        void IServiceBase<Pessoas>.Insert(Pessoas entity)
         {
            
         }

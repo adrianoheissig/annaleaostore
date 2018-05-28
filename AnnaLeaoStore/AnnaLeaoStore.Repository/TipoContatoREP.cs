@@ -14,16 +14,16 @@ namespace AnnaLeaoStore.Repository
     public class TipoContatoREP
     {
 		private ADO _ado = new ADO();
-        public List<TipoContatoMOD> GetAll()
+        public List<TipoContato> GetAll()
         {
             string storedProcedure = "LISTARTIPODECONTATO";
-            List<TipoContatoMOD> tiposContato = new List<TipoContatoMOD>();
+            List<TipoContato> tiposContato = new List<TipoContato>();
 
 			DataTable registros = _ado.RetornarTabela(storedProcedure, CommandType.StoredProcedure);
 
             foreach (DataRow item in registros.Rows)
             {
-				tiposContato.Add(new TipoContatoMOD
+				tiposContato.Add(new TipoContato
                 {
 					ID = item.GetValue<int>("ID"),
 					Descricao = item.GetText("DESCRICAO")

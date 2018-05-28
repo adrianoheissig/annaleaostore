@@ -24,6 +24,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 			try
 			{
 				var precos = _precosBus.GetAll();
+
                 return Json(new { data = precos }, JsonRequestBehavior.AllowGet);
 
 			}
@@ -82,6 +83,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
                 {
                     //Atualizar
 					_precosBus.Update(preco);
+                    _precosMOD.ID = preco.ID;
 
                 }
                 else
@@ -90,7 +92,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 					_precosMOD = _precosBus.Insert(preco);
                 }
 
-                return new JsonResult { Data = new { status = true } };
+                return new JsonResult { Data = new { status = true, data = _precosMOD.ID } };
             }
             catch (Exception e)
             {

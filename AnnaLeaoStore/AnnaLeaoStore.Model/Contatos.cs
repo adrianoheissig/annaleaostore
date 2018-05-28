@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Model
 {
-    public class TipoVendaMOD
+    public class Contatos
     {
-        public Int32 ID { get; set; }
+        public int? ID { get; set; }
+        public int? IDTipoRedeSocial { get; set; }
+        public string TipoContato { get; set; }
         public string Descricao { get; set; }
-        public Int32 GeraVenda { get; set; }
+        public int IDPessoa { get; set; }
+
+		public virtual Pessoas Pessoas{get;set;}
     }
 }

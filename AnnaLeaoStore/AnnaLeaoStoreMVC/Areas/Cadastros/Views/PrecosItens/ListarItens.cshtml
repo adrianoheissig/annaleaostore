@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AnnaLeaoStore.Model.ListaPrecosItem>
+
+
+
+
+<input type="hidden" id="idPedido" value="@ViewBag.Pedido" />
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco_Compra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco_Venda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lucro_Estimado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desconto_Max_Permitido)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Preco_Compra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Preco_Venda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lucro_Estimado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desconto_Max_Permitido)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

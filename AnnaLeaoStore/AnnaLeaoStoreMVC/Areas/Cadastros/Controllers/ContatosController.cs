@@ -46,7 +46,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 		}
 
         [Authorize]
-        public ActionResult Salvar(IEnumerable<ContatosMOD> contatos)
+        public ActionResult Salvar(IEnumerable<Contatos> contatos)
 		{
 			try
 			{

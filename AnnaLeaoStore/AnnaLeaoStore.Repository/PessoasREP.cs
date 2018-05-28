@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Repository
 {
-    public class PessoasREP : IRepositoryBase<PessoasMOD>
+    public class PessoasREP : IRepositoryBase<Pessoas>
     {
         private ADO _ado = new ADO();
 
         private String _strSql;
 
-        public void Delete(PessoasMOD pessoa)
+        public void Delete(Pessoas pessoa)
         {
             try
             {
@@ -39,11 +39,11 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-        public List<PessoasMOD> GetAll()
+        public List<Pessoas> GetAll()
         {
             return null;
         }
-        public List<PessoasMOD> GetAll(int tipo)
+        public List<Pessoas> GetAll(int tipo)
         {
             _strSql = $@"SELECT ID,NOME,ENDERECO,BAIRRO
                               ,CIDADE,ESTADO,CEP,PAIS
@@ -65,9 +65,9 @@ namespace AnnaLeaoStore.Repository
             return RetornLista(_strSql);
         }
 
-        public PessoasMOD GetByID(int id)
+        public Pessoas GetByID(int id)
         {
-            PessoasMOD pessoa = new PessoasMOD();
+            Pessoas pessoa = new Pessoas();
 
             _strSql = $@"SELECT ID,NOME,ENDERECO,BAIRRO
                               ,CIDADE,ESTADO,CEP,PAIS
@@ -86,7 +86,7 @@ namespace AnnaLeaoStore.Repository
                               ,PAISENTREGA
                               ,NOMEDESTINATARIO FROM PESSOAS WHERE ID = {id}";
 
-            List<PessoasMOD> pessoas = new List<PessoasMOD>();
+            List<Pessoas> pessoas = new List<Pessoas>();
 
             pessoas = RetornLista(_strSql);
 
@@ -97,7 +97,7 @@ namespace AnnaLeaoStore.Repository
         }
 
 
-        public PessoasMOD Insert(PessoasMOD pessoa)
+        public Pessoas Insert(Pessoas pessoa)
         {
             try
             {
@@ -145,7 +145,7 @@ namespace AnnaLeaoStore.Repository
 
         }
 
-        public void Update(PessoasMOD pessoa)
+        public void Update(Pessoas pessoa)
         {
             try
             {
@@ -183,21 +183,21 @@ namespace AnnaLeaoStore.Repository
 
         }
 
-        void IRepositoryBase<PessoasMOD>.Insert(PessoasMOD entity)
+        void IRepositoryBase<Pessoas>.Insert(Pessoas entity)
         {
             
         }
 
-        private List<PessoasMOD> RetornLista(string select)
+        private List<Pessoas> RetornLista(string select)
         {
-            List<PessoasMOD> pessoas = new List<PessoasMOD>();
+            List<Pessoas> pessoas = new List<Pessoas>();
 
 			DataTable registros = _ado.RetornarTabela(select, CommandType.Text);
 
             foreach (DataRow item in registros.Rows)
             {
 
-                pessoas.Add(new PessoasMOD
+                pessoas.Add(new Pessoas
                 {
                     ID = item.GetValue<int>("ID"),
                     Nome = item.GetText("NOME"),

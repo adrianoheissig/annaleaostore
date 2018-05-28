@@ -9,7 +9,7 @@ namespace AnnaLeaoStore.Business
     {
 		private ContatosREP _contatosREP = new ContatosREP();
        
-		public List<ContatosMOD> GetID(int id)
+		public List<Contatos> GetID(int id)
         {
 			return _contatosREP.GetID(id);
         }
@@ -26,7 +26,7 @@ namespace AnnaLeaoStore.Business
 
 		}
 
-		public void Inserir(IEnumerable<ContatosMOD> contatos){
+		public void Inserir(IEnumerable<Contatos> contatos){
 			try
 			{
 

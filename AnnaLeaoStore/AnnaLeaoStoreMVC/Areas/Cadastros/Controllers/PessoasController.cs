@@ -53,7 +53,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         {
             try
             {
-                _pessoasBUS.Delete(new PessoasMOD { ID = id });
+                _pessoasBUS.Delete(new Pessoas { ID = id });
                 return Json(new { success = true, responseText = "Os dados do Cliente Foram Excluídos com Sucesso!" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -67,7 +67,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         [Authorize]
         public ActionResult CadastrarCliente(int id)
         {
-            PessoasMOD pessoa = new PessoasMOD();
+            Pessoas pessoa = new Pessoas();
             if (id > 0)
             {
                 pessoa = _pessoasBUS.GetByID(id);
@@ -80,7 +80,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         [Authorize]
         public ActionResult CadastrarFornecedor(int id)
         {
-            PessoasMOD pessoa = new PessoasMOD();
+            Pessoas pessoa = new Pessoas();
             if (id > 0)
             {
                 pessoa = _pessoasBUS.GetByID(id);
@@ -91,11 +91,11 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Atualizar(PessoasMOD pessoa)
+        public ActionResult Atualizar(Pessoas pessoa)
         {
             try
             {
-                PessoasMOD newPessoa = new PessoasMOD();
+                Pessoas newPessoa = new Pessoas();
 
                 if (pessoa.ID > 0)
                 {

@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Model
 {
-    public class DevolucaoVendaMOD
+    public class DevolucaoCompra
     {
         public Int32 ID { get; set; }
-        public Int32 IDPedidoItem { get; set; }
+        public Int32 IDPedidoCompra { get; set; }
         public string Motivo { get; set; }
-        public Decimal Quantidade { get; set; }
         public DateTime DataDevolucao { get; set; }
     }
 }

@@ -14,25 +14,25 @@ namespace AnnaLeaoStore.Repository
 
         private string _strSQL;
 
-		public List<ProdutosMOD> GetAll()
+		public List<Produtos> GetAll()
         {
             try
             {
                 _strSQL = "LISTARPRODUTOSBASICO";
 
-                List<ProdutosMOD> produtos = new List<ProdutosMOD>();
+                List<Produtos> produtos = new List<Produtos>();
 
                 DataTable registros = _ado.RetornarTabela(_strSQL, CommandType.StoredProcedure);
 
                 foreach (DataRow item in registros.Rows)
                 {
-                    produtos.Add(new ProdutosMOD
+                    produtos.Add(new Produtos
                     {
                         ID = item.GetValue<int>("ID"),
                         ReferId = item.GetText("REFERID"),
                         Descricao = item.GetText("DESCRICAO"),
                         Cor = item.GetText("COR"),
-                        Pessoas = new PessoasMOD { Nome = item.GetText("NOME") },
+                        Pessoas = new Pessoas { Nome = item.GetText("NOME") },
                         DescricaoSituacao = item.GetText("DESC_SITUACAO"),
                         DataUltimaCompra = item.GetValue<DateTime>("DATAULTIMACOMPRA"),
                         QtdeEstoque = item.GetValue<decimal>("QTDE_ESTOQUE")
@@ -47,13 +47,13 @@ namespace AnnaLeaoStore.Repository
 
         }
 
-        public ProdutosMOD GetById(int id)
+        public Produtos GetById(int id)
         {
             try
             {
                 _strSQL = "LISTARPRODUTOPORID";
 
-                ProdutosMOD produto = new ProdutosMOD();
+                Produtos produto = new Produtos();
 
                 DataTable registros = _ado.RetornarTabela(_strSQL, CommandType.StoredProcedure,"@ID",id);
 
@@ -62,8 +62,8 @@ namespace AnnaLeaoStore.Repository
                     produto.ReferId = item.GetText("REFERID");
                     produto.Descricao = item.GetText("DESCRICAO");
                     produto.Cor = item.GetText("COR");
-					produto.Grade = new GradeMOD{ ID = item.GetValue<int>("IDGRADE"), Descricao = item.GetText("DESCRICAOGRADE")};
-					produto.Pessoas = new PessoasMOD { ID = item.GetValue<int>("IDFORNECEDOR"), Nome = item.GetText("NOME") };
+					produto.Grade = new Grade{ ID = item.GetValue<int>("IDGRADE"), Descricao = item.GetText("DESCRICAOGRADE")};
+					produto.Pessoas = new Pessoas { ID = item.GetValue<int>("IDFORNECEDOR"), Nome = item.GetText("NOME") };
                     produto.Ativo = item.GetBool("ATIVO");
                     produto.Observacao = item.GetText("OBSERVACAO");
                     produto.LinkProduto = item.GetText("LINKPRODUTO");
@@ -95,7 +95,7 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-		public void Inserir(ProdutosMOD produtos)
+		public void Inserir(Produtos produtos)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-		public void Atualizar(ProdutosMOD produtos)
+		public void Atualizar(Produtos produtos)
         {
             try
             {

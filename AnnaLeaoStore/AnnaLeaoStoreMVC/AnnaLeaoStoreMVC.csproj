@@ -263,6 +263,7 @@
     <Content Include="fonts\font-awesome\scss\_variables.scss" />
     <Content Include="Areas\Cadastros\Views\web.config" />
     <Content Include="Areas\Cadastros\Views\Shared\ConsultaPadrao.cshtml" />
+    <Content Include="Areas\Cadastros\Views\PrecosItens\ListarItens.cshtml" />
     <None Include="Properties\PublishProfiles\annaleaostore - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\annaleaostore - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -642,6 +643,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Cadastros\CadastrosAreaRegistration.cs" />
     <Compile Include="Areas\Cadastros\Controllers\ContatosController.cs" />
+    <Compile Include="Areas\Cadastros\Controllers\PrecosItensController.cs" />
     <Compile Include="Areas\Cadastros\Models\ModelToVIew.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />

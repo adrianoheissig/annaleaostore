@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Model
 {
-    public class ProdutosMOD
+    public class Produtos
     {
         public int? ID { get; set; }
         public string ReferId { get; set; }
@@ -22,8 +22,8 @@ namespace AnnaLeaoStore.Model
         
         public decimal? QtdeEstoque { get; set; }
 
-        public PessoasMOD Pessoas { get; set; }
-        public GradeMOD Grade { get; set; }
+        public Pessoas Pessoas { get; set; }
+        public Grade Grade { get; set; }
 
 
 

@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Model
 {
-    public class TipoPagamentoMOD
+    public class TipoContato
     {
-        public Int32 ID { get; set; }
+        public int? ID { get; set; }
         public string Descricao { get; set; }
-        public Int32 Prazo { get; set; }
-        public Decimal CustoFinanceiro { get; set; }
-        public Decimal Taxa { get; set; }
     }
 }

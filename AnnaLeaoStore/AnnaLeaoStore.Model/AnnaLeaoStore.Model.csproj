@@ -41,23 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TipoVendaMOD.cs" />
-    <Compile Include="TipoPagamentoMOD.cs" />
-    <Compile Include="TipoContatoMOD.cs" />
-    <Compile Include="PedidoVendaItemMOD.cs" />
-    <Compile Include="PedidoCompraItemMOD.cs" />
-    <Compile Include="GradeMOD.cs" />
-    <Compile Include="PedidoVendaMOD.cs" />
-    <Compile Include="PedidoCompraMOD.cs" />
-    <Compile Include="MovimentoMOD.cs" />
-    <Compile Include="ListaPrecosItemMOD.cs" />
+    <Compile Include="TipoVenda.cs" />
+    <Compile Include="TipoPagamento.cs" />
+    <Compile Include="TipoContato.cs" />
+    <Compile Include="PedidoVendaItem.cs" />
+    <Compile Include="PedidoCompraItem.cs" />
+    <Compile Include="Grade.cs" />
+    <Compile Include="PedidoVenda.cs" />
+    <Compile Include="PedidoCompra.cs" />
+    <Compile Include="Movimento.cs" />
+    <Compile Include="ListaPrecosItem.cs" />
     <Compile Include="ListaPrecos.cs" />
-    <Compile Include="EstoqueMOD.cs" />
-    <Compile Include="DevolucaoVendaMOD.cs" />
-    <Compile Include="DevolucaoCompraMOD.cs" />
-    <Compile Include="ContatosMOD.cs" />
-    <Compile Include="ProdutosMOD.cs" />
-    <Compile Include="PessoasMOD.cs" />
+    <Compile Include="Estoque.cs" />
+    <Compile Include="DevolucaoVenda.cs" />
+    <Compile Include="DevolucaoCompra.cs" />
+    <Compile Include="Contatos.cs" />
+    <Compile Include="Produtos.cs" />
+    <Compile Include="Pessoas.cs" />
     <Compile Include="CadUsuMOD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

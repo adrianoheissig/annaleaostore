@@ -12,7 +12,7 @@ namespace AnnaLeaoStore.Business
     {
 		private GradeREP _gradeREP = new GradeREP();
 
-		public List<GradeMOD> GetAll()
+		public List<Grade> GetAll()
         {
             try
             {
@@ -25,7 +25,7 @@ namespace AnnaLeaoStore.Business
 
         }
 
-		public GradeMOD GetPorId(int id)
+		public Grade GetPorId(int id)
         {
 			try
 			{

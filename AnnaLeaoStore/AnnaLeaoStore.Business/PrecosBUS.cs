@@ -15,16 +15,7 @@ namespace AnnaLeaoStore.Business
 
 		public List<ListaPrecos> GetAll()
         {
-            List<ListaPrecos> precos = new List<ListaPrecos>();
-
-            foreach (var item in _precosREP.GetAll())
-            {
-                item.DataValidadeFmt = item.Validade.ToString().Substring(0, 10);
-                precos.Add(item);
-            }
-
-            return precos;
-
+            return _precosREP.GetAll();
         }
         
 		public void Deletar(int id){
