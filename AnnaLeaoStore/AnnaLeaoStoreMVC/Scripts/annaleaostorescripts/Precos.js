@@ -1,11 +1,26 @@
 ﻿$(document).ready(function () {
+
+    /**
+     * Variáveis
+     */
     var titulo;
     if ($("#ID").val() > 0)
         titulo = "Atualizado";
     else
         titulo = "Cadastrado";
 
-    //Grava o Preco
+    var token = $('input[name="__RequestVerificationToken"]').val();
+    var tokenadr = $('form[action="/Pedido/Create"] input[name="__RequestVerificationToken"]').val();
+    var headers = {};
+    var headersadr = {};
+    headers['__RequestVerificationToken'] = token;
+    headersadr['__RequestVerificationToken'] = tokenadr;
+
+
+    /**
+     * Grava o Preco {Header}
+    */
+
     $("#frmCadastrarPrecos").submit(function (e) {
         var url = "/Cadastros/Precos/Atualizar/";
         $.ajax({
@@ -23,10 +38,9 @@
         e.preventDefault();
     });
 
-    $("#Sair").on("click", function () {
-        location = "/Cadastros/Precos/Consulta";
-    })
-
+    /**
+     * Listar Itens Preco
+    */
     function CarregaItens(idPedido) {
 
         var url = "/Cadastros/PrecosItens/ListarItens";
@@ -43,14 +57,14 @@
                 divItens.html(data);
             }
         });
-
     }
 
-    var token = $('input[name="__RequestVerificationToken"]').val();
-    var tokenadr = $('form[action="/Pedido/Create"] input[name="__RequestVerificationToken"]').val();
-    var headers = {};
-    var headersadr = {};
-    headers['__RequestVerificationToken'] = token;
-    headersadr['__RequestVerificationToken'] = tokenadr;
+
+
+    $("#Sair").on("click", function () {
+        location = "/Cadastros/Precos/Consulta";
+    })
+
+
 
 });

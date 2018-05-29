@@ -8,9 +8,9 @@ using AnnaLeaoStoreMVC.Areas.Cadastros.Models;
 
 namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 {
-    public class GradeController : Controller
+    public class GradesController : Controller
     {
-		private GradeBUS _gradeBUS = new GradeBUS();
+		private GradesBUS _gradeBUS = new GradesBUS();
 
 		[Authorize]
         public ActionResult ListarGrade()

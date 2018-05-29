@@ -654,7 +654,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Areas\Cadastros\Controllers\TipoContatoController.cs" />
     <Compile Include="Areas\Cadastros\Controllers\ProdutosController.cs" />
-    <Compile Include="Areas\Cadastros\Controllers\GradeController.cs" />
+    <Compile Include="Areas\Cadastros\Controllers\GradesController.cs" />
     <Compile Include="Areas\Cadastros\Controllers\PrecosController.cs" />
   </ItemGroup>
   <ItemGroup>

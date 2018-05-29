@@ -36,7 +36,7 @@
                 <th>Fornecedor</th>
                 <th>Última Compra</th>
                 <th>Situação</th>
-                <th>Total Estoque</th>
+              <!--  <th>Total Estoque</th> -->
                 <th></th>
                 <th></th>
             </tr>
@@ -85,8 +85,8 @@ $(document).ready(function () {
                     },
 
                     { "data": "DataUltimaCompra", "autoWidth": true },
-                    { "data": "DescricaoSituacao", "autoWidth": true },
-                    { "data": "QtdeEstoque", "autoWidth": true },
+                    { "data": "Situacao", "autoWidth": true },
+                    //{ "data": "QtdeEstoque", "autoWidth": true },
                     {
                         "data": "ID", "autoWidth": true, "render": function (data) {
                             return '<a class="popup" href="/Cadastros/Produtos/Cadastrar/' + data + '"><i class="fa fa-edit"></i></a>';

@@ -46,7 +46,7 @@
     <Compile Include="TipoContato.cs" />
     <Compile Include="PedidoVendaItem.cs" />
     <Compile Include="PedidoCompraItem.cs" />
-    <Compile Include="Grade.cs" />
+    <Compile Include="Grades.cs" />
     <Compile Include="PedidoVenda.cs" />
     <Compile Include="PedidoCompra.cs" />
     <Compile Include="Movimento.cs" />

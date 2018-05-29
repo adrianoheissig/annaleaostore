@@ -8,11 +8,11 @@ using AnnaLeaoStore.Repository;
 
 namespace AnnaLeaoStore.Business
 {
-    public class GradeBUS
+    public class GradesBUS
     {
-		private GradeREP _gradeREP = new GradeREP();
+		private GradesREP _gradeREP = new GradesREP();
 
-		public List<Grade> GetAll()
+		public List<Grades> GetAll()
         {
             try
             {
@@ -25,7 +25,7 @@ namespace AnnaLeaoStore.Business
 
         }
 
-		public Grade GetPorId(int id)
+		public Grades GetPorId(int id)
         {
 			try
 			{

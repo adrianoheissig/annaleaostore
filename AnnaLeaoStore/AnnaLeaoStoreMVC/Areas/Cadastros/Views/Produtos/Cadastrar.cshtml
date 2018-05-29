@@ -69,7 +69,7 @@
                 <label>Grade:</label>
             </div>
             <div class="col-sm-3">
-                @Html.TextBoxFor(a => a.Grade.ID, new { @class = "form-control form-inline codigoGrade" })
+                @Html.TextBoxFor(a => a.Grades.ID, new { @class = "form-control form-inline codigoGrade" })
             </div>
             <div class="col-sm-8">
                 <span class="descricaoGrade">@Model.Grade.Descricao</span>&nbsp;&nbsp;<i class="fa fa-search pesquisaGrade"></i>
@@ -88,17 +88,19 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-sm-1">
-                <label>Ativo?:</label>
-            </div>
-            <div class="col-sm-2">
-                @Html.CheckBoxFor(a => a.Ativo)
-            </div>
-            <div class="col-sm-9">
-
-            </div>
+        <!--
+    <div class="form-group">
+        <div class="col-sm-1">
+            <label>Ativo?:</label>
         </div>
+        <div class="col-sm-2">
+            Html.CheckBoxFor(a => a.Ativo)
+        </div>
+        <div class="col-sm-9">
+
+        </div>
+    </div>
+        -->
 
         <div class="form-group">
             <div class="col-sm-1">
@@ -252,7 +254,7 @@ $(document).ready(function () {
             });
 
             function pesquisaGrade($idGrade) {
-                $.get("/Cadastros/Grade/DetalheGrade/" + $idGrade, function (data) {
+                $.get("/Cadastros/Grades/DetalheGrade/" + $idGrade, function (data) {
                     if (data.status) {
                         $(".codigoGrade").val($idGrade);
                         $(".descricaoGrade").text(data.Descricao);

@@ -11,22 +11,22 @@ using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Repository
 {
-    public class GradeREP
+    public class GradesREP
     {
 		private ADO _ado = new ADO();
 
-		public List<Grade> GetAll()
+		public List<Grades> GetAll()
         {
             try
             {
                 string storedProcedure = "LISTARGRADE";
-                List<Grade> grades = new List<Grade>();
+                List<Grades> grades = new List<Grades>();
 
                 DataTable registros = _ado.RetornarTabela(storedProcedure, CommandType.StoredProcedure);
 
 				foreach (DataRow item in registros.Rows)
 				{
-					grades.Add(new Grade
+					grades.Add(new Grades
 					{
 						ID = item.GetValue<int>("ID"),
 						Descricao = item.GetText("DESCRICAO"),
@@ -51,12 +51,12 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-		public Grade GetPorId(int id)
+		public Grades GetPorId(int id)
         {
 			try
 			{
 				string storedProcedure = "LISTARGRADEPORID";
-                Grade grade = new Grade();
+                Grades grade = new Grades();
 
                 DataTable registros = _ado.RetornarTabela(storedProcedure, CommandType.StoredProcedure, "@ID", id);
 

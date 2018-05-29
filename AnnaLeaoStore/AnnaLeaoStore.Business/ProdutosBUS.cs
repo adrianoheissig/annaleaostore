@@ -100,7 +100,7 @@ namespace AnnaLeaoStore.Business
                     throw new Exception("Preencha a Cor do Produto!");
                 }
 
-                produto.Situacao = produto.Ativo ? 1 : 0;
+                //produto.Situacao = produto.Ativo ? 1 : 0;
 
 				return produto;
 

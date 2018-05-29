@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using AnnaLeaoStore.DataAccess;
 using AnnaLeaoStore.Model;
 using AnnaLeaoStore.Repository.Extensions;
@@ -12,33 +13,38 @@ namespace AnnaLeaoStore.Repository
     {
         private ADO _ado = new ADO();
 
+		private DBContext db = new DBContext();
+
         private string _strSQL;
 
 		public List<Produtos> GetAll()
         {
             try
             {
-                _strSQL = "LISTARPRODUTOSBASICO";
+				/* _strSQL = "LISTARPRODUTOSBASICO";
 
-                List<Produtos> produtos = new List<Produtos>();
+				 List<Produtos> produtos = new List<Produtos>();
 
-                DataTable registros = _ado.RetornarTabela(_strSQL, CommandType.StoredProcedure);
+				 DataTable registros = _ado.RetornarTabela(_strSQL, CommandType.StoredProcedure);
 
-                foreach (DataRow item in registros.Rows)
-                {
-                    produtos.Add(new Produtos
-                    {
-                        ID = item.GetValue<int>("ID"),
-                        ReferId = item.GetText("REFERID"),
-                        Descricao = item.GetText("DESCRICAO"),
-                        Cor = item.GetText("COR"),
-                        Pessoas = new Pessoas { Nome = item.GetText("NOME") },
-                        DescricaoSituacao = item.GetText("DESC_SITUACAO"),
-                        DataUltimaCompra = item.GetValue<DateTime>("DATAULTIMACOMPRA"),
-                        QtdeEstoque = item.GetValue<decimal>("QTDE_ESTOQUE")
-                    });
-                }
-                return produtos;
+				 foreach (DataRow item in registros.Rows)
+				 {
+					 produtos.Add(new Produtos
+					 {
+						 ID = item.GetValue<int>("ID"),
+						 ReferId = item.GetText("REFERID"),
+						 Descricao = item.GetText("DESCRICAO"),
+						 Cor = item.GetText("COR"),
+						 Pessoas = new Pessoas { Nome = item.GetText("NOME") },
+						 DescricaoSituacao = item.GetText("DESC_SITUACAO"),
+						 DataUltimaCompra = item.GetValue<DateTime>("DATAULTIMACOMPRA"),
+						 QtdeEstoque = item.GetValue<decimal>("QTDE_ESTOQUE")
+					 });
+				 } */
+
+				return db.ProdutosMOD.ToList();
+                
+                //return produtos;
             }
             catch (Exception ex)
             {
@@ -51,7 +57,7 @@ namespace AnnaLeaoStore.Repository
         {
             try
             {
-                _strSQL = "LISTARPRODUTOPORID";
+				/*_strSQL = "LISTARPRODUTOPORID";
 
                 Produtos produto = new Produtos();
 
@@ -67,8 +73,11 @@ namespace AnnaLeaoStore.Repository
                     produto.Ativo = item.GetBool("ATIVO");
                     produto.Observacao = item.GetText("OBSERVACAO");
                     produto.LinkProduto = item.GetText("LINKPRODUTO");
-                }
-                return produto;
+                } */
+
+				return db.ProdutosMOD.Find(id);
+
+                //return produto;
             }
             catch (Exception ex)
             {
@@ -95,50 +104,67 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-		public void Inserir(Produtos produtos)
+		public void Inserir(Produtos produto)
         {
             try
             {
-				string storedProcedure = "INSERIRPRODUTO";
-                var cmd = new SqlCommand(storedProcedure);
-                cmd.CommandType = CommandType.StoredProcedure;
+				/*	string storedProcedure = "INSERIRPRODUTO";
+					var cmd = new SqlCommand(storedProcedure);
+					cmd.CommandType = CommandType.StoredProcedure;
 
-				cmd.Parameters.AddWithValue("@REFERID", produtos.ReferId);
-				cmd.Parameters.AddWithValue("@DESCRICAO", produtos.Descricao);
-				cmd.Parameters.AddWithValue("@COR", produtos.Cor);
-				cmd.Parameters.AddWithValue("@IDGRADE", produtos.Grade.ID);
-				cmd.Parameters.AddWithValue("@IDFORNECEDOR", produtos.Pessoas.ID);
-				cmd.Parameters.AddWithValue("@SITUACAO", produtos.Situacao);
-				cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao, null);
-				cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto, null);
+					cmd.Parameters.AddWithValue("@REFERID", produtos.ReferId);
+					cmd.Parameters.AddWithValue("@DESCRICAO", produtos.Descricao);
+					cmd.Parameters.AddWithValue("@COR", produtos.Cor);
+					cmd.Parameters.AddWithValue("@IDGRADE", produtos.Grade.ID);
+					cmd.Parameters.AddWithValue("@IDFORNECEDOR", produtos.Pessoas.ID);
+					cmd.Parameters.AddWithValue("@SITUACAO", produtos.Situacao);
+					cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao, null);
+					cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto, null);
 
-                _ado.ExecutarSql(_ado.ObterCommand(cmd));
-            }
+					_ado.ExecutarSql(_ado.ObterCommand(cmd));
+					*/
+				db.ProdutosMOD.Add(produto);
+				db.SaveChanges();
+            } 
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
 
-		public void Atualizar(Produtos produtos)
+		public void Atualizar(Produtos produto)
         {
             try
             {
-                string storedProcedure = "ATUALIZARPRODUTO";
-                var cmd = new SqlCommand(storedProcedure);
-                cmd.CommandType = CommandType.StoredProcedure;
+				/* string storedProcedure = "ATUALIZARPRODUTO";
+				 var cmd = new SqlCommand(storedProcedure);
+				 cmd.CommandType = CommandType.StoredProcedure;
 
-				cmd.Parameters.AddWithValue("@ID", produtos.ID);
-				cmd.Parameters.AddWithValue("@REFERID", produtos.ReferId);
-                cmd.Parameters.AddWithValue("@DESCRICAO", produtos.Descricao);
-                cmd.Parameters.AddWithValue("@COR", produtos.Cor);
-                cmd.Parameters.AddWithValue("@IDGRADE", produtos.Grade.ID);
-                cmd.Parameters.AddWithValue("@IDFORNECEDOR", produtos.Pessoas.ID);
-                cmd.Parameters.AddWithValue("@SITUACAO", produtos.Situacao);
-				cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao, null);
-				cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto, null);
+				 cmd.Parameters.AddWithValue("@ID", produtos.ID);
+				 cmd.Parameters.AddWithValue("@REFERID", produtos.ReferId);
+				 cmd.Parameters.AddWithValue("@DESCRICAO", produtos.Descricao);
+				 cmd.Parameters.AddWithValue("@COR", produtos.Cor);
+				 cmd.Parameters.AddWithValue("@IDGRADE", produtos.Grade.ID);
+				 cmd.Parameters.AddWithValue("@IDFORNECEDOR", produtos.Pessoas.ID);
+				 cmd.Parameters.AddWithValue("@SITUACAO", produtos.Situacao);
+				 cmd.Parameters.AddWithValue("@OBSERVACAO", produtos.Observacao, null);
+				 cmd.Parameters.AddWithValue("@LINKPRODUTO", produtos.LinkProduto, null);
 
-                _ado.ExecutarSql(_ado.ObterCommand(cmd));
+				 _ado.ExecutarSql(_ado.ObterCommand(cmd));
+				 */
+				Produtos produtoOri = new Produtos();
+				produtoOri = db.ProdutosMOD.Find(produto.ID);
+
+				produtoOri.ReferId = produto.ReferId;
+				produtoOri.Descricao = produto.Descricao;
+				produtoOri.Cor = produto.Cor;
+				produtoOri.Grades.ID = produto.Grades.ID;
+				produtoOri.Pessoas.ID = produto.Pessoas.ID;
+				produtoOri.Situacao = produto.Situacao;
+				produtoOri.Observacao = produto.Observacao;
+				produtoOri.LinkProduto = produto.LinkProduto;
+
+				db.SaveChanges();
 
             }
             catch (Exception ex)

@@ -15,8 +15,8 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 
 		public ActionResult ListarProdutos(){
 			var produtos = _produtosBus.GetAll();
-			return Json(new { data = produtos }, JsonRequestBehavior.AllowGet);
 
+			return Json(new { data = produtos }, JsonRequestBehavior.AllowGet);
 		}
 
         public ActionResult Consulta()
@@ -45,8 +45,10 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 			{
 
 				Produtos produto = new Produtos();
-                produto.Grade = new Grade();
-                produto.Pessoas = new Pessoas();
+                
+				/*produto.Grade = new Grade();
+                produto.Pessoas = new Pessoas(); */
+
                 if (id > 0)
                 {
                     produto = _produtosBus.GetByID(id);

@@ -63,7 +63,7 @@
     <Compile Include="TipoContatoBUS.cs" />
     <Compile Include="ContatosBUS.cs" />
     <Compile Include="ProdutosBUS.cs" />
-    <Compile Include="GradeBUS.cs" />
+    <Compile Include="GradesBUS.cs" />
     <Compile Include="PrecosBUS.cs" />
   </ItemGroup>
   <ItemGroup>

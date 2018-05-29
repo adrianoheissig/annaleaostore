@@ -8,7 +8,9 @@ namespace AnnaLeaoStore.DataAccess
     {
      
 		public DbSet<ListaPrecos> ListaPrecosMOD { get; set; }
-		public DbSet<ListaPrecosItem> ListaPrecosItemMOD { get; set;}
+		public DbSet<ListaPrecosItem> ListaPrecosItemMOD { get; set; }
+		public DbSet<Produtos> ProdutosMOD { get; set; }
+		public DbSet<Grades> GradesMOD { get; set; }
 
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
