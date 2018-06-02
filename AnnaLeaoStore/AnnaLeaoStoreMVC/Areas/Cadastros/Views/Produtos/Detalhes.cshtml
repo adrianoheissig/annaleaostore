@@ -1,4 +1,4 @@
-﻿@model AnnaLeaoStore.Model.Produtos
+﻿@model AnnaLeaoStoreMVC.ViewModels.ProdutosViewModel
 
 <div class="col-lg-12">
     <div class="widget lazur-bg p-xl">
@@ -25,12 +25,12 @@
             <li>
                 <span class="fa fa-home m-r-xs"></span>
                 <label>Grade:</label>
-                @{ @Model.Grade.ID } - @{ @Model.Grade.Descricao}
+                @{ @Model.Grades.ID } - @{ @Model.Grades.Descricao}
             </li>
             <li>
                 <span class="fa fa-pencil m-r-xs"></span>
                 <label>Situação:</label>
-                @{ @Model.DescricaoSituacao}
+                @{ @Model.DescSituacao}
             </li>
             <li>
                 <span class="fa fa-home m-r-xs"></span>
@@ -44,5 +44,23 @@
             </li>
 
         </ul>
+
+        <table class="table table-striped dt-responsive nowrap " data-page-size="15" id="tbEstoque">
+            <thead>
+                <tr>
+                    @{ foreach (var item in Model.NomeGrade)
+                        {
+                            <th>@item</th>
+                        }}
+                </tr>
+                <tr>
+                    @{ foreach (var item in Model.QtdeTam)
+                        {
+                            <td>@item</td>
+                        }}
+                </tr>
+            </thead>
+        </table>
+
     </div>
 </div>

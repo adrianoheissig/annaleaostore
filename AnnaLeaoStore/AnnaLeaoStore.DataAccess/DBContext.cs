@@ -4,22 +4,25 @@ using AnnaLeaoStore.Model;
 
 namespace AnnaLeaoStore.DataAccess
 {
-	public class DBContext : DbContext
+    public class DBContext : DbContext
     {
-     
-		public DbSet<ListaPrecos> ListaPrecosMOD { get; set; }
-		public DbSet<ListaPrecosItem> ListaPrecosItemMOD { get; set; }
-		public DbSet<Produtos> ProdutosMOD { get; set; }
-		public DbSet<Grades> GradesMOD { get; set; }
+        public DbSet<ListaPrecos> ListaPrecosMOD { get; set; }
+        public DbSet<ListaPrecosItem> ListaPrecosItemMOD { get; set; }
+        public DbSet<Produtos> ProdutosMOD { get; set; }
+        public DbSet<Grades> GradesMOD { get; set; }
+        public DbSet<TipoDeContato> TipoDeContatoMOD { get; set; }
+        public DbSet<Contatos> ContatosMOD { get; set; }
+        public DbSet<Pessoas> PessoasMOD { get; set; }
+        public DbSet<Estoque> EstoquesMOD { get; set; }
 
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
-		{
-			//base.OnModelCreating(modelBuilder);
-			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-			Database.SetInitializer<DBContext>(null);
-            base.OnModelCreating(modelBuilder); 
-		}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            Database.SetInitializer<DBContext>(null);
+            base.OnModelCreating(modelBuilder);
+        }
 
         private void FixEfProviderServicesProblem()
         {

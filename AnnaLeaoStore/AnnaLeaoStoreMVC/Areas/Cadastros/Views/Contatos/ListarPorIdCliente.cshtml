@@ -19,10 +19,10 @@
                                     {
                                     <tr>
                                         <td>
-                                            <input type="hidden" name="[@index].IDTipoRedeSocial" id="[@index].IDTipoRedeSocial" value="@contato.IDTipoRedeSocial" />
+                                            <input type="hidden" name="[@index].TipoDeContato_ID" id="[@index].TipoDeContato_ID" value="@contato.TipoDeContato.ID" />
                                             <input type="hidden" name="[@index].ID" id="[@index].ID" value="@contato.ID" />
-                                            <input type="hidden" name="[@index].IDPessoa" id="[@index].IDPessoa" value="@contato.IDPessoa" />
-                                            @contato.TipoContato
+                                            <input type="hidden" name="[@index].Pessoa_ID" id="[@index].Pessoa_ID" value="@contato.Pessoas.ID" />
+                                            @contato.TipoDeContato.Descricao
                                         </td>
                                         <td class="text-right">
                                             <input type="text" class="text-right" name="[@index].Descricao" id="[@index].Descricao" value="@contato.Descricao" />

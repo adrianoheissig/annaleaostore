@@ -1,8 +1,8 @@
 ﻿@{
-                /**/
+    /**/
 
-                ViewBag.Title = "Fornecedores";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Fornecedores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
@@ -51,7 +51,8 @@
     @Scripts.Render("~/plugins/dataTables")
     <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
 
-    <script>$(document).ready(function() {
+    <script>
+$(document).ready(function () {
 
             // Tabela Para exibir os dados
             var oTable = $('#tbFornecedores').DataTable({
@@ -60,6 +61,7 @@
                     "type": "get",
                     "datatype": "json"
                 },
+                "stateSave": true,
                 "columnDefs": [{
                     "targets": [7, 8],
                     "className": "text-right",
@@ -67,7 +69,7 @@
                 }],
                 "columns": [
                     {
-                        "data": "ID", "autoWidth": true, "render": function(data) {
+                        "data": "ID", "autoWidth": true, "render": function (data) {
                             return '<a class="detalhes" href="/Cadastros/Pessoas/DetalhesPessoa/' + data + '">' + data + '</a>';
                         }
                     },
@@ -78,19 +80,19 @@
                     { "data": "Estado", "autoWidth": true },
                     { "data": "DescricaoSituacao", "autoWidth": true },
                     {
-                        "data": "ID", "autoWidth": true, "render": function(data) {
+                        "data": "ID", "autoWidth": true, "render": function (data) {
                             return '<a class="popup" href="/Cadastros/Pessoas/CadastrarFornecedor/' + data + '"><i class="fa fa-edit"></i></a>';
                         }
                     },
                     {
-                        "data": "ID", "autoWidth": true, "render": function(data) {
+                        "data": "ID", "autoWidth": true, "render": function (data) {
                             return '<a class="remove" href="/Cadastros/Pessoas/Deletar/' + data + '"><i class="fa fa-remove"></i></a>';
                         }
                     }
                 ]
             });
 
-            $(".tablecontainer").on("click", "a.detalhes", function(e) {
+            $(".tablecontainer").on("click", "a.detalhes", function (e) {
                 e.preventDefault();
                 var url = e.currentTarget.href;
                 OpenPopupSimple(url, "Detalhes do Fornecedor");
@@ -98,7 +100,7 @@
 
 
             // Quando clicar no excluir , abre a tela para o usuario confirmar e executa via AJAX
-            $('.tablecontainer').on('click', 'a.remove', function(e) {
+            $('.tablecontainer').on('click', 'a.remove', function (e) {
                 e.preventDefault();
                 var url = e.currentTarget;
                 swal({
@@ -110,11 +112,11 @@
                     confirmButtonText: "Sim",
                     closeOnConfirm: false,
                     cancelButtonText: "Cancelar"
-                }, function() {
+                }, function () {
                     $.ajax({
                         type: "GET",
                         url: url,
-                        success: function(response) {
+                        success: function (response) {
                             if (response.success) {
                                 swal("Sucesso!", response.responseText, "success");
                             } else {
@@ -128,5 +130,5 @@
 
 
 
-})</script>
+        })</script>
 }

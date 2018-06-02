@@ -138,3 +138,5 @@ c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStoreMVC\bin\EntityFramework.SqlServer.xm
 c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStoreMVC\obj\Debug\AnnaLeaoStoreMVC.csprojResolveAssemblyReference.cache
 c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStoreMVC\obj\Debug\AnnaLeaoStoreMVC.dll
 c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStoreMVC\obj\Debug\AnnaLeaoStoreMVC.pdb
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStoreMVC\bin\AutoMapper.dll
+c:\annaleaostore\AnnaLeaoStore\AnnaLeaoStoreMVC\bin\AutoMapper.xml

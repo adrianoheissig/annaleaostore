@@ -1,4 +1,4 @@
-﻿@model AnnaLeaoStore.Model.Pessoas
+﻿@model AnnaLeaoStoreMVC.ViewModels.PessoasViewModel
 
 <div class="col-lg-12">
     <div class="widget lazur-bg p-xl">
@@ -52,7 +52,7 @@
                             {
                             <tr>
                                 <td class=text-right>
-                                    @contato.TipoContato :
+                                    @contato.TipoDeContato.Descricao :
                                 </td>
                                 <td class="text-left">
                                     @contato.Descricao

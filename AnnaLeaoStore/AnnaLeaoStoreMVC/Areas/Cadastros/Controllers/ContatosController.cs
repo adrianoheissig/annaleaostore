@@ -1,10 +1,12 @@
 ﻿using AnnaLeaoStore.Business;
 using AnnaLeaoStore.Model;
+using AnnaLeaoStoreMVC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 
 namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 {
@@ -18,7 +20,12 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 		{
 			try
 			{
-				var lista = _contatoBUS.GetID(id);
+
+                /**
+                 * Vou buscar todos os Tipos de Contato e fazer um left join na tabela Contatos
+                **/
+
+				var lista = _contatoBUS.GetTiposContatoLeftContatoPorCliente(id);
 
 				return View(lista);
 			
@@ -46,12 +53,25 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 		}
 
         [Authorize]
-        public ActionResult Salvar(IEnumerable<Contatos> contatos)
+        public ActionResult Salvar(IEnumerable<ContatosViewModel> contatosViewModel)
 		{
 			try
 			{
-				_contatoBUS.Inserir(contatos);
-				return new JsonResult { Data = new { status = true } };
+                List<Contatos> contatos = new List<Contatos>();
+
+                foreach (var item in contatosViewModel)
+                {
+                    contatos.Add(new Contatos
+                    {
+                        ID = item.ID,
+                        Descricao = item.Descricao,
+                        Pessoas = new Pessoas { ID = item.Pessoa_ID },
+                        TipoDeContato = new TipoDeContato { ID = item.TipoDeContato_ID }
+                    });
+                }
+                _contatoBUS.Inserir(contatos);
+
+                return new JsonResult { Data = new { status = true } };
 			}
 			catch (Exception ex)
 			{

@@ -1,4 +1,4 @@
-﻿@model AnnaLeaoStore.Model.Pessoas
+﻿@model AnnaLeaoStoreMVC.ViewModels.PessoasViewModel
 @{
     ViewBag.Title = "Clientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -71,7 +71,7 @@
                         <label class="file-name">Data Nascimento:</label>
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control" })
+                            @Html.TextBoxFor(a => a.DataNascimento, "{0:dd/MM/yyyy}", new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="file-name">

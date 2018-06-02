@@ -1,7 +1,4 @@
-﻿@model List<AnnaLeaoStore.Model.Produtos>
-@{
-    /**/
-
+﻿@{
     ViewBag.Title = "Produtos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -36,7 +33,7 @@
                 <th>Fornecedor</th>
                 <th>Última Compra</th>
                 <th>Situação</th>
-              <!--  <th>Total Estoque</th> -->
+                <th>Total Estoque</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -54,8 +51,9 @@
     @Scripts.Render("~/plugins/dataTables")
     <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
 
+
     <script>
-$(document).ready(function () {
+        $(document).ready(function () {
 
             // Tabela Para exibir os dados
             var oTable = $('#tbProdutos').DataTable({
@@ -64,6 +62,7 @@ $(document).ready(function () {
                     "type": "get",
                     "datatype": "json"
                 },
+                "stateSave": true,
                 "columnDefs": [{
                     "targets": [7, 8],
                     "className": "text-right",
@@ -78,15 +77,10 @@ $(document).ready(function () {
                     { "data": "ReferId", "autoWidth": true },
                     { "data": "Descricao", "autoWidth": true },
                     { "data": "Cor", "autoWidth": true },
-                    {
-                        "data": "Pessoas", "autoWidth": true, "render": function (data) {
-                            return data.Nome;
-                        }
-                    },
-
+                    { "data": "NomeFornecedor", "autoWidth": true },
                     { "data": "DataUltimaCompra", "autoWidth": true },
-                    { "data": "Situacao", "autoWidth": true },
-                    //{ "data": "QtdeEstoque", "autoWidth": true },
+                    { "data": "DescSituacao", "autoWidth": true },
+                    { "data": "QtdeEstoque", "autoWidth": true },
                     {
                         "data": "ID", "autoWidth": true, "render": function (data) {
                             return '<a class="popup" href="/Cadastros/Produtos/Cadastrar/' + data + '"><i class="fa fa-edit"></i></a>';
@@ -135,8 +129,8 @@ $(document).ready(function () {
                     });
                 });
             });
+        });
 
 
-
-        })</script>
-}
+    </script>
+    ]}

@@ -1,97 +1,109 @@
-﻿using System;
+﻿using AnnaLeaoStore.DataAccess;
+using AnnaLeaoStore.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using AnnaLeaoStore.DataAccess;
-using AnnaLeaoStore.Model;
-using AnnaLeaoStore.Repository.Extensions;
+using System.Linq;
 
 namespace AnnaLeaoStore.Repository
 {
     public class ContatosREP
     {
-		private ADO _ado = new ADO();
+        private DBContext db = new DBContext();
 
-		private string _strSQL;
-        
-		public List<Contatos> GetID(int id)
+        public List<Contatos> GetTiposContatoLeftContatoPorCliente(int idPessoa)
         {
             try
-			{
-				_strSQL = "LISTARCONTATOSPORID";
+            {
+                var tipoDeContatosEContatos = (from tipoContato in db.TipoDeContatoMOD
+                                               join contato in db.ContatosMOD.Where(x => x.Pessoas.ID == idPessoa) on tipoContato.ID equals contato.TipoDeContato.ID into joined
+                                               from j in joined.DefaultIfEmpty()
+                                               select new
+                                               {
+                                                   ID = j.ID,
+                                                   Descricao = j.Descricao,
+                                                   TipoDeContato = tipoContato
+                                               }).ToList();
+                                               
+                List<Contatos> contatos = new List<Contatos>();
+                foreach (var item in tipoDeContatosEContatos)
+                {
 
-				List<Contatos> contatos = new List<Contatos>();
+                    contatos.Add(new Contatos
+                    {
+                        ID = item.ID ,
+                        Descricao = item.Descricao,
 
-				DataTable registros = _ado.RetornarTabela(_strSQL, CommandType.StoredProcedure,"@IDPESSOA",id);
+                        Pessoas = new Pessoas { ID = idPessoa },
+                        TipoDeContato = item.TipoDeContato
+                    });
+                }
 
-				foreach (DataRow item in registros.Rows)
-				{
-					contatos.Add(new Contatos
-					{
-                        ID = item.GetValue<int>("ID"),
-						IDTipoRedeSocial = item.GetValue<int>("ID_TIPOREDESOCIAL"),
-						TipoContato = item.GetText("TIPODECONTATO"),
-						Descricao = item.GetText("DESCRICAO"),
-                        IDPessoa = id
-					});
-				}
-				return contatos;
-			} catch (Exception ex) {
-				throw new Exception(ex.Message);
+                return contatos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        public List<Contatos> GetID(int idPessoa)
+        {
+            try
+            {
+                List<Contatos> contatos = new List<Contatos>();
+
+                contatos = db.ContatosMOD.Where(s => s.Pessoas.ID == idPessoa).ToList();
+
+                return contatos;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
 
         }
 
-		public void Deletar(int id){
-			try
-			{
-				_strSQL = "DELETARCONTATO";
-				var cmd = new SqlCommand(_strSQL);
+        public void Deletar(int id)
+        {
+            try
+            {
+                var contatos = db.ContatosMOD.Find(id);
+                db.ContatosMOD.Remove(contatos);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
-				cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", id);
-
-                _ado.ExecutarSql(_ado.ObterCommand(cmd));
-
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(ex.Message);
-			}
-		}
-
-		public void Inserir(Contatos contatos){
-			try
-			{
-				string storedProcedure = "INSERIRCONTATO";
-                var cmd = new SqlCommand(storedProcedure);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-				cmd.Parameters.AddWithValue("@IDTIPOREDESOCIAL", contatos.IDTipoRedeSocial);
-				cmd.Parameters.AddWithValue("@DESCRICAO", contatos.Descricao);
-				cmd.Parameters.AddWithValue("@IDPESSOAS", contatos.IDPessoa);
-    
-                _ado.ExecutarSql(_ado.ObterCommand(cmd));
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(ex.Message);
-			}
-		}
+        public void Inserir(Contatos contatos)
+        {
+            try
+            {
+                contatos.TipoDeContato = db.TipoDeContatoMOD.Find(contatos.TipoDeContato.ID);
+                contatos.Pessoas = db.PessoasMOD.Find(contatos.Pessoas.ID);
+                db.ContatosMOD.Add(contatos);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
         public void Atualizar(Contatos contatos)
         {
             try
             {
-                string storedProcedure = "ATUALIZARCONTATO";
-                var cmd = new SqlCommand(storedProcedure);
-                cmd.CommandType = CommandType.StoredProcedure;
+                var contatosORI = db.ContatosMOD.Find(contatos.ID);
 
-                cmd.Parameters.AddWithValue("@ID", contatos.ID);
-                cmd.Parameters.AddWithValue("@DESCRICAO", contatos.Descricao);
+                contatosORI.Descricao = contatos.Descricao;
 
-                _ado.ExecutarSql(_ado.ObterCommand(cmd));
-
+                db.SaveChanges();
             }
             catch (Exception ex)
             {

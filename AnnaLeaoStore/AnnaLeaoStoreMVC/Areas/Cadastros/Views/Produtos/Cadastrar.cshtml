@@ -1,4 +1,5 @@
-﻿@model AnnaLeaoStore.Model.Produtos
+﻿@model  AnnaLeaoStoreMVC.ViewModels.ProdutosViewModel
+
 @{
     ViewBag.Title = "Produtos";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -72,7 +73,7 @@
                 @Html.TextBoxFor(a => a.Grades.ID, new { @class = "form-control form-inline codigoGrade" })
             </div>
             <div class="col-sm-8">
-                <span class="descricaoGrade">@Model.Grade.Descricao</span>&nbsp;&nbsp;<i class="fa fa-search pesquisaGrade"></i>
+                <span class="descricaoGrade">@Model.Grades.Descricao</span>&nbsp;&nbsp;<i class="fa fa-search pesquisaGrade"></i>
             </div>
         </div>
 
@@ -88,19 +89,17 @@
             </div>
         </div>
 
-        <!--
-    <div class="form-group">
-        <div class="col-sm-1">
-            <label>Ativo?:</label>
-        </div>
-        <div class="col-sm-2">
-            Html.CheckBoxFor(a => a.Ativo)
-        </div>
-        <div class="col-sm-9">
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label>Ativo?:</label>
+            </div>
+            <div class="col-sm-2">
+                @Html.CheckBoxFor(a => a.Ativo)
+            </div>
+            <div class="col-sm-9">
 
+            </div>
         </div>
-    </div>
-        -->
 
         <div class="form-group">
             <div class="col-sm-1">
@@ -141,8 +140,6 @@
     </div>
 </div>
 
-
-
 @section Styles {
     @Styles.Render("~/plugins/sweetAlertStyles")
     @Styles.Render("~/Scripts/plugins/jquery-ui/jqueryuiStyles")
@@ -150,10 +147,13 @@
 @section Scripts {
     @Scripts.Render("~/plugins/sweetAlert")
     <script src="~/Scripts/annaleaostorescripts/openPopup.js"></script>
-    <script src="~/Scripts/annaleaostorescripts/annaleaostorejs.js"></script>
 
     <script>
-$(document).ready(function () {
+
+        $(document).ready(function () {
+            /**
+                 * Scripts para tela de Cadastros
+            */
             var titulo;
             var $idRetorno = $("#idRetorno");
             var $tipoGrade = 0;
@@ -183,7 +183,7 @@ $(document).ready(function () {
 
             $("#Sair").on("click", function () {
                 Voltar();
-            })
+            });
 
             function Voltar() {
                 location = "/Cadastros/Produtos/Consulta";
@@ -202,11 +202,11 @@ $(document).ready(function () {
             });
 
             $('#modal-container').on('hidden.bs.modal', function () {
-                if($tipoGrade === 1){
-                $(this).removeData('bs.modal');
-                if ($idRetorno.val() !== "") {
-                    pesquisaFornecedor($idRetorno.val());
-                }
+                if ($tipoGrade === 1) {
+                    $(this).removeData('bs.modal');
+                    if ($idRetorno.val() !== "") {
+                        pesquisaFornecedor($idRetorno.val());
+                    }
                 }
             });
 
@@ -230,7 +230,7 @@ $(document).ready(function () {
 
             /**** Pesquisa de Grade ***/
             $(".pesquisaGrade").on("click", function () {
-                var url = "/Cadastros/Grade/ListarGrade";
+                var url = "/Cadastros/Grades/ListarGrade";
                 $tipoGrade = 2;
                 $idRetorno.val("");
 
@@ -241,15 +241,15 @@ $(document).ready(function () {
             });
 
             $('#modal-container').on('hidden.bs.modal', function () {
-                if($tipoGrade === 2){
-                $(this).removeData('bs.modal');
-                if ($idRetorno.val() !== "") {
-                    pesquisaGrade($idRetorno.val());
-                }
+                if ($tipoGrade === 2) {
+                    $(this).removeData('bs.modal');
+                    if ($idRetorno.val() !== "") {
+                        pesquisaGrade($idRetorno.val());
+                    }
                 }
             });
 
-            $("#Grade_ID").keyup(function () {
+            $("#Grades_ID").keyup(function () {
                 pesquisaGrade($(this).val());
             });
 
@@ -265,8 +265,9 @@ $(document).ready(function () {
                     $(".descricaoGrade").text("");
                 });
             }
-            /**** Fim da Pesquisa de Fornecedor *****/
+            /**** Fim da Pesquisa de Grade *****/
 
 
-        });</script>
+        });
+    </script>
 }

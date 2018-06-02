@@ -8,13 +8,13 @@ using AnnaLeaoStore.Repository;
 
 namespace AnnaLeaoStore.Business
 {
-    public class TipoContatoBUS
+    public class TipoDeContatoBUS
     {
-		private TipoContatoREP _tipoContatoREP = new TipoContatoREP();
+		private TipoDeContatoREP _TipoDeContatoREP = new TipoDeContatoREP();
 
-        public List<TipoContato> GetAll()
+        public List<TipoDeContato> GetAll()
         {
-			return _tipoContatoREP.GetAll();
+			return _TipoDeContatoREP.GetAll();
         }
     }
 }

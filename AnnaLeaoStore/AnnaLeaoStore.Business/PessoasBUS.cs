@@ -20,7 +20,6 @@ namespace AnnaLeaoStore.Business
             try
             {
                 _pessoasRep.Delete(pessoa);
-
             }
             catch (Exception e)
             {
@@ -84,15 +83,11 @@ namespace AnnaLeaoStore.Business
                     throw new Exception("Nome não pode ser Em Branco!");
                 }
 
-                pessoa.Situacao = pessoa.Ativo ? 1 : 0;
-
                 return pessoa;
-
 
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }

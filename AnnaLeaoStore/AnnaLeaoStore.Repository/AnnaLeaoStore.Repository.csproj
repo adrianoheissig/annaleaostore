@@ -59,6 +59,7 @@
     <Compile Include="PrecosItemREP.cs" />
     <Compile Include="ProdutosREP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EstoqueREP.cs" />
     <Compile Include="TipoContatoREP.cs" />
     <Compile Include="ContatosREP.cs" />
     <Compile Include="GradesREP.cs" />

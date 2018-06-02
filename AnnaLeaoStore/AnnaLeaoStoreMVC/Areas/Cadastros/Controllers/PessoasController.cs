@@ -1,11 +1,11 @@
 ﻿using AnnaLeaoStore.Business;
 using AnnaLeaoStore.Model;
-using AnnaLeaoStoreMVC.Areas.Cadastros.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using AnnaLeaoStoreMVC.ViewModels;
+
 
 namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 {
@@ -32,9 +32,13 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         [Authorize]
         public ActionResult Listar(int tipo)
         {
-            var lista = _pessoasBUS.GetAll(tipo);
+            var pessoas = _pessoasBUS.GetAll(tipo);
 
-            return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
+            var pessoasViewModel = Mapper.Map<List<Pessoas>, List<PessoasViewModel>>(pessoas);
+
+            pessoasViewModel.ForEach(s => s.DescricaoSituacao = s.Situacao == 1 ? "Ativo" : "Inativo");
+
+            return Json(new { data = pessoasViewModel }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -42,9 +46,12 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         public ActionResult DetalhesPessoa(int id)
         {
             var pessoa = _pessoasBUS.GetByID(id);
-            pessoa.Contatos = _contatosBUS.GetID(Convert.ToInt32(pessoa.ID));
 
-            return View(pessoa);
+            var pessoaViewModel = Mapper.Map<Pessoas, PessoasViewModel>(pessoa);
+
+            pessoaViewModel.DescricaoSituacao = pessoaViewModel.Situacao == 1 ? "Ativo" : "Inativo";
+
+            return View(pessoaViewModel);
         }
 
 
@@ -62,7 +69,6 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
             }
         }
 
-
         [HttpGet]
         [Authorize]
         public ActionResult CadastrarCliente(int id)
@@ -72,8 +78,11 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
             {
                 pessoa = _pessoasBUS.GetByID(id);
             }
+            var pessoaViewModel = Mapper.Map<Pessoas, PessoasViewModel>(pessoa);
 
-            return View(pessoa);
+            pessoaViewModel.Ativo = pessoa.Situacao == 1 ? true : false;
+
+            return View(pessoaViewModel);
         }
 
         [HttpGet]
@@ -81,20 +90,30 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         public ActionResult CadastrarFornecedor(int id)
         {
             Pessoas pessoa = new Pessoas();
+
             if (id > 0)
             {
                 pessoa = _pessoasBUS.GetByID(id);
             }
 
-            return View(pessoa);
+            var pessoaViewModel = Mapper.Map<Pessoas, PessoasViewModel>(pessoa);
+
+            pessoaViewModel.Ativo = pessoa.Situacao == 1 ? true : false;
+
+            return View(pessoaViewModel);
         }
 
         [HttpPost]
         [Authorize]
-        public ActionResult Atualizar(Pessoas pessoa)
+        public ActionResult Atualizar(PessoasViewModel pessoaViewModel)
         {
             try
             {
+
+                var pessoa = Mapper.Map<PessoasViewModel, Pessoas>(pessoaViewModel);
+
+                pessoa.Situacao = pessoaViewModel.Ativo ? 1 : 0;
+
                 Pessoas newPessoa = new Pessoas();
 
                 if (pessoa.ID > 0)
@@ -107,7 +126,6 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
                 {
                     //Novo
                     newPessoa = _pessoasBUS.Insert(pessoa);
-
                 }
 
                 return new JsonResult { Data = new { status = true, ID = newPessoa.ID } };
@@ -124,16 +142,11 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         {
             try
             {
-                List<ModelToVIew> lista = new List<ModelToVIew>();
-                foreach (var item in _pessoasBUS.GetAll(2))
-                {
-                    lista.Add(new ModelToVIew
-                    {
-                        Codigo = Convert.ToInt32(item.ID),
-                        Descricao = item.Nome
+                var fornecedores = _pessoasBUS.GetAll(2);
 
-                    });
-                }
+                List<PadraoViewModel> lista = new List<PadraoViewModel>();
+
+                fornecedores.ForEach(s => lista.Add(new PadraoViewModel { Codigo = s.ID, Descricao = s.Nome }));
 
                 return PartialView("ConsultaPadrao", lista);
 
@@ -167,7 +180,6 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
                 return Json(new { status = false, responseText = ex.Message}, JsonRequestBehavior.AllowGet);
             }
         }
-
     }
 
 }

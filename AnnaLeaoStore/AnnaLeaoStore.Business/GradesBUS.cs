@@ -25,11 +25,11 @@ namespace AnnaLeaoStore.Business
 
         }
 
-		public Grades GetPorId(int id)
+		public Grades GetById(int id)
         {
 			try
 			{
-				return _gradeREP.GetPorId(id);
+				return _gradeREP.GetById(id);
 			}
 			catch (Exception ex)
 			{

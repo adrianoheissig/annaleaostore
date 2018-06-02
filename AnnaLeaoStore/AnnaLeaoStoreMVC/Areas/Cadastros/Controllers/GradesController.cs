@@ -1,10 +1,9 @@
-﻿using System;
+﻿using AnnaLeaoStore.Business;
+using AnnaLeaoStore.Model;
+using AnnaLeaoStoreMVC.ViewModels;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using AnnaLeaoStore.Business;
-using AnnaLeaoStoreMVC.Areas.Cadastros.Models;
 
 namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 {
@@ -17,16 +16,11 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         {
             try
             {
-				List<ModelToVIew> lista = new List<ModelToVIew>();
-				foreach (var item in _gradeBUS.GetAll())
-                {
-                    lista.Add(new ModelToVIew
-                    {
-                        Codigo = Convert.ToInt32(item.ID),
-						Descricao = item.Descricao
+                List<Grades> grades = _gradeBUS.GetAll();
 
-                    });
-                }
+                List<PadraoViewModel> lista = new List<PadraoViewModel>();
+
+                grades.ForEach(s => lista.Add(new PadraoViewModel { Codigo = s.ID, Descricao = s.Descricao }));
 
                 return PartialView("ConsultaPadrao", lista);
             }
@@ -43,7 +37,7 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
         {
             try
             {
-				var grade = _gradeBUS.GetPorId(id);
+				var grade = _gradeBUS.GetById(id);
                 
 				return Json(new { status = true, Descricao = grade.Descricao }, JsonRequestBehavior.AllowGet);
             }

@@ -7,16 +7,16 @@ using AnnaLeaoStore.Business;
 
 namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
 {
-    public class TipoContatoController : Controller
+    public class TipoDeContatoController : Controller
     {
-		private TipoContatoBUS _tipoContatoBUS = new TipoContatoBUS();
+		private TipoDeContatoBUS _TipoDeContatoBUS = new TipoDeContatoBUS();
 
         [Authorize]
         public ActionResult ListarContatos()
         {
 			try
 			{
-				var lista = _tipoContatoBUS.GetAll();
+				var lista = _TipoDeContatoBUS.GetAll();
 				return Json(new { success = true, data = lista }, JsonRequestBehavior.AllowGet);
 			}
 			catch (Exception ex)

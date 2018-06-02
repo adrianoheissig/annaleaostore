@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="TipoVenda.cs" />
     <Compile Include="TipoPagamento.cs" />
-    <Compile Include="TipoContato.cs" />
+    <Compile Include="TipoDeContato.cs" />
     <Compile Include="PedidoVendaItem.cs" />
     <Compile Include="PedidoCompraItem.cs" />
     <Compile Include="Grades.cs" />

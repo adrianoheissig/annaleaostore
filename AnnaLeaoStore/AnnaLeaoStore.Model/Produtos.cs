@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnnaLeaoStore.Model
 {
@@ -14,12 +10,13 @@ namespace AnnaLeaoStore.Model
         public string Descricao { get; set; }
         public string Cor { get; set; }
         public DateTime? DataUltimaCompra { get; set; }
-        public int? Situacao { get; set; }
+        public Decimal? Situacao { get; set; }
         public string Observacao { get; set; }
         public string LinkProduto { get; set; }
         
-        public Pessoas Pessoas { get; set; }
-        public Grades Grades { get; set; }
+        public virtual Pessoas Pessoas { get; set; }
+        public virtual Grades Grades { get; set; }
+             
 
     }
 }

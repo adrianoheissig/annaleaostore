@@ -1,11 +1,9 @@
-﻿using System;
+﻿using AnnaLeaoStore.DataAccess;
+using AnnaLeaoStore.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using AnnaLeaoStore.DataAccess;
-using AnnaLeaoStore.Model;
-using AnnaLeaoStore.Repository.Extensions;
 
 namespace AnnaLeaoStore.Repository
 {
@@ -23,7 +21,6 @@ namespace AnnaLeaoStore.Repository
             {
                 throw new Exception(ex.Message);
             }
-
         }
 
         public void Deletar(int id)

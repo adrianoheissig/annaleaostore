@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using AnnaLeaoStore.DataAccess;
+﻿using AnnaLeaoStore.DataAccess;
 using AnnaLeaoStore.Model;
-using AnnaLeaoStore.Repository.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AnnaLeaoStore.Repository
 {

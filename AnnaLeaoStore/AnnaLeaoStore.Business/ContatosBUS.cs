@@ -5,30 +5,47 @@ using AnnaLeaoStore.Repository;
 
 namespace AnnaLeaoStore.Business
 {
-	public class ContatosBUS
+    public class ContatosBUS
     {
-		private ContatosREP _contatosREP = new ContatosREP();
-       
-		public List<Contatos> GetID(int id)
+        private ContatosREP _contatosREP = new ContatosREP();
+
+        public List<Contatos> GetTiposContatoLeftContatoPorCliente(int idPessoa)
         {
-			return _contatosREP.GetID(id);
+            try
+            {
+                return _contatosREP.GetTiposContatoLeftContatoPorCliente(idPessoa);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
-		public void Deletar(int id){
-			try
-			{
-				_contatosREP.Deletar(id);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(ex.Message);
-			}
 
-		}
+        public List<Contatos> GetID(int id)
+        {
+            return _contatosREP.GetID(id);
+        }
 
-		public void Inserir(IEnumerable<Contatos> contatos){
-			try
-			{
+        public void Deletar(int id)
+        {
+            try
+            {
+                _contatosREP.Deletar(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        public void Inserir(IEnumerable<Contatos> contatos)
+        {
+            try
+            {
 
                 foreach (var contato in contatos)
                 {
@@ -42,18 +59,18 @@ namespace AnnaLeaoStore.Business
                         _contatosREP.Inserir(contato);
                     }
 
-                    if (contato.ID !=null && !String.IsNullOrEmpty(contato.Descricao))
+                    if (contato.ID != null && !String.IsNullOrEmpty(contato.Descricao))
                     {
                         _contatosREP.Atualizar(contato);
 
                     }
                 }
 
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(ex.Message);
-			}
-		}
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
