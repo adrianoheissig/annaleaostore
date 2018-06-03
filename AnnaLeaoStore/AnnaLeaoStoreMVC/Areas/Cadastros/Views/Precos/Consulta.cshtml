@@ -69,7 +69,7 @@
                     "columns": [
                         {
                             "data": "ID", "autoWidth": true, "render": function (data) {
-                                return '<a class="detalhes" href="/Cadastros/Precos/Detalhes/' + data + '">' + data + '</a>';
+                                return '<a class="detalhes" href="/Cadastros/PrecosItens/Detalhes/' + data + '">' + data + '</a>';
                             }
                         },
                         { "data": "Descricao", "autoWidth": true },
@@ -91,12 +91,13 @@
                     ]
                 });
 
-            $(".tablecontainer").on("click", "a.detalhes", function(e) {
+    /*
+                $(".tablecontainer").on("click", "a.detalhes", function (e) {
                 e.preventDefault();
                 var url = e.currentTarget.href;
                 OpenPopupSimple(url, "Detalhes da Lista de Precos");
             });
-
+    */
 
             // Quando clicar no excluir , abre a tela para o usuario confirmar e executa via AJAX
             $('.tablecontainer').on('click', 'a.remove', function(e) {

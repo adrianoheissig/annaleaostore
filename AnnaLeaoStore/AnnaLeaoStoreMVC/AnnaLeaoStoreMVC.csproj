@@ -268,6 +268,7 @@
     <Content Include="Areas\Cadastros\Views\web.config" />
     <Content Include="Areas\Cadastros\Views\Shared\ConsultaPadrao.cshtml" />
     <Content Include="Areas\Cadastros\Views\PrecosItens\ListarItens.cshtml" />
+    <Content Include="Areas\Cadastros\Views\PrecosItens\Detalhes.cshtml" />
     <None Include="Properties\PublishProfiles\annaleaostore - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\annaleaostore - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -663,6 +664,7 @@
     <Compile Include="Areas\Cadastros\Controllers\GradesController.cs" />
     <Compile Include="Areas\Cadastros\Controllers\PrecosController.cs" />
     <Compile Include="ViewModels\ContatosViewModel.cs" />
+    <Compile Include="ViewModels\ListaPrecosItemViewModel.cs" />
     <Compile Include="ViewModels\PadraoViewModel.cs" />
     <Compile Include="ViewModels\PessoasViewModel.cs" />
     <Compile Include="ViewModels\ProdutosViewModel.cs" />

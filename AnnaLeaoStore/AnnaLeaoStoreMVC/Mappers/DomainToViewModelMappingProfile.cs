@@ -11,6 +11,7 @@ namespace AnnaLeaoStoreMVC.Mappers
             CreateMap<Produtos, ProdutosViewModel>();
             CreateMap<Pessoas, PessoasViewModel>();
             CreateMap<Contatos, ContatosViewModel>();
+            CreateMap<ListaPrecosItem, ListaPrecosItemViewModel>();
         }
     }
 

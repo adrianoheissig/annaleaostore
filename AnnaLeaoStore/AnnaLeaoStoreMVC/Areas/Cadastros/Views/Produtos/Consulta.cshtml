@@ -120,11 +120,10 @@
                         success: function (response) {
                             if (response.success) {
                                 swal("Sucesso!", response.responseText, "success");
+                                location = "/Cadastros/Produtos/Consulta/";
                             } else {
                                 swal("Falhou!", response.responseText, "error");
                             }
-                            location = "/Cadastros/Produtos/Consulta/";
-
                         }
                     });
                 });

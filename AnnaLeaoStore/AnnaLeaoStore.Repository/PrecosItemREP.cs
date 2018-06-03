@@ -44,8 +44,23 @@ namespace AnnaLeaoStore.Repository
         {
             try
             {
+                precoItem.ListaPrecos = db.ListaPrecosMOD.Find(precoItem.ListaPrecos.ID);
+                precoItem.Produtos = db.ProdutosMOD.Find(precoItem.Produtos.ID);
                 db.ListaPrecosItemMOD.Add(precoItem);
                 db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool VerificaItemCadastrado(ListaPrecosItem precoItem)
+        {
+            try
+            {
+                return db.ListaPrecosItemMOD.Where(s => s.ListaPrecos.ID == precoItem.ListaPrecos.ID && s.Produtos.ID == precoItem.Produtos.ID).Count() > 0 ? true : false;
+
             }
             catch (Exception ex)
             {

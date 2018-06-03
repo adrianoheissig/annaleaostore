@@ -39,7 +39,11 @@ namespace AnnaLeaoStore.Repository
         {
             try
             {
-             
+                
+                db.ListaPrecosItemMOD.RemoveRange(db.ListaPrecosItemMOD.Where(x => x.ListaPrecos.ID == id));
+                db.SaveChanges();
+                
+
                 ListaPrecos preco = new ListaPrecos();
                 preco = GetById(id);
                 db.ListaPrecosMOD.Remove(preco);

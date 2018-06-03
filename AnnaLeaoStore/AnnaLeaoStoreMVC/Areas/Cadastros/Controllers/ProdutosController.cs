@@ -141,5 +141,42 @@ namespace AnnaLeaoStoreMVC.Areas.Cadastros.Controllers
             return View(produtosViewModel);
         }
 
+        [Authorize]
+        public ActionResult ListarProdutosResumo()
+        {
+            try
+            {
+                List<Produtos> produtos = _produtosBus.GetAll();
+
+                List<PadraoViewModel> lista = new List<PadraoViewModel>();
+
+                produtos.ForEach(s => lista.Add(new PadraoViewModel { Codigo = s.ID, Descricao = s.Descricao }));
+
+                return PartialView("ConsultaPadrao", lista);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, mensagem = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult DetalheProduto(int id)
+        {
+            try
+            {
+                var produto = _produtosBus.GetByID(id);
+
+                return Json(new { status = true, Descricao = produto.Descricao }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { status = false, responseText = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+
     }
 }

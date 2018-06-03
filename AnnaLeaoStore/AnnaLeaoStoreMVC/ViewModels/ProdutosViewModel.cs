@@ -26,15 +26,13 @@ namespace AnnaLeaoStoreMVC.ViewModels
         public Pessoas Pessoas { get; set; }
         public Grades Grades { get; set; }
 
-        public decimal QtdeEstoque { get; set; }
+        public decimal? QtdeEstoque { get; set; }
         public string DescSituacao { get; set; }
         public bool Ativo { get; set; }
 
         public string NomeFornecedor { get; set; }
 
         public Estoque Estoque { get; set; }
-
-
 
         public List<string> NomeGrade { get; set; }
         public List<Decimal> QtdeTam { get; set; }

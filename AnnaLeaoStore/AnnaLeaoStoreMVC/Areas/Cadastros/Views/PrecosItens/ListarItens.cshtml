@@ -1,39 +1,245 @@
 ﻿@model IEnumerable<AnnaLeaoStore.Model.ListaPrecosItem>
 
-    <input type="hidden" id="Pedido_ID" value="@ViewBag.Pedido" />
+<hr />
 
-    <div class="tablecontainer container-fluid">
-        <a class="popup btn btn-primary SalvarItem" href="#" style="margin-bottom: 20px; margin-top: 20px;">Incluir Item</a>
+<form id="frmCadastrarItensPrecos" method="post" novalidate="novalidate">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <input type="hidden" name="ListaPrecos_ID" id="ListaPrecos_ID" value="@ViewBag.ListaPrecosID" />
+            <div class="col-sm-1">
+                <label>Cod.Produto:</label>
+            </div>
+            <div class="col-sm-5">
+                <input class="form-control" id="Produtos_ID" name="Produtos_ID" type="text" />
+            </div>
+            <div class="col-sm-6">
+                <span class="descricaoProduto"></span>&nbsp;&nbsp;<i class="fa fa-search pesquisaProduto"></i>
+            </div>
+        </div>
 
-        <table class="table table-striped dt-responsive nowrap " data-page-size="15" id="tbPrecos">
-            <thead>
-                <tr>
-                    <th>Cod.Produto</th>
-                    <th>Descrição</th>
-                    <th>Preço de Compra</th>
-                    <th>Preço de Venda</th>
-                    <th>Lucro Estimado</th>
-                    <th>Desconto Máximo Permitido</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            @foreach (var item in Model)
-            {
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label>Preço Compra:</label>
+            </div>
+            <div class="col-sm-5">
+                <input class="form-control" id="Preco_Compra" name="Preco_Compra" type="text" />
+            </div>
+            <div class="col-sm-1">
+                <label>Preço Venda:</label>
+            </div>
+            <div class="col-sm-5">
+                <input class="form-control" id="Preco_Venda" name="Preco_Venda" type="text" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-1">
+                <label>Lucro Estimado:</label>
+            </div>
+            <div class="col-sm-2">
+                <i class="fa fa-money"></i>
+                <input class="form-control" id="Lucro_Estimado" name="Lucro_Estimado" type="text" />
+            </div>
+            <div class="col-sm-2">
+                <i class="fa fa-percent"></i>
+                <input class="form-control" id="Percentual_Estimado" name="Percentual_Estimado" type="text" />
+            </div>
+            <div class="col-sm-2">
+                <label>Desconto Máximo Permitido:</label>
+            </div>
+            <div class="col-sm-5">
+                <input class="form-control" id="Desconto_Max_Permitido" name="Desconto_Max_Permitido" type="text" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="submit col-sm-12">
+            <input type="submit" name="IncluirItem" id="IncluirItem" value="Incluir Item" class="btn btn-success" /> &nbsp;&nbsp;&nbsp;
+        </div>
+    </div>
+</form>
+
+
+<div class="tablecontainer container-fluid">
+    <table class="table table-striped dt-responsive nowrap " data-page-size="15" id="tbPrecos">
+        <thead>
+            <tr>
+                <th>Cod.Produto</th>
+                <th>Descrição</th>
+                <th>Preço de Compra</th>
+                <th>Preço de Venda</th>
+                <th>Lucro Estimado(R$)</th>
+                <th>Percentual Estimado(%)</th>
+                <th>Desconto Máximo Permitido</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
             <tr>
                 <td>@{ @item.Produtos.ID}</td>
                 <td>@{ @item.Produtos.Descricao}</td>
                 <td>@{ @item.Preco_Compra}</td>
                 <td>@{ @item.Preco_Venda}</td>
                 <td>@{ @item.Lucro_Estimado}</td>
+                <td>@{ @item.Percentual_Estimado}</td>
                 <td>@{ @item.Desconto_Max_Permitido}</td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+
+                    <a class="remove" href="/Cadastros/PrecosItens/Deletar/@{@item.ID}"><i class="fa fa-remove"></i></a>
                 </td>
             </tr>
-            }
-        </table>
+    }
+    </table>
+</div>
+
+<input type="hidden" name="idRetorno" id="idRetorno" />
+
+<div class="modal" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="modal-title">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="modal-content-container"></div>
     </div>
+</div>
 
+<script>
+    $(document).ready(function () {
 
+        $("#frmCadastrarItensPrecos").submit(function (e) {
+            e.preventDefault();
+            var url = "/Cadastros/PrecosItens/Atualizar/";
+            var idListaPrecos = $("#ListaPrecos_ID").val();
+            if (!validaCampos()) {
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $("#frmCadastrarItensPrecos").serialize(),
+                success: function (response) {
+                    if (response.status) {
+                        CarregaItens(idListaPrecos);
+                    } else {
+                        swal("Falhou!", response.responseText, "error");
+                    }
+                }
+            });
+        });
+
+        $('.remove').on('click', function (e) {
+            e.preventDefault();
+            var url = e.currentTarget;
+            var idListaPrecos = $("#ListaPrecos_ID").val();
+            swal({
+                title: "Deseja Excluir o Item?",
+                text: "Excluindo, o item será perdido!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim",
+                closeOnConfirm: false,
+                cancelButtonText: "Cancelar"
+            }, function () {
+                $.ajax({
+                    type: "GET",
+                    url: url,
+                    success: function (response) {
+                        if (response.success) {
+                            swal("Sucesso!", response.responseText, "success");
+                        } else {
+                            swal("Falhou!", response.responseText, "error");
+                        }
+                        CarregaItens(idListaPrecos);
+                    }
+                });
+            });
+        });
+
+        /* Variaveis para o Calculo */
+        var precoVenda = $("#Preco_Venda");
+        var precoCompra = $("#Preco_Compra");
+        var lucroEstimado = $("#Lucro_Estimado");
+        var percentualEstimado = $("#Percentual_Estimado");
+
+        $("#Preco_Venda").keyup(function () {
+            var lucro = parseInt(precoVenda.val()) - parseInt(precoCompra.val());
+            lucroEstimado.val(lucro);
+            lucro = Math.round(parseInt(lucroEstimado.val()) / parseInt(precoCompra.val()) * 100);
+            percentualEstimado.val(lucro);
+        });
+
+        $("#Lucro_Estimado").keyup(function () {
+            var preco = parseInt(precoCompra.val()) + parseInt(lucroEstimado.val());
+            precoVenda.val(preco);
+            var lucro = Math.round(parseInt(lucroEstimado.val()) / parseInt(precoCompra.val()) * 100);
+            percentualEstimado.val(lucro);
+        });
+
+        $("#Percentual_Estimado").keyup(function () {
+            var valor = parseFloat(percentualEstimado.val()) / 100 + 1;
+            var preco = parseInt(precoCompra.val()) * valor;
+            precoVenda.val(preco);
+            var lucro = parseInt(precoVenda.val()) - parseInt(precoCompra.val());
+            lucroEstimado.val(lucro);
+        });
+
+        function validaCampos() {
+            if ($("#Produtos_ID").val() === "") {
+                alert("Preencha o Produto");
+                return false;
+            }
+            if ($(".descricaoProduto").text() === "Não Encontrado") {
+                alert("Produto não Encontrado");
+                return false;
+            }
+            if (precoCompra.val() === "" || precoCompra.val() === "NaN") {
+                alert("Preencha o Valor da Compra");
+                return false;
+            }
+            if (precoVenda.val() === "" || precoVenda.val() === "NaN") {
+                alert("Preencha o Valor da Venda");
+                return false;
+            }
+            return true;
+        }
+
+        /**** Pesquisa de Produto ***/
+        var $idRetorno = $("#idRetorno");
+        $(".pesquisaProduto").on("click", function () {
+            var url = "/Cadastros/Produtos/ListarProdutosResumo";
+            $idRetorno.val("");
+
+            $.get(url, function (data) {
+                $('#modal-container').modal('show');
+                $('#modal-content-container').html(data);
+            });
+        });
+
+        $('#modal-container').on('hidden.bs.modal', function () {
+            $(this).removeData('bs.modal');
+            if ($idRetorno.val() !== "") {
+                pesquisaProduto($idRetorno.val());
+            }
+        });
+
+        $("#Produtos_ID").keyup(function () {
+            pesquisaProduto($(this).val());
+        });
+
+        function pesquisaProduto($idProduto) {
+            $.get("/Cadastros/Produtos/DetalheProduto/" + $idProduto, function (data) {
+                if (data.status) {
+                    $("#Produtos_ID").val($idProduto);
+                    $(".descricaoProduto").text(data.Descricao);
+                } else {
+                    $(".descricaoProduto").text("Não Encontrado");
+                }
+            }).fail(function () {
+                $(".descricaoProduto").text("");
+            });
+        }
+        /**** Fim da Pesquisa de Produto *****/
+
+    });
+</script>

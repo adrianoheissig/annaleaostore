@@ -1,0 +1,98 @@
+﻿@model IEnumerable<AnnaLeaoStore.Model.ListaPrecosItem>
+@{
+    /**/
+
+    ViewBag.Title = "Lista de Precos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Lista de Precos</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/Home/Index">Home</a>
+            </li>
+            <li>
+                <a>Cadastros</a>
+            </li>
+            <li>
+                <a href="/Cadastros/Precos/Consulta">Lista de Preços</a>
+            </li>
+            <li class="active">
+                <strong>Lista de Preços Itens</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="widget lazur-bg p-xl">
+        <h2>
+           Lista de Preços - Itens
+        </h2>
+        <ul class="list-unstyled m-t-md">
+            <li>
+                <span class="fa fa-edit m-r-xs"></span>
+                <label>Descricao:</label>
+               @ViewBag.Descricao
+            </li>
+            <li>
+                <span class="fa fa-calendar m-r-xs"></span>
+                <label>Validade:</label>
+                @ViewBag.Validade
+            </li>
+
+        </ul>
+
+        <table class="table table-responsive dt-responsive">
+            <thead>
+                <tr>
+                    <th class="text-center">Cod.Produto</th>
+                    <th class="text-center">Descrição</th>
+                    <th class="text-center">Preço de Compra</th>
+                    <th class="text-center">Preço de Venda</th>
+                    <th class="text-center">Lucro Estimado(R$)</th>
+                    <th class="text-center">Percentual Estimado(%)</th>
+                    <th class="text-center">Desconto Máximo Permitido</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var itens in Model)
+                    {
+                        <tr>
+                            <td class=text-center>
+                                @itens.Produtos.ID
+                            </td>
+                            <td class="text-left">
+                                @itens.Produtos.Descricao
+                            </td>
+                            <td class="text-right">
+                                @itens.Preco_Compra
+                            </td>
+                            <td class="text-right">
+                                @itens.Preco_Venda
+                            </td>
+                            <td class="text-right">
+                                @itens.Lucro_Estimado
+                            </td>
+                            <td class="text-right">
+                                @itens.Percentual_Estimado
+                            </td>
+                            <td class="text-right">
+                                @itens.Desconto_Max_Permitido
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+
+
+        </table>
+    </div>
+    <div>
+        <a class="btn btn-primary" href="/Cadastros/Precos/Consulta" style="margin-bottom:20px; margin-top:20px;">Retornar</a>
+    </div>
+</div>

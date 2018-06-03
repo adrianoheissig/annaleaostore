@@ -15,7 +15,20 @@ namespace AnnaLeaoStore.Repository
 
             try
             {
-                var totalEstoque =  db.EstoquesMOD.Where(s => (int)s.Produtos_ID == idProduto).Sum(s => (decimal)s.Tam1 + (decimal)s.Tam2 + (decimal)s.Tam3 + (decimal)s.Tam4 + (decimal)s.Tam5 + (decimal)s.Tam6 + (decimal)s.Tam7 + (decimal)s.Tam8 + (decimal)s.Tam9 + (decimal)s.Tam10);
+                Decimal totalEstoque = 0;
+                var estoque = db.EstoquesMOD.Where(s => s.Produtos_ID == idProduto).Count();
+                if (estoque > 0)
+                    totalEstoque = db.EstoquesMOD.Where(s => (int)s.Produtos_ID == idProduto).Sum(s =>
+                   (decimal)s.Tam1 +
+                   (decimal)s.Tam2 +
+                   (decimal)s.Tam3 +
+                   (decimal)s.Tam4 +
+                   (decimal)s.Tam5 +
+                   (decimal)s.Tam6 +
+                   (decimal)s.Tam7 +
+                   (decimal)s.Tam8 +
+                   (decimal)s.Tam9 +
+                   (decimal)s.Tam10);
 
                 return totalEstoque;
 
@@ -27,7 +40,7 @@ namespace AnnaLeaoStore.Repository
             }
         }
 
-       public Estoque EstoqueDoProduto(int idProduto)
+        public Estoque EstoqueDoProduto(int idProduto)
         {
             var estoque = db.EstoquesMOD.Where(s => (int)s.Produtos_ID == idProduto).FirstOrDefault();
 
